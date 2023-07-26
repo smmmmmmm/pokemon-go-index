@@ -1,0 +1,24 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter id="svg_15_blur">
+   <feGaussianBlur stdDeviation="0.2" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_16_blur">
+   <feGaussianBlur stdDeviation="0.2" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_17_blur">
+   <feGaussianBlur stdDeviation="0.2" in="SourceGraphic"/>
+  </filter>
+  <filter id="svg_18_blur">
+   <feGaussianBlur stdDeviation="0.2" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path filter="url(#svg_15_blur)" stroke="#000" stroke-width="0" id="svg_15" d="m1.01111,4.88546l3.92049,0l1.21146,-3.87435l1.21146,3.87435l3.92049,0l-3.17173,2.39447l1.21153,3.87434l-3.17175,-2.39452l-3.17173,2.39452l1.21152,-3.87434l-3.17173,-2.39447z" fill="#666666"/>
+  <path filter="url(#svg_16_blur)" stroke="#000" stroke-width="0" id="svg_16" d="m12.88611,4.88546l3.92049,0l1.21146,-3.87435l1.21147,3.87435l3.92049,0l-3.17174,2.39447l1.21153,3.87433l-3.17175,-2.39452l-3.17173,2.39452l1.21151,-3.87433l-3.17173,-2.39447z" fill="#666666"/>
+  <path filter="url(#svg_17_blur)" stroke="#000" stroke-width="0" id="svg_17" d="m13.16389,16.96879l3.92049,0l1.21146,-3.87435l1.21147,3.87435l3.92049,0l-3.17174,2.39447l1.21153,3.87433l-3.17175,-2.39452l-3.17173,2.39452l1.21151,-3.87433l-3.17173,-2.39447z" fill="#666666"/>
+  <path filter="url(#svg_18_blur)" stroke="#000" stroke-width="0" id="svg_18" d="m1.08056,16.89935l3.92049,0l1.21146,-3.87435l1.21147,3.87435l3.92049,0l-3.17174,2.39447l1.21153,3.87433l-3.17175,-2.39452l-3.17173,2.39452l1.21151,-3.87433l-3.17173,-2.39447z" fill="#666666"/>
+  <text font-style="normal" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="8.6" id="svg_12" y="15.76389" x="0.56944" stroke-width="0" stroke="#000" fill="#ea0909">MAX</text>
+ </g>
+</svg>

@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "my-pokedex"
+version = "0.1.0"
+description = ""
+authors = ["simamumu"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupyter = "^1.0.0"
+requests = "^2.28.1"
+beautifulsoup4 = "^4.11.1"
+selenium = "^4.4.3"
+Pillow = "^9.4.0"
+dataclass-wizard = "^0.22.2"
+tqdm = "^4.65.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+flake8 = "^5.0.4"
+mypy = "^0.971"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+profile = "black"
+atomic = true
+line_length = 99
+
+[tool.mypy]
+check_untyped_defs = true
+no_implicit_optional = true
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 99
