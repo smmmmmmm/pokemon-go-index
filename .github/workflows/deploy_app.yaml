@@ -5,7 +5,6 @@ on:
 
 env:
   NODE_VERSION: 18
-  ACTIONS_STEP_DEBUG: true
 
 jobs:
   check:
@@ -21,7 +20,7 @@ jobs:
           echo "The actor is not allowed to deploy: ${{ github.actor }}"
           exit 1
       - name: Check branch
-        if: github.ref_name != 'deploy-from-github-actions'
+        if: github.ref_name != 'develop'
         run: |
           echo "Invalid branch name specified. branch: ${{ github.ref_name }}"
           exit 1
@@ -101,5 +100,5 @@ jobs:
       - name: set firebase project
         run: yarn firebase use --add my-pokedex-b9f69
 
-      # - name: Deploy Frontend
-      #   run: yarn deploy
+      - name: Deploy Frontend
+        run: yarn deploy
