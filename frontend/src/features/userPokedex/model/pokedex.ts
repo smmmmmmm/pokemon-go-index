@@ -16,9 +16,9 @@ export type IsHaving = {
 export type PokedexType = keyof IsHaving;
 export const PokedexTypeChoices: PokedexType[] = [
   "normal",
+  "star3",
   "shiny",
   "shinyStar3",
-  "star3",
   "max",
   "shadow",
   "purify",
