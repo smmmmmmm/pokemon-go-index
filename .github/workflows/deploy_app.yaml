@@ -20,7 +20,7 @@ jobs:
           echo "The actor is not allowed to deploy: ${{ github.actor }}"
           exit 1
       - name: Check branch
-        if: github.ref_name != 'develop'
+        if: github.ref_name != 'main'
         run: |
           echo "Invalid branch name specified. branch: ${{ github.ref_name }}"
           exit 1
@@ -40,7 +40,7 @@ jobs:
 
       # Setup Gcloud
       - name: Set up Cloud Auth
-        uses: 'google-github-actions/auth@v1'
+        uses: "google-github-actions/auth@v1"
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: deploy-bot@my-pokedex-b9f69.iam.gserviceaccount.com
@@ -48,7 +48,7 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          version: '>= 427.0.0'
+          version: ">= 427.0.0"
 
       # Install yarn
       - name: Update node
