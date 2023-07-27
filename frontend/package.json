@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "emulator": "npm run build && firebase emulators:start --import ./.data --export-on-exit ./.data --only functions,auth,hosting,firestore",
+    "emulator": "firebase emulators:start --project demo-emulator --import .data --export-on-exit --only auth,firestore",
     "deploy": "firebase deploy --only functions,hosting,firestore",
     "logs": "firebase functions:log",
     "lint": "yarn lint:eslint; yarn lint:prettier",
