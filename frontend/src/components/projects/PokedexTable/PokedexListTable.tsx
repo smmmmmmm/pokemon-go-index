@@ -57,11 +57,11 @@ const PokedexRow: React.FC<{
               {pokemon.name}
             </Text>
           </Box>
-          {PokedexTypeChoices.map((key: PokedexType) => {
-            if (!pokemon.isImplemented(key)) {
+          {PokedexTypeChoices.map((pokedexType: PokedexType) => {
+            if (!pokemon.isImplemented(pokedexType)) {
               return (
                 <Box
-                  key={key}
+                  key={pokedexType}
                   flex={1}
                   h="100%"
                   borderWidth="0.5px"
@@ -73,17 +73,20 @@ const PokedexRow: React.FC<{
             } else {
               return (
                 <Box
-                  key={key}
+                  key={pokedexType}
                   flex={1}
                   h="100%"
                   borderWidth="0.5px"
                   borderColor="gray.500"
                   textAlign="center"
                   backgroundColor={
-                    userPokedex.isHaving[key] ? "#bff5cd" : "white"
+                    userPokedex.isHaving[pokedexType] ? "#bff5cd" : "white"
                   }
                   onClick={() => {
-                    handleUpdatePage(key, !userPokedex.isHaving[key]);
+                    handleUpdatePage(
+                      pokedexType,
+                      !userPokedex.isHaving[pokedexType]
+                    );
                   }}
                 />
               );
