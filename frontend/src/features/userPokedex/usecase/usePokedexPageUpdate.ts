@@ -30,7 +30,8 @@ export const usePokedexPageUpdate = (userId: string, pokemonId: string) => {
         await updateUserPokedex(userId, pokemonId, pokedexType, newVal);
       },
       onSettled: () => {
-        queryClient.invalidateQueries({ queryKey: getQueryKey });
+        queryClient.invalidateQueries(getQueryKey);
+        queryClient.invalidateQueries(["useUserPokedexProgress", userId]);
       },
     });
   return {
