@@ -1,0 +1,104 @@
+name: deploy app
+
+on:
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 18
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check actor
+        if: github.actor != github.repository_owner
+        run: |
+          echo "The actor is not allowed to deploy: ${{ github.actor }}"
+          exit 1
+      - name: Check branch
+        if: github.ref_name != 'develop'
+        run: |
+          echo "Invalid branch name specified. branch: ${{ github.ref_name }}"
+          exit 1
+
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    needs: check
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Setup Gcloud
+      - name: Set up Cloud Auth
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: deploy-bot@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: '>= 427.0.0'
+
+      # Install yarn
+      - name: Update node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE_VERSION }}"
+          cache: "yarn"
+          cache-dependency-path: ./frontend/yarn.lock
+
+      - name: cache node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-node-${{env.NODE_VERSION}}-yarn-${{ hashFiles('frontend/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-${{env.NODE_VERSION}}-yarn-
+
+      - name: Install Dependencies
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Download images
+      - name: Cache images
+        id: images_cache
+        uses: actions/cache@v3
+        with:
+          path: frontend/public/images/**/*.png
+          key: ${{ runner.os }}-public-images-${{ hashFiles('frontend/public/images/hash.txt') }}
+          restore-keys: ${{ runner.os }}-public-images-
+
+      - name: Download public images, from GCS to local
+        if: steps.images_cache.outputs.cache-hit != 'true'
+        run: gsutil -m -q  cp -r -n  gs://pokemon-go-index-public/images/* public/images/
+
+      # Deploy
+      - name: Create `.env.production`
+        run: |
+          echo 'NEXT_PUBLIC_EMULATOR=false' > .env.production
+          echo 'NEXT_PUBLIC_HOSTING_URL="https://${{ secrets.PROJECT_ID }}.firebaseapp.com/"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_API_KEY="${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_DATABASE_URL="${{ secrets.NEXT_PUBLIC_FIREBASE_DATABASE_URL }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_PROJECT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_APP_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}"' >> .env.production
+          echo 'NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}"' >> .env.production
+
+      - name: set firebase project
+        run: yarn firebase use --add ${{ secrets.PROJECT_ID }}
+
+      - name: Deploy Frontend
+        run: yarn deploy

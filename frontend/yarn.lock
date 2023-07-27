@@ -5670,9 +5670,9 @@ firebase-tools@^12.4.5:
     winston-transport "^4.4.0"
     ws "^7.2.3"
 
-firebase@^10.0.0:
+firebase@^10.1.0:
   version "10.1.0"
-  resolved "https://registry.npmjs.org/firebase/-/firebase-10.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-10.1.0.tgz#07281ac2fe4bcf3886eeddcea8903ad17f1aec67"
   integrity sha512-ghcdCe2G9DeGmLOrBgR7XPswuc9BFUfjnU93ABopIisMfbJFzoqpSp4emwNiZt+vVGZV1ifeU3DLfhxlujxhCg==
   dependencies:
     "@firebase/analytics" "0.10.0"

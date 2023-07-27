@@ -37,4 +37,4 @@ next-env.d.ts
 
 
 #--------- original content below this line -----------
-public/images/*
+.env.production
