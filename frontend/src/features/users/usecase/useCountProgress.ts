@@ -12,15 +12,12 @@ export const useUserPokedexProgress = (
     queryKey: ["useUserPokedexProgress", userId, generation],
     queryFn: async () => {
       if (userId) {
+        // prettier-ignore
         return {
           normal: await countPokedexProgress(userId, "normal", generation),
           star3: await countPokedexProgress(userId, "star3", generation),
           shiny: await countPokedexProgress(userId, "shiny", generation),
-          shinyStar3: await countPokedexProgress(
-            userId,
-            "shinyStar3",
-            generation
-          ),
+          shinyStar3: await countPokedexProgress(userId, "shinyStar3", generation),
           max: await countPokedexProgress(userId, "max", generation),
           shadow: await countPokedexProgress(userId, "shadow", generation),
           purify: await countPokedexProgress(userId, "purify", generation),
@@ -32,6 +29,11 @@ export const useUserPokedexProgress = (
     cacheTime: Infinity,
     enabled: !!userId,
   });
+
+  if (isError) {
+    console.log(error);
+  }
+
   return {
     userPokedexProgress: data,
     userPokedexProgressIsLoading: isLoading,
