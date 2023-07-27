@@ -71,6 +71,19 @@ jobs:
         if: steps.node_modules_cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      # Download images
+      - name: Cache images
+        id: images_cache
+        uses: actions/cache@v3
+        with:
+          path: frontend/public/images/**/*.png
+          key: ${{ runner.os }}-public-images-${{ hashFiles('frontend/public/images/hash.txt') }}
+          restore-keys: ${{ runner.os }}-public-images-
+
+      - name: Download public images, from GCS to local
+        if: steps.images_cache.outputs.cache-hit != 'true'
+        run: gsutil -m -q  cp -r -n  gs://pokemon-go-index-public/images/* public/images/
+
       # Deploy
       - name: Create `.env.production`
         run: |
