@@ -40,9 +40,10 @@ const initializeEmulatorFirebase = () => {
   return { db, auth };
 };
 
-const { db, auth } = process.env.NEXT_PUBLIC_EMULATOR
-  ? initializeEmulatorFirebase()
-  : initializeFirebase();
+const { db, auth } =
+  process.env.NEXT_PUBLIC_EMULATOR === "true"
+    ? initializeEmulatorFirebase()
+    : initializeFirebase();
 
 export const login = async () => {
   const provider = new GoogleAuthProvider();
