@@ -6,6 +6,7 @@ import {
   Button,
   HStack,
   Heading,
+  SimpleGrid,
   Text,
   VStack,
   useClipboard,
@@ -31,17 +32,23 @@ interface SearchQuery {
   excludeSpecial: boolean;
   excludeShiny: boolean;
   excludeLucky: boolean;
+  excludeMAX: boolean;
+  excludeXXL: boolean;
+  excludeXXS: boolean;
 }
 
 export const PokemonQuery: FC = () => {
   const { user } = useUser();
   const { allPokemons } = useAllPokemonsGet();
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({
+    pokedexType: "lucky",
+    pokedexTypeCondition: true,
     excludeSpecial: true,
     excludeShiny: true,
     excludeLucky: true,
-    pokedexType: "lucky",
-    pokedexTypeCondition: true,
+    excludeMAX: true,
+    excludeXXL: true,
+    excludeXXS: true,
   });
 
   const {
@@ -64,6 +71,15 @@ export const PokemonQuery: FC = () => {
       });
       dexNos.sort((a, b) => a - b);
       let q = "(" + dexNos.join(",") + ")";
+      if (searchQuery.excludeXXS) {
+        q = "!XXS&" + q;
+      }
+      if (searchQuery.excludeXXL) {
+        q = "!XXL&" + q;
+      }
+      if (searchQuery.excludeMAX) {
+        q = "!4*&" + q;
+      }
       if (searchQuery.excludeSpecial) {
         q = "!とくべつ&" + q;
       }
@@ -84,74 +100,111 @@ export const PokemonQuery: FC = () => {
           条件
         </Text>
       </Heading>
-      <>
-        <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
-          図鑑状況
-        </Heading>
-        <HStack>
-          <Select
-            options={PokedexTypeChoices}
-            value={searchQuery.pokedexType}
-            getLabel={GetPokedexTypeLabel}
-            onChange={(v) =>
-              setSearchQuery((old) => ({ ...old, pokedexType: v }))
-            }
-          />
-          <>が</>
-          <Select
-            options={[true, false]}
-            value={searchQuery.pokedexTypeCondition}
-            getLabel={(v) => (v ? "埋まっている" : "埋まってない")}
-            onChange={(v) =>
-              setSearchQuery((old) => ({ ...old, pokedexTypeCondition: v }))
-            }
-          />
-        </HStack>
-        <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
-          除外
-        </Heading>
-        <HStack>
-          <ToggleIconButtonWithText
-            toggle={() =>
-              setSearchQuery((old) => ({
-                ...old,
-                excludeLucky: !old.excludeLucky,
-              }))
-            }
-            isClicked={searchQuery.excludeLucky}
-            text="キラ"
-            onIcon={<CheckIcon />}
-            offIcon={<MinusIcon />}
-            props={{ rounded: "10" }}
-          />
-          <ToggleIconButtonWithText
-            toggle={() =>
-              setSearchQuery((old) => ({
-                ...old,
-                excludeShiny: !old.excludeShiny,
-              }))
-            }
-            isClicked={searchQuery.excludeShiny}
-            text="色違い"
-            onIcon={<CheckIcon />}
-            offIcon={<MinusIcon />}
-            props={{ rounded: "10" }}
-          />
-          <ToggleIconButtonWithText
-            toggle={() =>
-              setSearchQuery((old) => ({
-                ...old,
-                excludeSpecial: !old.excludeSpecial,
-              }))
-            }
-            isClicked={searchQuery.excludeSpecial}
-            text="特別"
-            onIcon={<CheckIcon />}
-            offIcon={<MinusIcon />}
-            props={{ rounded: "10" }}
-          />
-        </HStack>
-      </>
+      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+        図鑑状況
+      </Heading>
+      <HStack>
+        <Select
+          options={PokedexTypeChoices}
+          value={searchQuery.pokedexType}
+          getLabel={GetPokedexTypeLabel}
+          onChange={(v) =>
+            setSearchQuery((old) => ({ ...old, pokedexType: v }))
+          }
+        />
+        <>が</>
+        <Select
+          options={[true, false]}
+          value={searchQuery.pokedexTypeCondition}
+          getLabel={(v) => (v ? "埋まっている" : "埋まってない")}
+          onChange={(v) =>
+            setSearchQuery((old) => ({ ...old, pokedexTypeCondition: v }))
+          }
+        />
+      </HStack>
+      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+        除外する
+      </Heading>
+      <SimpleGrid minChildWidth="90px" spacing="10px" w="100%">
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeLucky: !old.excludeLucky,
+            }))
+          }
+          isClicked={searchQuery.excludeLucky}
+          text="キラ"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeShiny: !old.excludeShiny,
+            }))
+          }
+          isClicked={searchQuery.excludeShiny}
+          text="色違い"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeSpecial: !old.excludeSpecial,
+            }))
+          }
+          isClicked={searchQuery.excludeSpecial}
+          text="特別"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeMAX: !old.excludeMAX,
+            }))
+          }
+          isClicked={searchQuery.excludeMAX}
+          text="評価MAX"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeXXL: !old.excludeXXL,
+            }))
+          }
+          isClicked={searchQuery.excludeXXL}
+          text="XXL"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+        <ToggleIconButtonWithText
+          toggle={() =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeXXS: !old.excludeXXS,
+            }))
+          }
+          isClicked={searchQuery.excludeXXS}
+          text="XXS"
+          onIcon={<CheckIcon />}
+          offIcon={<MinusIcon />}
+          props={{ rounded: "10" }}
+        />
+      </SimpleGrid>
       <Heading as="h2" size="md" p={1} alignSelf={"start"}>
         <Text as="u" color={"blue.500"}>
           検索文字列
