@@ -3,6 +3,7 @@ export {
   defaultUserPokedex,
   newUserPokedex,
   PokedexTypeChoices,
+  GetPokedexTypeLabel,
 } from "@/features/userPokedex/model/pokedex";
 export type {
   UserPokedex,

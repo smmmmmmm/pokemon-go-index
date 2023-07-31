@@ -6,19 +6,20 @@ import { PokedexType } from "@/features/userPokedex";
 import { queryPokemonIds } from "@/infra/users";
 
 export const usePokemonIdsQuery = (
-  userId?: string,
-  pokedexType?: PokedexType
+  pokedexType: PokedexType,
+  pokedexTypeCondition: boolean,
+  userId?: string
 ) => {
   const { isLoading, isError, data, error } = useQuery({
-    queryKey: ["usePokemonIdsQuery", userId, pokedexType],
+    queryKey: ["usePokemonIdsQuery", userId, pokedexType, pokedexTypeCondition],
     queryFn: () => {
-      if (userId && pokedexType) {
-        return queryPokemonIds(userId, pokedexType);
+      if (userId) {
+        return queryPokemonIds(userId, pokedexType, pokedexTypeCondition);
       }
     },
     staleTime: Infinity,
     cacheTime: Infinity,
-    enabled: !!userId && !!pokedexType,
+    enabled: !!userId,
   });
   return {
     queryPokemonIds: data,

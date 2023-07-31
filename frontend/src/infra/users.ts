@@ -103,9 +103,12 @@ export const countPokedexProgress = async (
 // Query Pokemon Ids
 export const queryPokemonIds = async (
   userId: string,
-  pokedexType: PokedexType
+  pokedexType: PokedexType,
+  pokedexTypeCondition: boolean
 ): Promise<PokemonId[]> => {
-  const whereQueries = [where("isHaving." + pokedexType, "==", false)];
+  const whereQueries = [
+    where("isHaving." + pokedexType, "==", pokedexTypeCondition),
+  ];
   const q = await getDocs(
     query(userPokedexCollection(userId), ...whereQueries)
   );

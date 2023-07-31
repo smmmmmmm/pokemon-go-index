@@ -24,6 +24,26 @@ export const PokedexTypeChoices: PokedexType[] = [
   "purify",
   "lucky",
 ];
+export const GetPokedexTypeLabel = (pokedexType: PokedexType) => {
+  switch (pokedexType) {
+    case "normal":
+      return "通常";
+    case "star3":
+      return "星3";
+    case "shiny":
+      return "色違い";
+    case "shinyStar3":
+      return "星3色違い";
+    case "max":
+      return "評価MAX";
+    case "shadow":
+      return "シャドウ";
+    case "purify":
+      return "ライト";
+    case "lucky":
+      return "キラ";
+  }
+};
 
 export type UserPokedex = {
   dexNo: number;

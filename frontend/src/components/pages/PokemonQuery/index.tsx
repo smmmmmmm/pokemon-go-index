@@ -11,12 +11,23 @@ import {
   useClipboard,
 } from "@chakra-ui/react";
 
+import { Select } from "@/components/uiParts/Select";
 import { ToggleIconButtonWithText } from "@/components/uiParts/ToggleButton";
 import { usePokemonIdsQuery } from "@/features/pokemonQuery/usecase/usePokemonIdsQuery";
 import { useAllPokemonsGet } from "@/features/pokemons";
+import {
+  GetPokedexTypeLabel,
+  PokedexType,
+  PokedexTypeChoices,
+} from "@/features/userPokedex";
 import { useUser } from "@/features/users";
 
 interface SearchQuery {
+  // pokedex conditions
+  pokedexType: PokedexType;
+  pokedexTypeCondition: boolean;
+
+  // exclude conditions
   excludeSpecial: boolean;
   excludeShiny: boolean;
   excludeLucky: boolean;
@@ -24,12 +35,13 @@ interface SearchQuery {
 
 export const PokemonQuery: FC = () => {
   const { user } = useUser();
-  const { queryPokemonIds } = usePokemonIdsQuery(user?.uid, "lucky");
   const { allPokemons } = useAllPokemonsGet();
   const [searchQuery, setSearchQuery] = useState<SearchQuery>({
     excludeSpecial: true,
     excludeShiny: true,
     excludeLucky: true,
+    pokedexType: "lucky",
+    pokedexTypeCondition: true,
   });
 
   const {
@@ -39,6 +51,12 @@ export const PokemonQuery: FC = () => {
     hasCopied,
   } = useClipboard("");
 
+  // 検索文字列の作成
+  const { queryPokemonIds } = usePokemonIdsQuery(
+    searchQuery.pokedexType,
+    searchQuery.pokedexTypeCondition,
+    user?.uid
+  );
   useEffect(() => {
     if (queryPokemonIds && allPokemons) {
       const dexNos = queryPokemonIds.flatMap((pokemonId) => {
@@ -70,7 +88,25 @@ export const PokemonQuery: FC = () => {
         <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
           図鑑状況
         </Heading>
-        <Box>キラ図鑑が埋まっている</Box>
+        <HStack>
+          <Select
+            options={PokedexTypeChoices}
+            value={searchQuery.pokedexType}
+            getLabel={GetPokedexTypeLabel}
+            onChange={(v) =>
+              setSearchQuery((old) => ({ ...old, pokedexType: v }))
+            }
+          />
+          <>が</>
+          <Select
+            options={[true, false]}
+            value={searchQuery.pokedexTypeCondition}
+            getLabel={(v) => (v ? "埋まっている" : "埋まってない")}
+            onChange={(v) =>
+              setSearchQuery((old) => ({ ...old, pokedexTypeCondition: v }))
+            }
+          />
+        </HStack>
         <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
           除外
         </Heading>
@@ -121,11 +157,13 @@ export const PokemonQuery: FC = () => {
           検索文字列
         </Text>
       </Heading>
-      <Button w="90%" h="60px" onClick={onCopy} whiteSpace="unset">
+      <Button w="90%" h="80px" onClick={onCopy} whiteSpace="unset">
         {hasCopied ? "Copied!" : "Copy to Clipboard"}
       </Button>
       <Box w="90%" flex={1} overflow={"auto"}>
-        <Text overflowWrap="anywhere">{query}</Text>
+        <Text overflowWrap="anywhere" color="gray.600">
+          {query}
+        </Text>
       </Box>
     </VStack>
   );
