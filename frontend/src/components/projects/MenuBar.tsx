@@ -17,6 +17,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { BiUserCircle } from "react-icons/bi";
+import { MdOutlineManageSearch } from "react-icons/md";
 
 import { useLogout, useUser } from "@/features/users";
 
@@ -104,6 +105,14 @@ export const MenuBar: FC = (props) => {
         disabled={!user}
       >
         <Image boxSize="23px" src="/menu_icons/rocket.png" alt="rocket" />
+      </SimpleMenuButton>
+
+      <SimpleMenuButton
+        onClick={() => router.push(`/query`)}
+        isSelected={router.asPath.startsWith(`/query`)}
+        disabled={!user}
+      >
+        <MdOutlineManageSearch size="23" />
       </SimpleMenuButton>
       <Spacer />
 
