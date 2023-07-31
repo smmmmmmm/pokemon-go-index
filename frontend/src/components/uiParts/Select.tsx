@@ -20,7 +20,7 @@ export const Select = <T,>(props: SelectProps<T>) => {
   }, []);
 
   const getLabel_ = (v?: T) => {
-    if (v) {
+    if (v !== undefined) {
       if (getLabel) {
         return getLabel(v);
       } else {
@@ -36,7 +36,7 @@ export const Select = <T,>(props: SelectProps<T>) => {
       <ChakraReactSelect
         value={{ value: value, label: getLabel_(value) }}
         onChange={(v) => {
-          if (onChange && v && v.value) {
+          if (onChange && v && v.value !== undefined) {
             onChange(v.value);
           }
         }}

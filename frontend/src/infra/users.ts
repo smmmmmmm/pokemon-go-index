@@ -3,6 +3,7 @@ import {
   doc,
   getCount,
   getDoc,
+  getDocs,
   query,
   setDoc,
   where,
@@ -10,7 +11,7 @@ import {
 
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { Pokemon } from "@/features/pokemons";
+import { Pokemon, PokemonId } from "@/features/pokemons";
 import {
   PokedexType,
   UserPokedex,
@@ -97,4 +98,23 @@ export const countPokedexProgress = async (
     query(userPokedexCollection(userId), ...whereQueries)
   );
   return q.data().count;
+};
+
+// Query Pokemon Ids
+export const queryPokemonIds = async (
+  userId: string,
+  pokedexType: PokedexType,
+  pokedexTypeCondition: boolean
+): Promise<PokemonId[]> => {
+  const whereQueries = [
+    where("isHaving." + pokedexType, "==", pokedexTypeCondition),
+  ];
+  const q = await getDocs(
+    query(userPokedexCollection(userId), ...whereQueries)
+  );
+  return await Promise.all(
+    q.docs.map(async (doc) => {
+      return doc.id;
+    })
+  );
 };
