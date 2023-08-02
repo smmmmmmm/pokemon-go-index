@@ -44,13 +44,16 @@ export const useEvent = () => {
       }, new Map<string, PogoEvent[]>());
 
       const groupedOptions: { label: string; values: PogoEvent[] }[] = [];
-      grouped.forEach((events, eventType) => {
-        groupedOptions.push({
-          label: eventType,
-          values: events.sort(
-            (a, b) => b.startAt.getTime() - a.startAt.getDate()
-          ),
-        });
+      ["開催中", "開催予定", "過去のイベント"].forEach((eventType) => {
+        const groupedEvents = grouped.get(eventType);
+        if (groupedEvents) {
+          groupedOptions.push({
+            label: eventType,
+            values: groupedEvents.sort(
+              (a, b) => b.startAt.getTime() - a.startAt.getDate()
+            ),
+          });
+        }
       });
       return groupedOptions;
     }
