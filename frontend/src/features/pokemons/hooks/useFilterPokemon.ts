@@ -15,19 +15,27 @@ const addEvolvePokemons = (
   const extendedPokemons: DisplayPokemon[] = [];
 
   // 進化先のポケモンを dfs で再帰的にリストアップして `extendedPokemons` に追加する
-  const dfs = (pokemon: Pokemon, isExtra: boolean, nextPokemon?: Pokemon) => {
+  const dfs = (
+    origin: Pokemon, // 大本の進化元のポケモン
+    current: Pokemon,
+    isExtra: boolean,
+    next?: Pokemon
+  ) => {
     extendedPokemons.push({
-      pokemon: pokemon,
+      pokemon: current,
       isExtra: isExtra,
+      uniqueKey: isExtra
+        ? `${current.pokemonId}-evolved-from-${origin.pokemonId}`
+        : current.pokemonId,
     });
 
     // 進化ポケモンのリストアップ
-    pokemon.nextEvolveApiIds.forEach((nextEvolveId: PokemonId) => {
+    current.nextEvolveApiIds.forEach((nextEvolveId: PokemonId) => {
       const evolvedPokemon = allPokemons.get(nextEvolveId);
       if (evolvedPokemon) {
-        // 進化先が，次のポケモンではない場合, dfs を続ける
-        if (evolvedPokemon.pokemonId != nextPokemon?.pokemonId) {
-          dfs(evolvedPokemon, true, nextPokemon);
+        // 進化先が次のポケモンではない場合, dfs を続ける
+        if (evolvedPokemon.pokemonId != next?.pokemonId) {
+          dfs(origin, evolvedPokemon, true, next);
         }
       }
     });
@@ -35,9 +43,14 @@ const addEvolvePokemons = (
 
   for (let i = 0; i < filteredPokemons.length; i++) {
     if (i < filteredPokemons.length - 1) {
-      dfs(filteredPokemons[i].pokemon, false, filteredPokemons[i + 1].pokemon);
+      dfs(
+        filteredPokemons[i].pokemon,
+        filteredPokemons[i].pokemon,
+        false,
+        filteredPokemons[i + 1].pokemon
+      );
     } else {
-      dfs(filteredPokemons[i].pokemon, false);
+      dfs(filteredPokemons[i].pokemon, filteredPokemons[i].pokemon, false);
     }
   }
   return extendedPokemons;
@@ -50,7 +63,7 @@ export const useFilteringPokemons = (
 ) => {
   const { allPokemons } = useAllPokemonsGet();
 
-  return useMemo(() => {
+  return useMemo<DisplayPokemon[]>(() => {
     if (!allPokemons) {
       return [];
     }
@@ -61,13 +74,21 @@ export const useFilteringPokemons = (
       selectPokemonIds.forEach((pokemonId) => {
         const pokemon = allPokemons.get(pokemonId);
         if (pokemon) {
-          filteredPokemons.push({ pokemon: pokemon, isExtra: false });
+          filteredPokemons.push({
+            pokemon: pokemon,
+            isExtra: false,
+            uniqueKey: pokemon.pokemonId,
+          });
         }
       });
     } else {
       allPokemons.forEach((pokemon: Pokemon) => {
         if (pokemon) {
-          filteredPokemons.push({ pokemon: pokemon, isExtra: false });
+          filteredPokemons.push({
+            pokemon: pokemon,
+            isExtra: false,
+            uniqueKey: pokemon.pokemonId,
+          });
         }
       });
     }

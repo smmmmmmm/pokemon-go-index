@@ -137,4 +137,5 @@ export class Pokemon {
 export interface DisplayPokemon {
   pokemon: Pokemon;
   isExtra: boolean;
+  uniqueKey: string;
 }
