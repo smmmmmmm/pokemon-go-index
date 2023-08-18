@@ -3,7 +3,7 @@ import React from "react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { Box, Center, Image, Text } from "@chakra-ui/react";
 
-import { Pokemon } from "@/features/pokemons";
+import { DisplayPokemon, Pokemon } from "@/features/pokemons";
 import {
   PokedexType,
   usePokedexPageGet,
@@ -80,7 +80,7 @@ export const PokedexIcon: React.FC<{
 };
 
 export const PokedexIconTable: React.FC<{
-  displayPokemons: { pokemon: Pokemon; isExtra: boolean }[];
+  displayPokemons: DisplayPokemon[];
   pokedexType: PokedexType;
 }> = (props) => {
   const { user } = useUser();
@@ -89,13 +89,13 @@ export const PokedexIconTable: React.FC<{
     <>
       {user && (
         <SimpleGrid columns={5} w="100%">
-          {displayPokemons.map(({ pokemon, isExtra }) => (
+          {displayPokemons.map(({ pokemon, isExtra, uniqueKey }, idx) => (
             <PokedexIcon
               pokemon={pokemon}
               isExtra={isExtra}
               pokedexType={pokedexType}
               userId={user.uid}
-              key={pokemon.pokemonId}
+              key={`PokedexIcon-${uniqueKey}`}
             />
           ))}
         </SimpleGrid>

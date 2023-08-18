@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Center, HStack, Image, Text } from "@chakra-ui/react";
 
-import { Pokemon } from "@/features/pokemons";
+import { DisplayPokemon, Pokemon } from "@/features/pokemons";
 import {
   PokedexType,
   PokedexTypeChoices,
@@ -99,7 +99,7 @@ const PokedexRow: React.FC<{
 };
 
 export const PokedexListTable: React.FC<{
-  displayPokemons: { pokemon: Pokemon; isExtra: boolean }[];
+  displayPokemons: DisplayPokemon[];
 }> = (props) => {
   const { displayPokemons } = props;
   const { user } = useUser();
@@ -107,13 +107,13 @@ export const PokedexListTable: React.FC<{
     <>
       {user && (
         <>
-          {displayPokemons.map(({ pokemon, isExtra }) => {
+          {displayPokemons.map(({ pokemon, isExtra, uniqueKey }, idx) => {
             return (
               <PokedexRow
                 pokemon={pokemon}
                 isExtra={isExtra}
                 userId={user.uid}
-                key={pokemon.pokemonId}
+                key={`PokedexRow-${uniqueKey}`}
               />
             );
           })}

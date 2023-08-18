@@ -23,8 +23,8 @@ import {
 import { PokedexIconTable } from "@/components/projects/PokedexTable/PokedexIconTable";
 import { PokedexListTable } from "@/components/projects/PokedexTable/PokedexListTable";
 import {
+  DisplayPokemon,
   FilteringOption,
-  Pokemon,
   useFilteringPokemons,
 } from "@/features/pokemons";
 
@@ -65,7 +65,7 @@ const CustomRadio: React.FC<{
 };
 
 const PokedexTableComponent: FC<{
-  displayPokemons: { pokemon: Pokemon; isExtra: boolean }[];
+  displayPokemons: DisplayPokemon[];
 }> = (props) => {
   const { displayPokemons } = props;
 
