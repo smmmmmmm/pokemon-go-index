@@ -38,3 +38,6 @@ next-env.d.ts
 
 #--------- original content below this line -----------
 .env.production
+.reg
+dist-storybook
+__screenshots__
