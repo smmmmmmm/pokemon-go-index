@@ -35,7 +35,7 @@ export const Full: StoryObj<T> = {
     progress: 100,
     myCount: 100,
     allCount: 100,
-    lineWidth: "25",
+    lineWidth: "40",
     animate: true,
     animationDuration: "1s",
     bgColor: "#ddd",
