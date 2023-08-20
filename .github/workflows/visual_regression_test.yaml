@@ -2,8 +2,6 @@ name: Visual Regression Test
 
 on:
   push:
-    branches-ignore:
-      - "main"
     paths:
       - "frontend/**"
 
