@@ -18,7 +18,9 @@
     "lint:prettier": "prettier --check src",
     "lint:fix": "yarn lint:fix:eslint; yarn lint:fix:prettier",
     "lint:fix:eslint": "next lint --fix --dir src",
-    "lint:fix:prettier": "prettier --write src"
+    "lint:fix:prettier": "prettier --write src",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
@@ -45,6 +47,14 @@
     "react-select": "^5.7.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-interactions": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.3.2",
+    "@storybook/nextjs": "^7.3.2",
+    "@storybook/react": "^7.3.2",
+    "@storybook/testing-library": "^0.2.0",
     "@svgr/webpack": "^6.5.1",
     "@types/node": "^18",
     "@types/react": "^18.2.15",
@@ -53,10 +63,13 @@
     "eslint": "^8.40.0",
     "eslint-config-next": "^13.4.1",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-storybook": "^0.6.13",
     "eslint-plugin-unused-imports": "^2.0.0",
     "firebase-functions-test": "^3.1.0",
     "firebase-tools": "^12.4.5",
+    "plop": "^3.1.2",
     "prettier": "^2.8.8",
+    "storybook": "^7.3.2",
     "typescript": "5.1.6"
   }
 }
