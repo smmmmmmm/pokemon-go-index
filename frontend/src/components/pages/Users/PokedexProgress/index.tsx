@@ -31,9 +31,8 @@ const PokedexCircle: FC<{
         label={label}
         myCount={myCount}
         allCount={allCount}
-        size="100%"
         lineWidth="40px"
-        animationDuration="1s"
+        animate={true}
       />
     </>
   );

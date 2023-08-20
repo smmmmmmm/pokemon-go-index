@@ -1,51 +1,41 @@
 import React, { FC, useEffect, useState } from "react";
 import { CSSProperties } from "react";
 
-export interface CircleProps {
-  myCount: number;
-  allCount: number;
-  label: string;
-  animate?: boolean;
-  animationDuration?: string;
-  bgColor?: string;
-  size?: string;
-  lineWidth?: string;
-  textStyle?: CSSProperties;
-  roundedStroke?: boolean;
-  responsive?: boolean;
-  onAnimationEnd?(): void;
-}
-
 const radius = 175;
 const diameter = Math.round(Math.PI * radius * 2);
 const getOffset = (val = 0) =>
   Math.round(((100 - Math.min(val, 100)) / 100) * diameter);
 
-export const Circle: FC<CircleProps> = ({
-  myCount,
-  allCount,
-  label,
-  animate = true,
-  animationDuration = "1s",
-  bgColor = "#ecedf0",
-  size = "100",
-  lineWidth = "25",
-  roundedStroke = false,
-  responsive = false,
-  onAnimationEnd,
-}) => {
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    setProgress(allCount === 0 ? 0 : (myCount * 100) / allCount);
-  }, [allCount, myCount]);
+/**
+ * presentational component
+ */
+export const CirclePresenter: FC<{
+  label: string;
+  progress: number;
+  myCount: number;
+  allCount: number;
+  lineWidth: string;
+  animate: boolean;
+  animationDuration: string;
+  bgColor: string;
+}> = (props) => {
+  const {
+    label,
+    progress,
+    myCount,
+    allCount,
+    lineWidth,
+    animate,
+    animationDuration,
+    bgColor,
+  } = props;
+
   const isPerfect = myCount == allCount;
 
   const strokeDashoffset = getOffset(progress);
   const transition = animate
     ? `stroke-dashoffset ${animationDuration} ease-out`
     : undefined;
-  const strokeLinecap = roundedStroke ? "round" : "butt";
-  const svgSize = responsive ? "100%" : size;
 
   let progressColor = "rgb(76, 154, 255)";
   if (myCount === allCount) {
@@ -53,7 +43,7 @@ export const Circle: FC<CircleProps> = ({
   }
 
   return (
-    <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
+    <svg width="100%" height="100%" viewBox="-25 -25 400 400">
       <linearGradient x1="0" x2="100%" y1="0" y2="0" id="gold-circle">
         <stop offset="0%" stopColor="rgba(224, 162, 8, 1)" />
         <stop offset="100%" stopColor="rgba(255, 242, 58, 1)" />
@@ -79,10 +69,9 @@ export const Circle: FC<CircleProps> = ({
         strokeDasharray="1100"
         strokeWidth={lineWidth}
         strokeDashoffset="1100"
-        strokeLinecap={strokeLinecap}
+        strokeLinecap="round"
         fill="none"
         style={{ strokeDashoffset, transition }}
-        onTransitionEnd={onAnimationEnd}
       />
       <text
         style={{ font: "bold 2rem Helvetica, Arial, sans-serif" }}
@@ -127,3 +116,46 @@ export const Circle: FC<CircleProps> = ({
     </svg>
   );
 };
+
+/**
+ * container component
+ */
+const CircleContainer: FC<{
+  label: string;
+  myCount: number;
+  allCount: number;
+  lineWidth?: string;
+  animate?: boolean;
+  animationDuration?: string;
+  bgColor?: string;
+}> = (props) => {
+  const {
+    myCount,
+    allCount,
+    label,
+    animate = false,
+    animationDuration = "1s",
+    bgColor = "#ddd",
+    lineWidth = "25",
+  } = props;
+
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    setProgress(allCount === 0 ? 0 : (myCount * 100) / allCount);
+  }, [allCount, myCount]);
+
+  return (
+    <CirclePresenter
+      label={label}
+      progress={progress}
+      myCount={myCount}
+      allCount={allCount}
+      lineWidth={lineWidth}
+      animate={animate}
+      animationDuration={animationDuration}
+      bgColor={bgColor}
+    />
+  );
+};
+
+export const Circle = CircleContainer;
