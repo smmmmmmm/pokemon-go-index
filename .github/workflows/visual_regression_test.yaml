@@ -1,0 +1,70 @@
+name: Visual Regression Test
+
+on:
+  push:
+    branches-ignore:
+      - "main"
+    paths:
+      - "frontend/**"
+
+env:
+  NODE_VERSION: 18
+
+jobs:
+  visual_regression_test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Setup Gcloud
+      - name: Set up Cloud Auth
+        uses: "google-github-actions/auth@v1"
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: deploy-bot@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: ">= 427.0.0"
+
+      # Install yarn
+      - name: Update node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE_VERSION }}"
+          cache: "yarn"
+          cache-dependency-path: ./frontend/yarn.lock
+
+      - name: cache node_modules
+        id: node_modules_cache
+        uses: actions/cache@v3
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-node-${{env.NODE_VERSION}}-yarn-${{ hashFiles('frontend/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-${{env.NODE_VERSION}}-yarn-
+
+      - name: Install Dependencies
+        if: steps.node_modules_cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # VRT
+      - name: run storybook generate
+        run: yarn ci:storybook-generate
+
+      - name: run storycap
+        run: yarn ci:storycap
+
+      - name: workaround for detached HEAD
+        run: |
+          git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
+
+      - name: run reg-suit
+        run: yarn ci:vrt
