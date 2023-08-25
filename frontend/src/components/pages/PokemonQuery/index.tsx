@@ -6,6 +6,7 @@ import {
   Button,
   HStack,
   Heading,
+  Input,
   SimpleGrid,
   Text,
   VStack,
@@ -28,7 +29,11 @@ interface SearchQuery {
   pokedexType: PokedexType;
   pokedexTypeCondition: boolean;
 
-  // exclude conditions
+  // Exclude by days
+  excludeDaysFrom?: number;
+  excludeDaysTo?: number;
+
+  // exclude special Pokemons
   excludeSpecial: boolean;
   excludeShiny: boolean;
   excludeLucky: boolean;
@@ -64,30 +69,48 @@ export const PokemonQuery: FC = () => {
     searchQuery.pokedexTypeCondition,
     user?.uid
   );
+
   useEffect(() => {
     if (queryPokemonIds && allPokemons) {
       const dexNos = queryPokemonIds.flatMap((pokemonId) => {
         return allPokemons.get(pokemonId)?.dexNo ?? [];
       });
       dexNos.sort((a, b) => a - b);
-      let q = "(" + dexNos.join(",") + ")";
+
+      // Exclude by days
+      let excludeDayQuery;
+      if (searchQuery.excludeDaysFrom || searchQuery.excludeDaysTo) {
+        excludeDayQuery = `日数${searchQuery.excludeDaysFrom}-${searchQuery.excludeDaysTo}`;
+      }
+
+      // Exclude Special Pokemons
+      const excludeQueries = [];
       if (searchQuery.excludeXXS) {
-        q = "!XXS&" + q;
+        excludeQueries.push("!XXS");
       }
       if (searchQuery.excludeXXL) {
-        q = "!XXL&" + q;
+        excludeQueries.push("!XXL");
       }
       if (searchQuery.excludeMAX) {
-        q = "!4*&" + q;
+        excludeQueries.push("!4*");
       }
       if (searchQuery.excludeSpecial) {
-        q = "!とくべつ&" + q;
+        excludeQueries.push("!とくべつ");
       }
       if (searchQuery.excludeShiny) {
-        q = "!色違い&" + q;
+        excludeQueries.push("!色違い");
       }
       if (searchQuery.excludeLucky) {
-        q = "!キラ&" + q;
+        excludeQueries.push("!キラ");
+      }
+
+      // generate Query
+      let q = "(" + dexNos.join(",") + ")";
+      if (excludeQueries.length > 0) {
+        q = excludeQueries.join("&") + "&" + q;
+      }
+      if (excludeDayQuery) {
+        q = excludeDayQuery + "&" + q;
       }
       setQuery(q);
     }
@@ -122,6 +145,36 @@ export const PokemonQuery: FC = () => {
           }
         />
       </HStack>
+
+      {/* Exclude by days */}
+      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+        日数
+      </Heading>
+      <HStack w="80%">
+        <Input
+          type="number"
+          value={searchQuery.excludeDaysFrom}
+          onChange={(e) =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeDaysFrom: e.target.valueAsNumber,
+            }))
+          }
+        />
+        <>〜</>
+        <Input
+          type="number"
+          value={searchQuery.excludeDaysTo}
+          onChange={(e) =>
+            setSearchQuery((old) => ({
+              ...old,
+              excludeDaysTo: e.target.valueAsNumber,
+            }))
+          }
+        />
+      </HStack>
+
+      {/* Exclude Special pokemons */}
       <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
         除外する
       </Heading>
