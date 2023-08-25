@@ -17,7 +17,7 @@ export const usePokemonIdsQuery = (
         return queryPokemonIds(userId, pokedexType, pokedexTypeCondition);
       }
     },
-    staleTime: Infinity,
+    staleTime: 0,
     cacheTime: Infinity,
     enabled: !!userId,
   });
