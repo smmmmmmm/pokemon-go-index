@@ -36,51 +36,51 @@ const EventInputModal: FC<{
 
   return (
     <VStack align={"stretch"} p="10px" spacing={3}>
-      <Heading as="h3" size="md" fontWeight={600}>
+      <Heading as="h3" fontWeight={600} size="md">
         詳細
       </Heading>
       <VStack>
-        <HStack width={"95%"}>
-          <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+        <HStack w={"95%"}>
+          <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
             名称
           </Heading>
           <Input
-            value={pogoEvent.eventName}
             onChange={(e) =>
               setPogoEvent({ ...pogoEvent, eventName: e.target.value })
             }
+            value={pogoEvent.eventName}
           />
         </HStack>
-        <HStack width={"95%"}>
-          <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+        <HStack w={"95%"}>
+          <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
             開始日時
           </Heading>
           <Input
-            placeholder="開始日時"
-            value={date2str(pogoEvent.startAt)}
-            type="datetime-local"
             onChange={(e) => {
               const startAt = str2date(e.target.value);
               if (startAt) {
                 setPogoEvent({ ...pogoEvent, startAt: startAt });
               }
             }}
+            placeholder="開始日時"
+            type="datetime-local"
+            value={date2str(pogoEvent.startAt)}
           />
         </HStack>
-        <HStack width={"95%"}>
-          <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+        <HStack w={"95%"}>
+          <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
             終了日時
           </Heading>
           <Input
-            placeholder="終了日時"
-            value={date2str(pogoEvent.endAt)}
-            type="datetime-local"
             onChange={(e) => {
               const endAt = str2date(e.target.value);
               if (endAt) {
                 setPogoEvent({ ...pogoEvent, endAt: endAt });
               }
             }}
+            placeholder="終了日時"
+            type="datetime-local"
+            value={date2str(pogoEvent.endAt)}
           />
         </HStack>
       </VStack>

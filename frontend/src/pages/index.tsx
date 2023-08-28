@@ -41,20 +41,20 @@ const Top = () => {
           content={publicURL("logo/OGPTitleLogo.png")}
         />
       </Head>
-      <VStack h="100%" w="100%" overflow="auto" pt="60px" spacing={10}>
-        <Image src={"/logo/TitleLogo.png"} alt="title logo" w="80%" />
+      <VStack overflow="auto" w="100%" h="100%" pt="60px" spacing={10}>
+        <Image w="80%" alt="title logo" src={"/logo/TitleLogo.png"} />
         {userLoading || isPokemonPreLoading ? (
           <>
-            <CircularProgress isIndeterminate color="green.300" />
+            <CircularProgress color="green.300" isIndeterminate />
           </>
         ) : (
           <>
             {!user && (
               <Button
+                w="80%"
+                h="80px"
                 leftIcon={<FcGoogle size={20} />}
                 onClick={(e) => login()}
-                width="80%"
-                h="80px"
               >
                 <Text fontSize={"15pt"}>SignUp/In By Google</Text>
               </Button>
@@ -62,23 +62,23 @@ const Top = () => {
             {user && (
               <>
                 <Button
-                  onClick={(e) => Router.push(`my-pokedex`)}
-                  width="80%"
+                  w="80%"
                   h="80px"
+                  onClick={(e) => Router.push(`my-pokedex`)}
                 >
                   <VStack w="100%">
                     <Text fontSize={"15pt"}>Go to your pokedex</Text>
-                    <Text fontSize={"10pt"} color={"gray.800"}>
+                    <Text color={"gray.800"} fontSize={"10pt"}>
                       user: {user.email}
                     </Text>
                   </VStack>
                 </Button>
                 <Button
+                  colorScheme="red"
                   onClick={() => {
                     setUser(null);
                     logout();
                   }}
-                  colorScheme="red"
                 >
                   logOut
                 </Button>
@@ -129,8 +129,8 @@ const Top = () => {
           <ListItem>
             ポケモンの画像データなど一部の情報は
             <Link
-              href="https://pokemon-go-api.github.io/pokemon-go-api/"
               color="teal.500"
+              href="https://pokemon-go-api.github.io/pokemon-go-api/"
             >
               {" "}
               Pokemon GO API{" "}
@@ -140,8 +140,8 @@ const Top = () => {
           <ListItem>
             その他細かい情報は
             <Link
-              href="https://github.com/simamumu/pokemon-go-index"
               color="teal.500"
+              href="https://github.com/simamumu/pokemon-go-index"
             >
               {" "}
               README.md{" "}

@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <Div100vh>
-          <VStack h="100%" overflow="hidden" spacing={0}>
+          <VStack overflow="hidden" h="100%" spacing={0}>
             <MenuBar />
-            <Container p="10px" flex={1} overflow="hidden">
+            <Container flex={1} overflow="hidden" p="10px">
               <Component {...pageProps} />
             </Container>
           </VStack>

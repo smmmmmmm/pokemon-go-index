@@ -42,12 +42,12 @@ export const FieldResearchComponent: FC = () => {
   return (
     <>
       {allFieldResearchGroupsIsLoading && (
-        <CircularProgress isIndeterminate color="green.300" />
+        <CircularProgress color="green.300" isIndeterminate />
       )}
 
-      <VStack h="100%" w="100%" align="start">
+      <VStack align="start" w="100%" h="100%">
         <HStack w="100%">
-          <Heading as="h2" size="md" p={1}>
+          <Heading as="h2" p={1} size="md">
             <Text as="u" color={"blue.500"}>
               タスクグループ
             </Text>
@@ -61,7 +61,7 @@ export const FieldResearchComponent: FC = () => {
             <DeleteFieldResearchGroup frg={selectFieldResearchGroup} />
           )}
         </HStack>
-        <Box width="100%">
+        <Box w="100%">
           {allFieldResearchGroups && (
             <Select
               options={allFieldResearchGroups}
@@ -75,7 +75,7 @@ export const FieldResearchComponent: FC = () => {
         <Divider />
 
         <HStack w="100%">
-          <Heading as="h2" size="md" p={1}>
+          <Heading as="h2" p={1} size="md">
             <Text as="u" color={"blue.500"}>
               タスク
             </Text>
@@ -98,7 +98,7 @@ export const FieldResearchComponent: FC = () => {
           )}
         </HStack>
 
-        <Box width="100%">
+        <Box w="100%">
           {groupedFieldResearchOptions && (
             <GroupedSelect<FieldResearch>
               groupedOptions={groupedFieldResearchOptions}
@@ -108,12 +108,12 @@ export const FieldResearchComponent: FC = () => {
             />
           )}
         </Box>
-        <Heading as="h2" size="md" p={1}>
+        <Heading as="h2" p={1} size="md">
           <Text as="u" color={"blue.500"}>
             獲得可能ポケモン
           </Text>
         </Heading>
-        <Box flex={1} w="100%" overflow={"auto"}>
+        <Box flex={1} overflow={"auto"} w="100%">
           {selectFieldResearch && (
             <PokedexTable
               pokemonIds={selectFieldResearch.getablePokemonIds}

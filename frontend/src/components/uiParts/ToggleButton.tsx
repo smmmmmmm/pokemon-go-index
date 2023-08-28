@@ -18,8 +18,8 @@ export const ToggleIconButton: React.FC<{
     <IconButton
       aria-label="IconButton"
       // bgColor={isClicked ? "blue.100" : "white"}
-      onClick={toggle}
       icon={isClicked ? offIcon : onIcon}
+      onClick={toggle}
       {...props}
       // _focus={{ bgColor: "none" }}
       _hover={{ bgColor: "none" }}
@@ -38,13 +38,13 @@ export const ToggleIconButtonWithText: React.FC<{
   return (
     <Button
       bgColor={isClicked ? "blue.100" : "white"}
-      onClick={toggle}
-      isActive={false}
-      rightIcon={isClicked ? onIcon : offIcon}
       icon={isClicked ? offIcon : onIcon}
+      isActive={false}
+      onClick={toggle}
+      rightIcon={isClicked ? onIcon : offIcon}
       {...props}
-      _focus={{ bgColor: "none" }}
       _hover={{ bgColor: "none" }}
+      _focus={{ bgColor: "none" }}
     >
       {text}
     </Button>

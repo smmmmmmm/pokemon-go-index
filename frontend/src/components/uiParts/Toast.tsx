@@ -21,20 +21,20 @@ export const SuccessToast: FC<successToast> = (props) => {
 
   return (
     <Box
-      background="#00EC89"
-      borderRadius="4px"
-      p={2}
-      display="inline-flex"
       justifyContent="center"
+      display="inline-flex"
+      p={2}
+      bg="#00EC89"
+      borderRadius="4px"
     >
       <HStack spacing={3}>
-        <Flex paddingLeft="10px">
+        <Flex pl="10px">
           <AiOutlineCheck size="20px"></AiOutlineCheck>
         </Flex>
         <Text fontSize="lg" fontWeight="bold">
           {message}
         </Text>
-        <CloseButton size="md" onClick={onClose} />
+        <CloseButton onClick={onClose} size="md" />
       </HStack>
     </Box>
   );
@@ -67,20 +67,20 @@ export const FailureToast: FC<failureToast> = (props) => {
 
   return (
     <Box
-      background="#FF002E"
-      borderRadius="4px"
-      p={2}
-      display="inline-flex"
       justifyContent="center"
+      display="inline-flex"
+      p={2}
+      bg="#FF002E"
+      borderRadius="4px"
     >
       <HStack spacing={3}>
-        <Flex paddingLeft="10px">
+        <Flex pl="10px">
           <BsExclamationCircle size="20px" color="white"></BsExclamationCircle>
         </Flex>
-        <Text fontSize="lg" fontWeight="bold" color="white">
+        <Text color="white" fontSize="lg" fontWeight="bold">
           {message}
         </Text>
-        <CloseButton size="md" onClick={onClose} />
+        <CloseButton onClick={onClose} size="md" />
       </HStack>
     </Box>
   );

@@ -30,14 +30,14 @@ const SimpleMenuButton: FC<{
   return (
     <Box
       as={props.isSelected ? undefined : "button"}
-      bgColor={props.isSelected ? "blue.300" : undefined}
       pt={2}
-      pb={2}
       pr={1}
+      pb={2}
       pl={1}
       border={0}
-      onClick={props.isSelected ? () => undefined : props.onClick}
+      bgColor={props.isSelected ? "blue.300" : undefined}
       disabled={props.disabled}
+      onClick={props.isSelected ? () => undefined : props.onClick}
     >
       {props.children}
     </Box>
@@ -50,20 +50,13 @@ export const MenuBar: FC = (props) => {
   const logout = useLogout();
 
   return (
-    <HStack
-      as="nav"
-      p={2}
-      backgroundColor="blue.200"
-      h="40px"
-      w="100%"
-      zIndex={999}
-    >
+    <HStack as="nav" zIndex={999} w="100%" h="40px" p={2} bgColor="blue.200">
       <SimpleMenuButton
         onClick={() => router.push(`/`)}
         isSelected={false}
         disabled={false}
       >
-        <Text fontSize="md" color="blue.600" fontWeight="bold" pr="10px">
+        <Text pr="10px" color="blue.600" fontSize="md" fontWeight="bold">
           PGI
         </Text>
       </SimpleMenuButton>
@@ -72,7 +65,7 @@ export const MenuBar: FC = (props) => {
         isSelected={router.asPath.startsWith(`/my-pokedex`)}
         disabled={!user}
       >
-        <Text fontSize="sm" color="white">
+        <Text color="white" fontSize="sm">
           図鑑
         </Text>
       </SimpleMenuButton>
@@ -81,7 +74,7 @@ export const MenuBar: FC = (props) => {
         isSelected={router.asPath.startsWith(`/events`)}
         disabled={!user}
       >
-        <Text fontSize="sm" color="white">
+        <Text color="white" fontSize="sm">
           イベント
         </Text>
       </SimpleMenuButton>
@@ -90,7 +83,7 @@ export const MenuBar: FC = (props) => {
         isSelected={router.asPath.startsWith(`/field-research`)}
         disabled={!user}
       >
-        <Image boxSize="23px" src="/menu_icons/research.png" alt="research" />
+        <Image boxSize="23px" alt="research" src="/menu_icons/research.png" />
       </SimpleMenuButton>
       {/* <SimpleMenuButton
         onClick={() => router.push(`/raid`)}
@@ -104,7 +97,7 @@ export const MenuBar: FC = (props) => {
         isSelected={router.asPath.startsWith(`/rocket`)}
         disabled={!user}
       >
-        <Image boxSize="23px" src="/menu_icons/rocket.png" alt="rocket" />
+        <Image boxSize="23px" alt="rocket" src="/menu_icons/rocket.png" />
       </SimpleMenuButton>
 
       <SimpleMenuButton
@@ -118,13 +111,13 @@ export const MenuBar: FC = (props) => {
 
       <Popover placement="bottom-start">
         <PopoverTrigger>
-          <Box h="100%" alignContent={"center"}>
+          <Box alignContent={"center"} h="100%">
             <BiUserCircle size={"23px"} />
           </Box>
         </PopoverTrigger>
-        <PopoverContent width="auto" zIndex={9999}>
-          <PopoverBody userSelect="none" whiteSpace="nowrap" zIndex={9999}>
-            <VStack align="start" zIndex={9999}>
+        <PopoverContent zIndex={9999} w="auto">
+          <PopoverBody zIndex={9999} whiteSpace="nowrap" userSelect="none">
+            <VStack zIndex={9999} align="start">
               <Text fontWeight={700}> {user?.email} </Text>
               <Divider />
               <Link

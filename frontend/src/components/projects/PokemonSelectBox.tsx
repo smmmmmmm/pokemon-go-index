@@ -38,13 +38,13 @@ const SearchBar: FC<SearchBarProps> = (props) => {
         <Icon as={MdSearch} boxSize={4} color="888" />
       </InputLeftElement>
       <Input
-        placeholder="Search..."
         borderRadius="full"
-        bgColor="fa"
         _focus={{ bgColor: "white" }}
+        bgColor="fa"
         onChange={onChange}
-        value={value}
         onKeyDown={onKeyDown}
+        placeholder="Search..."
+        value={value}
       />
     </InputGroup>
   );
@@ -99,30 +99,30 @@ export const PokemonSelectBox: FC<{
     <>
       {displayGrid ??
         (true && (
-          <SimpleGrid display={"flex"} flexWrap={"wrap"}>
+          <SimpleGrid flexWrap={"wrap"} display={"flex"}>
             {selectedPids.map((pid: string) => {
               const pokemon = allPokemons?.get(pid);
               if (pokemon) {
                 return (
                   <Image
                     key={pokemon.pokemonId}
-                    height="45"
-                    width="45"
-                    src={pokemon.getImage()}
+                    w="45"
+                    h="45"
                     alt={pokemon.name}
                     onClick={() => {
                       handleSelectValuesChange(pokemon.pokemonId);
                     }}
+                    src={pokemon.getImage()}
                   />
                 );
               }
             })}
           </SimpleGrid>
         ))}
-      <Box p={2} borderBottomWidth={"1px"} borderColor="chakra-border-color">
+      <Box p={2} borderColor="chakra-border-color" borderBottomWidth={"1px"}>
         <SearchBar value={searchValue} onChange={handleSearchKeywordChange} />
       </Box>
-      <Box overflow={"auto"} height="200px" ref={parentRef}>
+      <Box ref={parentRef} overflow={"auto"} h="200px">
         <List
           style={{
             height: `${rowVirtualizer.getTotalSize()}px`,
@@ -132,21 +132,21 @@ export const PokemonSelectBox: FC<{
         >
           {rowVirtualizer.getVirtualItems().map((virtualRow) => (
             <ListItem
-              display="flex"
               key={virtualRow.index}
-              position="absolute"
+              pos="absolute"
               top={0}
               left={0}
-              width="100%"
-              height={`${virtualRow.size}px`}
-              transform={`translateY(${virtualRow.start}px)`}
-              fontSize="sm"
               alignItems="center"
+              display="flex"
+              w="100%"
+              h={`${virtualRow.size}px`}
               px={2}
-              borderBottomWidth={"1px"}
+              fontSize="sm"
               borderColor="chakra-border-color"
-              _last={{ borderBottomWidth: 0 }}
+              borderBottomWidth={"1px"}
               _hover={{ backgroundColor: "gray.50" }}
+              _last={{ borderBottomWidth: 0 }}
+              transform={`translateY(${virtualRow.start}px)`}
               cursor="pointer"
               onClick={() => {
                 handleSelectValuesChange(
@@ -155,8 +155,8 @@ export const PokemonSelectBox: FC<{
               }}
             >
               <ListIcon
-                boxSize={4}
                 as={MdCheck}
+                boxSize={4}
                 color="primary.500"
                 visibility={
                   selectedPids.includes(

@@ -39,19 +39,19 @@ export const MyPokedexFiltering: FC<{
           }}
         />
         <Input
-          id="select-name"
-          size="small"
+          h="30px"
           p={2}
-          placeholder="名前で検索"
-          height="30px"
-          value={inputSearchName}
-          rounded="6"
+          id="select-name"
           onChange={(v) => {
             setInputSearchName(v.target.value);
             partialUpdateFilteringOption({
               searchNameKata: hiraToKata(v.target.value),
             });
           }}
+          placeholder="名前で検索"
+          rounded="6"
+          size="small"
+          value={inputSearchName}
         />
         <ToggleIconButton
           aria-label="Search database"
@@ -61,7 +61,7 @@ export const MyPokedexFiltering: FC<{
           offIcon={<MinusIcon />}
         />
       </HStack>
-      <Collapse in={isOpenDetailFilter} animateOpacity>
+      <Collapse animateOpacity in={isOpenDetailFilter}>
         <Box mb={3} p={2} borderWidth={1}>
           <ToggleIconButtonWithText
             toggle={() => setShowExtra(!showExtra)}

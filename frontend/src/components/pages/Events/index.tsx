@@ -48,7 +48,7 @@ const EventComponent: FC<{
   return (
     <>
       <HStack w="100%">
-        <Heading as="h2" size="md" p={1}>
+        <Heading as="h2" p={1} size="md">
           <Text as="u" color={"blue.500"}>
             イベント
           </Text>
@@ -94,7 +94,7 @@ const EventGroupComponent: FC<{
   return (
     <>
       <HStack w="100%">
-        <Heading as="h2" size="md" p={1}>
+        <Heading as="h2" p={1} size="md">
           <Text as="u" color={"blue.500"}>
             出現ポケモングループ
           </Text>
@@ -136,9 +136,9 @@ export const Events: FC = () => {
 
   return (
     <>
-      <VStack h="100%" w="100%">
+      <VStack w="100%" h="100%">
         {eventsIsLoading && (
-          <CircularProgress isIndeterminate color="green.300" />
+          <CircularProgress color="green.300" isIndeterminate />
         )}
         {groupedEventOptions && (
           <EventComponent
@@ -150,7 +150,7 @@ export const Events: FC = () => {
         <Divider />
 
         {eventGroupsIsLoading && (
-          <CircularProgress isIndeterminate color="green.300" />
+          <CircularProgress color="green.300" isIndeterminate />
         )}
         {eventGroups && (
           <EventGroupComponent
@@ -161,7 +161,7 @@ export const Events: FC = () => {
           />
         )}
 
-        <VStack overflow="auto" flex={1} w="100%" align="start">
+        <VStack align="start" flex={1} overflow="auto" w="100%">
           {selectEventGroup && (
             <PokedexTable
               pokemonIds={selectEventGroup.pokemonIds}
