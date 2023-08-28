@@ -11,8 +11,8 @@ export const RegionSelect: React.FC<{
   return (
     <Select
       id="select-region"
-      value={generation}
       onChange={(e) => handleChange(+e.target.value)}
+      value={generation}
     >
       <option value={1}> カントー </option>
       <option value={2}> ジョウト </option>

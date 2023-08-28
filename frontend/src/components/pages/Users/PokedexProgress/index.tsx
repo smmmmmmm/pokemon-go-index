@@ -96,9 +96,9 @@ export const PokedexProgress: FC = () => {
 
   return (
     <>
-      <VStack w="100%" h="100%" align="start" spacing={5}>
+      <VStack align="start" w="100%" h="100%" spacing={5}>
         <HStack w="100%" pr={"15px"}>
-          <Heading as="h2" size="md" p={1} flex={1}>
+          <Heading as="h2" flex={1} p={1} size="md">
             <Text as="u" color={"blue.500"}>
               図鑑進捗
             </Text>
@@ -111,12 +111,12 @@ export const PokedexProgress: FC = () => {
         </HStack>
         {(userPokedexProgressIsLoading || isLoading) && (
           <Center w="100%" h="40%">
-            <CircularProgress isIndeterminate color="green.300" />
+            <CircularProgress color="green.300" isIndeterminate />
           </Center>
         )}
         {pokedexProgress && (
           <VStack>
-            <HStack h="30%" align="center">
+            <HStack align="center" h="30%">
               <Box h="100%">
                 <PokedexCircle
                   label={"通常"}

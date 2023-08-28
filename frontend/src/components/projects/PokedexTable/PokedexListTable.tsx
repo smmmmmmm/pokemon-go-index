@@ -33,27 +33,23 @@ const PokedexRow: React.FC<{
   return (
     <>
       {userPokedex && (
-        <HStack spacing="0px" h="62px" w="100%">
+        <HStack w="100%" h="62px" spacing="0px">
           <Box
-            textAlign="center"
             flex={2}
             h="100%"
+            color={isExtra ? "red" : "black"}
+            textAlign="center"
             borderWidth="0.5px"
             borderColor="gray.500"
-            backgroundColor={isExtra ? "#DDDDDD" : "#FFFFFF"}
-            color={isExtra ? "red" : "black"}
+            bgColor={isExtra ? "#DDDDDD" : "#FFFFFF"}
           >
-            <Text fontSize="8pt" textAlign="left" h="16px" mb="-14px">
+            <Text h="16px" mb="-14px" fontSize="8pt" textAlign="left">
               {pokemon.dexNo}
             </Text>
-            <Center top="0px" position="relative">
-              <Image
-                height="45px"
-                src={pokemon.getImage()}
-                alt={pokemon.name}
-              />
+            <Center pos="relative" top="0px">
+              <Image h="45px" alt={pokemon.name} src={pokemon.getImage()} />
             </Center>
-            <Text fontSize="10px" h="16px" mt="-1px">
+            <Text h="16px" mt="-1px" fontSize="10px">
               {pokemon.name}
             </Text>
           </Box>
@@ -66,7 +62,7 @@ const PokedexRow: React.FC<{
                   h="100%"
                   borderWidth="0.5px"
                   borderColor="gray.500"
-                  backgroundColor="gray"
+                  bgColor="gray"
                   onClick={() => undefined}
                 />
               );
@@ -76,10 +72,10 @@ const PokedexRow: React.FC<{
                   key={pokedexType}
                   flex={1}
                   h="100%"
+                  textAlign="center"
                   borderWidth="0.5px"
                   borderColor="gray.500"
-                  textAlign="center"
-                  backgroundColor={
+                  bgColor={
                     userPokedex.isHaving[pokedexType] ? "#bff5cd" : "white"
                   }
                   onClick={() => {

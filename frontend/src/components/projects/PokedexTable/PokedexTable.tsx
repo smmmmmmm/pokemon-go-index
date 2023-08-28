@@ -50,8 +50,8 @@ const CustomRadio: React.FC<{
   return (
     <Center
       as="label"
-      height="30px"
       flex={flex}
+      h="30px"
       // width={width}
       bg={state.isChecked ? "blue.50" : "transparent"}
       borderWidth={state.isChecked ? "1.5px" : "1px"}
@@ -104,14 +104,14 @@ const PokedexTableComponent: FC<{
   ];
 
   return (
-    <VStack spacing={0} overflow={"auto"} w="100%" h="100%">
+    <VStack overflow={"auto"} w="100%" h="100%" spacing={0}>
       <HStack
-        spacing="0px"
-        position="sticky"
-        top={0}
+        pos="sticky"
         zIndex={100}
-        bgColor="white"
+        top={0}
         w="100%"
+        bgColor="white"
+        spacing="0px"
       >
         {options.map(({ icon, flex, key }) => {
           return (

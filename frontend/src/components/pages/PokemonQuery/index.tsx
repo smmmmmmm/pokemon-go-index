@@ -118,12 +118,12 @@ export const PokemonQuery: FC = () => {
 
   return (
     <VStack w="100%" h="100%" px="10px">
-      <Heading as="h2" size="md" p={1} alignSelf={"start"}>
+      <Heading as="h2" alignSelf={"start"} p={1} size="md">
         <Text as="u" color={"blue.500"}>
           条件
         </Text>
       </Heading>
-      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+      <Heading as="h3" alignSelf={"start"} p={1} size="sm">
         図鑑状況
       </Heading>
       <HStack>
@@ -147,38 +147,38 @@ export const PokemonQuery: FC = () => {
       </HStack>
 
       {/* Exclude by days */}
-      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+      <Heading as="h3" alignSelf={"start"} p={1} size="sm">
         日数
       </Heading>
       <HStack w="80%">
         <Input
-          type="number"
-          value={searchQuery.excludeDaysFrom}
           onChange={(e) =>
             setSearchQuery((old) => ({
               ...old,
               excludeDaysFrom: e.target.valueAsNumber,
             }))
           }
+          type="number"
+          value={searchQuery.excludeDaysFrom}
         />
         <>〜</>
         <Input
-          type="number"
-          value={searchQuery.excludeDaysTo}
           onChange={(e) =>
             setSearchQuery((old) => ({
               ...old,
               excludeDaysTo: e.target.valueAsNumber,
             }))
           }
+          type="number"
+          value={searchQuery.excludeDaysTo}
         />
       </HStack>
 
       {/* Exclude Special pokemons */}
-      <Heading as="h3" size="sm" p={1} alignSelf={"start"}>
+      <Heading as="h3" alignSelf={"start"} p={1} size="sm">
         除外する
       </Heading>
-      <SimpleGrid minChildWidth="90px" spacing="10px" w="100%">
+      <SimpleGrid w="100%" minChildWidth="90px" spacing="10px">
         <ToggleIconButtonWithText
           toggle={() =>
             setSearchQuery((old) => ({
@@ -258,16 +258,16 @@ export const PokemonQuery: FC = () => {
           props={{ rounded: "10" }}
         />
       </SimpleGrid>
-      <Heading as="h2" size="md" p={1} alignSelf={"start"}>
+      <Heading as="h2" alignSelf={"start"} p={1} size="md">
         <Text as="u" color={"blue.500"}>
           検索文字列
         </Text>
       </Heading>
-      <Button w="90%" h="80px" onClick={onCopy} whiteSpace="unset">
+      <Button w="90%" h="80px" whiteSpace="unset" onClick={onCopy}>
         {hasCopied ? "Copied!" : "Copy to Clipboard"}
       </Button>
-      <Box w="90%" flex={1} overflow={"auto"}>
-        <Text overflowWrap="anywhere" color="gray.600">
+      <Box flex={1} overflow={"auto"} w="90%">
+        <Text color="gray.600" overflowWrap="anywhere">
           {query}
         </Text>
       </Box>

@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { CSSProperties } from "react";
 
 const radius = 175;
 const diameter = Math.round(Math.PI * radius * 2);

@@ -30,22 +30,22 @@ const EventGroupInputModal: FC<{
     props;
   return (
     <VStack align={"stretch"} p="10px" spacing={3}>
-      <Heading as="h3" size="md" fontWeight={600}>
+      <Heading as="h3" fontWeight={600} size="md">
         詳細
       </Heading>
       <VStack>
-        <HStack width={"95%"}>
-          <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+        <HStack w={"95%"}>
+          <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
             名称
           </Heading>
           <Input
-            value={eventGroupName}
             onChange={(e) => setEventGroupName(e.target.value)}
+            value={eventGroupName}
           />
         </HStack>
       </VStack>
       <Divider />
-      <Heading as="h3" size="md" fontWeight={600}>
+      <Heading as="h3" fontWeight={600} size="md">
         出現ポケモン
       </Heading>
       <PokemonSelectBox

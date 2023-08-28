@@ -24,22 +24,22 @@ const FieldResearchInputModal: FC<{
 
   return (
     <VStack align="stretch" p="10px" spacing={3}>
-      <Heading as="h3" size="md" fontWeight={600}>
+      <Heading as="h3" fontWeight={600} size="md">
         詳細
       </Heading>
-      <HStack width={"95%"}>
-        <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+      <HStack w={"95%"}>
+        <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
           名称
         </Heading>
         <Input
-          value={fieldResearch.title}
           onChange={(e) =>
             setFieldResearch({ ...fieldResearch, title: e.target.value })
           }
+          value={fieldResearch.title}
         />
       </HStack>
-      <HStack width={"95%"}>
-        <Heading as="h4" size="sm" fontWeight={100} width={"20%"}>
+      <HStack w={"95%"}>
+        <Heading as="h4" w={"20%"} fontWeight={100} size="sm">
           種別
         </Heading>
         <Select<FieldResearchType>
@@ -50,7 +50,7 @@ const FieldResearchInputModal: FC<{
           }}
         />
       </HStack>
-      <Heading as="h3" size="md" fontWeight={600}>
+      <Heading as="h3" fontWeight={600} size="md">
         獲得ポケモン
       </Heading>
       <PokemonSelectBox

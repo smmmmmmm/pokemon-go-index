@@ -40,33 +40,33 @@ export const PokedexIcon: React.FC<{
     <>
       {userPokedex && (
         <Box
-          onClick={() => {
-            onClick(!userPokedex.isHaving[pokedexType]);
-          }}
+          color={isExtra ? "red" : "black"}
           borderWidth="1px"
           borderColor="gray.500"
-          color={isExtra ? "red" : "black"}
-          backgroundColor={
+          bgColor={
             pokemon.isImplemented(pokedexType)
               ? userPokedex.isHaving[pokedexType]
                 ? "#bff5cd"
                 : "white"
               : "gray"
           }
+          onClick={() => {
+            onClick(!userPokedex.isHaving[pokedexType]);
+          }}
         >
           <Text fontSize="5pt" textAlign="left">
             {pokemon.dexNo}
           </Text>
           <Center>
             <Image
-              height="45"
-              width="45"
+              w="45"
+              h="45"
+              alt={pokemon.name}
               src={
                 pokedexType in ["shiny", "shinyStar3"]
                   ? pokemon.getShinyImage()
                   : pokemon.getImage()
               }
-              alt={pokemon.name}
               style={{ marginTop: -7 }}
             />
           </Center>
@@ -88,7 +88,7 @@ export const PokedexIconTable: React.FC<{
   return (
     <>
       {user && (
-        <SimpleGrid columns={5} w="100%">
+        <SimpleGrid w="100%" columns={5}>
           {displayPokemons.map(({ pokemon, isExtra, uniqueKey }, idx) => (
             <PokedexIcon
               pokemon={pokemon}

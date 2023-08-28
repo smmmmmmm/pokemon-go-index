@@ -5,8 +5,13 @@
     "prettier",
     "plugin:storybook/recommended"
   ],
+  "plugins": ["unused-imports", "chakra-ui"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true,
+    "tsconfigRootDir": "__dirname"
+  },
   "ignorePatterns": ["firebaseFunctions.js"],
-  "plugins": ["unused-imports"],
   "rules": {
     "sort-imports": [
       "error",
@@ -47,7 +52,10 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "warn"
+    "unused-imports/no-unused-imports": "warn",
+    "chakra-ui/props-order": "error",
+    "chakra-ui/props-shorthand": "error",
+    "chakra-ui/require-specific-component": "error"
   },
   "overrides": [
     {

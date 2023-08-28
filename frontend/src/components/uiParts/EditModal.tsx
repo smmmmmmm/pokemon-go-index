@@ -46,20 +46,20 @@ export const EditModal: FC<{
 
   return (
     <>
-      <Box as="button" onClick={setIsOepn.on} p={1}>
+      <Box as="button" p={1} onClick={setIsOepn.on}>
         {icon()}
       </Box>
       <Modal
-        isOpen={isOpen}
-        onClose={setIsOepn.off}
         closeOnOverlayClick={false}
         isCentered
+        isOpen={isOpen}
+        onClose={setIsOepn.off}
       >
         <ModalOverlay />
-        <ModalContent width="90vw">
+        <ModalContent w="90vw">
           {children}
           <ModalFooter>
-            <HStack spacing={5} align={"center"}>
+            <HStack align={"center"} spacing={5}>
               {type === "delete" ? (
                 <Button colorScheme="red" onClick={handleSubmit}>
                   Delete

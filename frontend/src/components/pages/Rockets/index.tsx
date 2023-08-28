@@ -26,12 +26,12 @@ export const Rockets: FC = (props) => {
   return (
     <>
       {allRocketsIsLoading && (
-        <CircularProgress isIndeterminate color="green.300" />
+        <CircularProgress color="green.300" isIndeterminate />
       )}
 
-      <VStack h="100%" w="100%" align="start">
+      <VStack align="start" w="100%" h="100%">
         {allRockets && (
-          <Box px={3} w="100%">
+          <Box w="100%" px={3}>
             {isClient && (
               <Select
                 options={allRockets}
@@ -51,10 +51,10 @@ export const Rockets: FC = (props) => {
         {selectRocket && (
           <>
             <Heading
-              as="h2"
-              size="md"
               key={"head-" + selectRocket.rocketMemberId}
+              as="h2"
               p={1}
+              size="md"
             >
               <Text as="u" color={"blue.500"}>
                 獲得可能ポケモン
