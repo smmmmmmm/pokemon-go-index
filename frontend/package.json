@@ -50,6 +50,7 @@
     "react-select": "^5.7.4"
   },
   "devDependencies": {
+    "@chakra-ui/storybook-addon": "^5.0.1",
     "@storybook/addon-essentials": "^7.3.2",
     "@storybook/addon-interactions": "^7.3.2",
     "@storybook/addon-links": "^7.3.2",
