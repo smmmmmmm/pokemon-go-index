@@ -5,8 +5,8 @@ import { Select } from "chakra-react-select";
 
 import { PokedexTable } from "@/components/projects/PokedexTable/PokedexTable";
 import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplayOption";
-import { FilteringOption } from "@/features/pokemons";
-import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 import { RocketMember, useFetchAllRockets } from "@/features/rockets";
 
 export const Rockets: FC = (props) => {
@@ -16,7 +16,7 @@ export const Rockets: FC = (props) => {
 
   // Set Initial State
   const [pokemonFilterOption, setPokemonFilterOption] =
-    useState<FilteringOption>(DefaultFilteringOption);
+    useState<PokemonFilteringOption>(DefaultPokemonFilteringOption);
 
   useEffect(() => {
     if (allRockets && selectRocket === undefined) {
@@ -69,7 +69,7 @@ export const Rockets: FC = (props) => {
             <PokedexTable
               key={"table-" + selectRocket.rocketMemberId}
               pokemonIds={selectRocket.getablePokemonIds}
-              filteringOption={pokemonFilterOption}
+              pokemonFilteringOption={pokemonFilterOption}
             />
           </>
         )}

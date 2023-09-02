@@ -5,19 +5,23 @@ import { Box, Input } from "@chakra-ui/react";
 import { HStack } from "@chakra-ui/react";
 
 import { RegionSelect } from "@/components/projects/RegionSelect";
-import { FilteringOption } from "@/features/pokemons";
+import { PokemonFilteringOption } from "@/features/pokemons";
 import { hiraToKata } from "@/utils/hiraToKata";
 
 /**
  * presentational component
  */
 export const PokemonDisplayOptionBasicPresenter: FC<{
-  pokemonFilterOption: FilteringOption;
-  setPokemonFilterOption: React.Dispatch<React.SetStateAction<FilteringOption>>;
+  pokemonFilterOption: PokemonFilteringOption;
+  setPokemonFilterOption: React.Dispatch<
+    React.SetStateAction<PokemonFilteringOption>
+  >;
 }> = (props) => {
   const { pokemonFilterOption, setPokemonFilterOption } = props;
 
-  const partialUpdateFilteringOption = (p: Partial<FilteringOption>) => {
+  const partialUpdatePokemonFilteringOption = (
+    p: Partial<PokemonFilteringOption>
+  ) => {
     setPokemonFilterOption({ ...pokemonFilterOption, ...p });
   };
 
@@ -29,7 +33,7 @@ export const PokemonDisplayOptionBasicPresenter: FC<{
         <RegionSelect
           generation={pokemonFilterOption.generation ?? 1}
           handleChange={(v: number) => {
-            partialUpdateFilteringOption({ generation: v });
+            partialUpdatePokemonFilteringOption({ generation: v });
           }}
         />
       </Box>
@@ -40,7 +44,7 @@ export const PokemonDisplayOptionBasicPresenter: FC<{
         id="select-name"
         onChange={(v) => {
           setInputSearchName(v.target.value);
-          partialUpdateFilteringOption({
+          partialUpdatePokemonFilteringOption({
             searchNameKata: hiraToKata(v.target.value),
           });
         }}
@@ -57,8 +61,10 @@ export const PokemonDisplayOptionBasicPresenter: FC<{
  * container component
  */
 export const PokemonDisplayOptionBasicContainer: FC<{
-  pokemonFilterOption: FilteringOption;
-  setPokemonFilterOption: React.Dispatch<React.SetStateAction<FilteringOption>>;
+  pokemonFilterOption: PokemonFilteringOption;
+  setPokemonFilterOption: React.Dispatch<
+    React.SetStateAction<PokemonFilteringOption>
+  >;
 }> = (props) => {
   return <PokemonDisplayOptionBasicPresenter {...props} />;
 };

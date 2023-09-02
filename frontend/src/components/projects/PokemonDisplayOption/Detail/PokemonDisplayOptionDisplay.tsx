@@ -18,11 +18,11 @@ import {
 } from "@chakra-ui/react";
 
 import { ToggleIconButtonWithText } from "@/components/uiParts/ToggleButton";
-import { FilteringOption } from "@/features/pokemons";
+import { PokemonFilteringOption } from "@/features/pokemons";
 
 const PokemonFilterModalBody: FC<{
-  pokemonFilterOption: FilteringOption;
-  setPokemonFilterOption: Dispatch<SetStateAction<FilteringOption>>;
+  pokemonFilterOption: PokemonFilteringOption;
+  setPokemonFilterOption: Dispatch<SetStateAction<PokemonFilteringOption>>;
 }> = (props) => {
   const { pokemonFilterOption, setPokemonFilterOption } = props;
 
@@ -61,8 +61,8 @@ const PokemonFilterModalBody: FC<{
  * presentational component
  */
 export const PokemonDisplayOptionDetailPresenter: FC<{
-  pokemonFilterOption: FilteringOption;
-  setPokemonFilterOption: Dispatch<SetStateAction<FilteringOption>>;
+  pokemonFilterOption: PokemonFilteringOption;
+  setPokemonFilterOption: Dispatch<SetStateAction<PokemonFilteringOption>>;
 }> = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -102,8 +102,8 @@ export const PokemonDisplayOptionDetailPresenter: FC<{
  * container component
  */
 export const PokemonDisplayOptionDetailContainer: FC<{
-  pokemonFilterOption: FilteringOption;
-  setPokemonFilterOption: Dispatch<SetStateAction<FilteringOption>>;
+  pokemonFilterOption: PokemonFilteringOption;
+  setPokemonFilterOption: Dispatch<SetStateAction<PokemonFilteringOption>>;
 }> = (props) => {
   return <PokemonDisplayOptionDetailPresenter {...props} />;
 };

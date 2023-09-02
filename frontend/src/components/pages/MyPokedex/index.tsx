@@ -8,13 +8,13 @@ import {
   PokemonDisplayOptionBasic,
   PokemonDisplayOptionDetail,
 } from "@/components/projects/PokemonDisplayOption";
-import { FilteringOption } from "@/features/pokemons";
-import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 export const MyPokedex: FC = () => {
   const [pokemonFilterOption, setPokemonFilterOption] =
-    useState<FilteringOption>({
-      ...DefaultFilteringOption,
+    useState<PokemonFilteringOption>({
+      ...DefaultPokemonFilteringOption,
       generation: 1,
     });
 
@@ -24,7 +24,7 @@ export const MyPokedex: FC = () => {
         pokemonFilterOption={pokemonFilterOption}
         setPokemonFilterOption={setPokemonFilterOption}
       />
-      <PokedexTable filteringOption={pokemonFilterOption} />
+      <PokedexTable pokemonFilteringOption={pokemonFilterOption} />
       <PokemonDisplayOptionDetail
         pokemonFilterOption={pokemonFilterOption}
         setPokemonFilterOption={setPokemonFilterOption}

@@ -25,7 +25,7 @@ import { PokedexIconTable } from "@/components/projects/PokedexTable/PokedexIcon
 import { PokedexListTable } from "@/components/projects/PokedexTable/PokedexListTable";
 import {
   DisplayPokemon,
-  FilteringOption,
+  PokemonFilteringOption,
   useFilteringPokemons,
 } from "@/features/pokemons";
 
@@ -140,11 +140,14 @@ const PokedexTableComponent: FC<{
 
 const PokedexTableContainer: FC<{
   pokemonIds?: string[];
-  filteringOption?: FilteringOption;
+  pokemonFilteringOption?: PokemonFilteringOption;
 }> = (props) => {
-  const { pokemonIds, filteringOption } = props;
+  const { pokemonIds, pokemonFilteringOption } = props;
 
-  const displayPokemons = useFilteringPokemons(pokemonIds, filteringOption);
+  const displayPokemons = useFilteringPokemons(
+    pokemonIds,
+    pokemonFilteringOption
+  );
 
   return <PokedexTableComponent displayPokemons={displayPokemons} />;
 };

@@ -1,4 +1,4 @@
-export interface FilteringOption {
+export interface PokemonFilteringOption {
   searchNameKata?: string; // 名称 (カタカナ)
   generation?: number; // 世代
 
@@ -10,10 +10,6 @@ export interface FilteringOption {
   showAfterEvolve: boolean; // 進化先を表示
 }
 
-export const DefaultFilteringOption: FilteringOption = {
-  searchNameKata: undefined,
-  generation: undefined,
-  existShiny: undefined,
-  existShadow: undefined,
+export const DefaultPokemonFilteringOption: PokemonFilteringOption = {
   showAfterEvolve: false,
 };

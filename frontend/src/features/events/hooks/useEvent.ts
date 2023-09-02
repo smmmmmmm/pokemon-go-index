@@ -31,7 +31,7 @@ export const useEvent = () => {
   const groupedEventOptions = useMemo(() => {
     if (events) {
       const sortedEvents = events.sort(
-        (a, b) => a.startAt.getDate() - b.startAt.getTime()
+        (a, b) => a.startAt.getTime() - b.startAt.getTime()
       );
       const grouped = sortedEvents.reduce((map, e) => {
         const list = map.get(isEventDoing(e));
@@ -50,7 +50,7 @@ export const useEvent = () => {
           groupedOptions.push({
             label: eventType,
             values: groupedEvents.sort(
-              (a, b) => b.startAt.getTime() - a.startAt.getDate()
+              (a, b) => b.startAt.getTime() - a.startAt.getTime()
             ),
           });
         }
@@ -61,7 +61,6 @@ export const useEvent = () => {
 
   // Set initial state
   useEffect(() => {
-    console.log(groupedEventOptions);
     if (groupedEventOptions) {
       setSelectEventId(groupedEventOptions[0]?.values[0]?.eventId);
     }

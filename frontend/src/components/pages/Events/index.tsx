@@ -29,8 +29,8 @@ import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplay
 import { GroupedSelect, Select } from "@/components/uiParts/Select";
 import { PogoEvent, PogoEventGroup } from "@/features/events";
 import { useEvent } from "@/features/events/hooks/useEvent";
-import { FilteringOption } from "@/features/pokemons";
-import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 const eventLabel = (e: PogoEvent) => {
   return `${e.eventName}（${format(e.startAt, "MM/dd")} ~ ${format(
@@ -138,7 +138,7 @@ export const Events: FC = () => {
   } = useEvent();
 
   const [pokemonFilterOption, setPokemonFilterOption] =
-    useState<FilteringOption>(DefaultFilteringOption);
+    useState<PokemonFilteringOption>(DefaultPokemonFilteringOption);
 
   return (
     <VStack w="100%" h="100%">
@@ -170,7 +170,7 @@ export const Events: FC = () => {
         {selectEventGroup && (
           <PokedexTable
             pokemonIds={selectEventGroup.pokemonIds}
-            filteringOption={pokemonFilterOption}
+            pokemonFilteringOption={pokemonFilterOption}
           />
         )}
       </VStack>

@@ -26,8 +26,8 @@ import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplay
 import { GroupedSelect, Select } from "@/components/uiParts/Select";
 import { FieldResearch } from "@/features/fieldResearch";
 import { useFieldResearch } from "@/features/fieldResearch/hooks/useFieldResarch";
-import { FilteringOption } from "@/features/pokemons";
-import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 export const FieldResearchComponent: FC = () => {
   const {
@@ -43,7 +43,7 @@ export const FieldResearchComponent: FC = () => {
   } = useFieldResearch();
 
   const [pokemonFilterOption, setPokemonFilterOption] =
-    useState<FilteringOption>(DefaultFilteringOption);
+    useState<PokemonFilteringOption>(DefaultPokemonFilteringOption);
 
   return (
     <>
@@ -123,7 +123,7 @@ export const FieldResearchComponent: FC = () => {
           {selectFieldResearch && (
             <PokedexTable
               pokemonIds={selectFieldResearch.getablePokemonIds}
-              filteringOption={pokemonFilterOption}
+              pokemonFilteringOption={pokemonFilterOption}
             />
           )}
         </Box>
