@@ -11,7 +11,7 @@ import { hiraToKata } from "@/utils/hiraToKata";
 /**
  * presentational component
  */
-export const BasicPokemonFilterPresenter: FC<{
+export const PokemonDisplayOptionBasicPresenter: FC<{
   pokemonFilterOption: FilteringOption;
   setPokemonFilterOption: React.Dispatch<React.SetStateAction<FilteringOption>>;
 }> = (props) => {
@@ -56,11 +56,11 @@ export const BasicPokemonFilterPresenter: FC<{
 /**
  * container component
  */
-export const BasicPokemonFilterContainer: FC<{
+export const PokemonDisplayOptionBasicContainer: FC<{
   pokemonFilterOption: FilteringOption;
   setPokemonFilterOption: React.Dispatch<React.SetStateAction<FilteringOption>>;
 }> = (props) => {
-  return <BasicPokemonFilterPresenter {...props} />;
+  return <PokemonDisplayOptionBasicPresenter {...props} />;
 };
 
-export const BasicPokemonFilter = BasicPokemonFilterContainer;
+export const PokemonDisplayOptionBasic = PokemonDisplayOptionBasicContainer;

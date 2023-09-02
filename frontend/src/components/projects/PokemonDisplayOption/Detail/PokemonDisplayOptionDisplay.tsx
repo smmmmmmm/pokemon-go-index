@@ -60,7 +60,7 @@ const PokemonFilterModalBody: FC<{
 /**
  * presentational component
  */
-export const OptionPokemonFilterPresenter: FC<{
+export const PokemonDisplayOptionDetailPresenter: FC<{
   pokemonFilterOption: FilteringOption;
   setPokemonFilterOption: Dispatch<SetStateAction<FilteringOption>>;
 }> = (props) => {
@@ -101,11 +101,11 @@ export const OptionPokemonFilterPresenter: FC<{
 /**
  * container component
  */
-export const OptionPokemonFilterContainer: FC<{
+export const PokemonDisplayOptionDetailContainer: FC<{
   pokemonFilterOption: FilteringOption;
   setPokemonFilterOption: Dispatch<SetStateAction<FilteringOption>>;
 }> = (props) => {
-  return <OptionPokemonFilterPresenter {...props} />;
+  return <PokemonDisplayOptionDetailPresenter {...props} />;
 };
 
-export const OptionPokemonFilter = OptionPokemonFilterContainer;
+export const PokemonDisplayOptionDetail = PokemonDisplayOptionDetailContainer;

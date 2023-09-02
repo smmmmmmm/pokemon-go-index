@@ -88,22 +88,25 @@ export class Pokemon {
 
     // 世代
     if (
-      filteringOption.generation &&
+      filteringOption.generation !== undefined &&
       filteringOption.generation !== this.generation
     ) {
       return false;
     }
 
     // 実装状況
-    if (filteringOption.existShiny !== undefined) {
-      if (filteringOption.existShiny != this.existShiny) {
-        return false;
-      }
+    if (
+      filteringOption.existShiny !== undefined &&
+      filteringOption.existShiny != this.existShiny
+    ) {
+      return false;
     }
-    if (filteringOption.existShadow !== undefined) {
-      if (filteringOption.existShadow != this.existShadow) {
-        return false;
-      }
+
+    if (
+      filteringOption.existShadow !== undefined &&
+      filteringOption.existShadow != this.existShadow
+    ) {
+      return false;
     }
 
     return true;

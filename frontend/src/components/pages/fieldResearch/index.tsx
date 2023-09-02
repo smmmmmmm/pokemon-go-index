@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import {
   Box,
@@ -22,9 +22,12 @@ import {
   UpdateFieldResearchGroup,
 } from "@/components/pages/fieldResearch/components/EditFieldResearchGroup";
 import { PokedexTable } from "@/components/projects/PokedexTable/PokedexTable";
+import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplayOption";
 import { GroupedSelect, Select } from "@/components/uiParts/Select";
 import { FieldResearch } from "@/features/fieldResearch";
 import { useFieldResearch } from "@/features/fieldResearch/hooks/useFieldResarch";
+import { FilteringOption } from "@/features/pokemons";
+import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
 
 export const FieldResearchComponent: FC = () => {
   const {
@@ -38,6 +41,9 @@ export const FieldResearchComponent: FC = () => {
     selectFieldResearch,
     setSelectFieldResearch,
   } = useFieldResearch();
+
+  const [pokemonFilterOption, setPokemonFilterOption] =
+    useState<FilteringOption>(DefaultFilteringOption);
 
   return (
     <>
@@ -117,10 +123,15 @@ export const FieldResearchComponent: FC = () => {
           {selectFieldResearch && (
             <PokedexTable
               pokemonIds={selectFieldResearch.getablePokemonIds}
-              showExtra={true}
+              filteringOption={pokemonFilterOption}
             />
           )}
         </Box>
+
+        <PokemonDisplayOptionDetail
+          pokemonFilterOption={pokemonFilterOption}
+          setPokemonFilterOption={setPokemonFilterOption}
+        />
       </VStack>
     </>
   );

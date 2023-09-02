@@ -35,7 +35,7 @@ const initializeEmulatorFirebase = () => {
   });
   const db = getFirestore(app);
   const auth = getAuth(app);
-  connectAuthEmulator(auth, "http://localhost:9099");
+  connectAuthEmulator(auth, "http://localhost:9099", { disableWarnings: true });
   connectFirestoreEmulator(db, "localhost", 8080);
   return { db, auth };
 };

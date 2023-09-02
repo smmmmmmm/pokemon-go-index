@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { OptionPokemonFilterPresenter } from "./OptionPokemonFilter";
+import { PokemonDisplayOptionDetailPresenter } from "./PokemonDisplayOptionDisplay";
 
-type T = typeof OptionPokemonFilterPresenter;
+type T = typeof PokemonDisplayOptionDetailPresenter;
 
 const meta = {
-  title: "OptionPokemonFilter",
-  component: OptionPokemonFilterPresenter,
+  title: "PokemonDisplayOptionDetailPresenter",
+  component: PokemonDisplayOptionDetailPresenter,
   parameters: {
     layout: "centered",
   },

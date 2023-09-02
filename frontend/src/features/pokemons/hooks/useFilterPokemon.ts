@@ -58,10 +58,11 @@ const addEvolvePokemons = (
 
 export const useFilteringPokemons = (
   selectPokemonIds?: PokemonId[],
-  filteringOption?: FilteringOption,
-  showExtra = false
+  filteringOption?: FilteringOption
 ) => {
   const { allPokemons } = useAllPokemonsGet();
+
+  console.log(allPokemons);
 
   return useMemo<DisplayPokemon[]>(() => {
     if (!allPokemons) {
@@ -101,10 +102,10 @@ export const useFilteringPokemons = (
     }
 
     // Add extra
-    if (showExtra) {
+    if (filteringOption?.showAfterEvolve) {
       filteredPokemons = addEvolvePokemons(allPokemons, filteredPokemons);
     }
 
     return filteredPokemons;
-  }, [allPokemons, filteringOption, showExtra, selectPokemonIds]);
+  }, [allPokemons, filteringOption, selectPokemonIds]);
 };

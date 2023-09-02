@@ -3,14 +3,15 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { FilteringOption } from "@/features/pokemons";
+import { DefaultFilteringOption } from "@/features/pokemons/model/filtering";
 
-import { BasicPokemonFilterPresenter } from "./BasicPokemonFilter";
+import { PokemonDisplayOptionBasicPresenter } from "./PokemonDisplayOptionBasic";
 
-type T = typeof BasicPokemonFilterPresenter;
+type T = typeof PokemonDisplayOptionBasicPresenter;
 
 const meta = {
-  title: "BasicPokemonFilter",
-  component: BasicPokemonFilterPresenter,
+  title: "PokemonDisplayOptionBasicPresenter",
+  component: PokemonDisplayOptionBasicPresenter,
   parameters: {
     layout: "centered",
   },
@@ -25,6 +26,7 @@ export const Default: StoryObj<T> = {
   render: function Comp({ ...args }) {
     const [pokemonFilterOption, setPokemonFilterOption] =
       useState<FilteringOption>({
+        ...DefaultFilteringOption,
         generation: 1,
       });
     return (
