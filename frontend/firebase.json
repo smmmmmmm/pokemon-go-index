@@ -1,29 +1,11 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "function": "nextjsFunc",
-        "region": "asia-northeast1"
-      }
-    ]
+  "projects": {
+    "default": "my-pokedex-b9f69"
   },
-  "functions": [
-    {
-      "source": ".",
-      "predeploy": [
-        "npm --prefix \"$PROJECT_DIR\" install",
-        "npm --prefix \"$PROJECT_DIR\" run build"
-      ],
-      "runtime": "nodejs18"
-    }
-  ],
+  "hosting": {
+    "source": ".",
+    "cleanUrls": true
+  },
   "firestore": {
     "rules": "firestore.rules"
   },
