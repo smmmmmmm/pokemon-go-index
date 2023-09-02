@@ -127,12 +127,11 @@ export const FieldResearchComponent: FC = () => {
             />
           )}
         </Box>
-
-        <PokemonDisplayOptionDetail
-          pokemonFilterOption={pokemonFilterOption}
-          setPokemonFilterOption={setPokemonFilterOption}
-        />
       </VStack>
+      <PokemonDisplayOptionDetail
+        pokemonFilterOption={pokemonFilterOption}
+        setPokemonFilterOption={setPokemonFilterOption}
+      />
     </>
   );
 };
