@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import {
   Box,
@@ -25,9 +25,12 @@ import {
   UpdateEventGroup,
 } from "@/components/pages/Events/components/EditEventGroup";
 import { PokedexTable } from "@/components/projects/PokedexTable/PokedexTable";
+import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplayOption";
 import { GroupedSelect, Select } from "@/components/uiParts/Select";
 import { PogoEvent, PogoEventGroup } from "@/features/events";
 import { useEvent } from "@/features/events/hooks/useEvent";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 const eventLabel = (e: PogoEvent) => {
   return `${e.eventName}（${format(e.startAt, "MM/dd")} ~ ${format(
@@ -134,43 +137,48 @@ export const Events: FC = () => {
     setSelectEventGroup,
   } = useEvent();
 
+  const [pokemonFilterOption, setPokemonFilterOption] =
+    useState<PokemonFilteringOption>(DefaultPokemonFilteringOption);
+
   return (
-    <>
-      <VStack w="100%" h="100%">
-        {eventsIsLoading && (
-          <CircularProgress color="green.300" isIndeterminate />
-        )}
-        {groupedEventOptions && (
-          <EventComponent
-            groupedEventOptions={groupedEventOptions}
-            selectEvent={selectEvent}
-            setSelectEvent={setSelectEvent}
+    <VStack w="100%" h="100%">
+      {eventsIsLoading && (
+        <CircularProgress color="green.300" isIndeterminate />
+      )}
+      {groupedEventOptions && (
+        <EventComponent
+          groupedEventOptions={groupedEventOptions}
+          selectEvent={selectEvent}
+          setSelectEvent={setSelectEvent}
+        />
+      )}
+      <Divider />
+
+      {eventGroupsIsLoading && (
+        <CircularProgress color="green.300" isIndeterminate />
+      )}
+      {eventGroups && (
+        <EventGroupComponent
+          eventGroups={eventGroups}
+          selectEvent={selectEvent}
+          selectEventGroup={selectEventGroup}
+          setSelectEventGroup={setSelectEventGroup}
+        />
+      )}
+
+      <VStack align="start" flex={1} overflow="auto" w="100%">
+        {selectEventGroup && (
+          <PokedexTable
+            pokemonIds={selectEventGroup.pokemonIds}
+            pokemonFilteringOption={pokemonFilterOption}
           />
         )}
-        <Divider />
-
-        {eventGroupsIsLoading && (
-          <CircularProgress color="green.300" isIndeterminate />
-        )}
-        {eventGroups && (
-          <EventGroupComponent
-            eventGroups={eventGroups}
-            selectEvent={selectEvent}
-            selectEventGroup={selectEventGroup}
-            setSelectEventGroup={setSelectEventGroup}
-          />
-        )}
-
-        <VStack align="start" flex={1} overflow="auto" w="100%">
-          {selectEventGroup && (
-            <PokedexTable
-              pokemonIds={selectEventGroup.pokemonIds}
-              showExtra={true}
-            />
-          )}
-        </VStack>
-        <Box h="20px" />
       </VStack>
-    </>
+
+      <PokemonDisplayOptionDetail
+        pokemonFilterOption={pokemonFilterOption}
+        setPokemonFilterOption={setPokemonFilterOption}
+      />
+    </VStack>
   );
 };

@@ -1,4 +1,4 @@
-import { FilteringOption } from "@/features/pokemons";
+import { PokemonFilteringOption } from "@/features/pokemons";
 import { PokedexType } from "@/features/userPokedex";
 
 export type PokemonId = string;
@@ -76,10 +76,10 @@ export class Pokemon {
     this.existShadow = data.existShadow;
   }
 
-  isFilter(filteringOption: FilteringOption): boolean {
+  isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
     // 名称検索 && ヒットする場合, 常に返す
-    if (filteringOption.searchNameKata) {
-      if (this.name.startsWith(filteringOption.searchNameKata)) {
+    if (pokemonFilteringOption.searchNameKata) {
+      if (this.name.startsWith(pokemonFilteringOption.searchNameKata)) {
         return true;
       } else {
         return false;
@@ -88,22 +88,25 @@ export class Pokemon {
 
     // 世代
     if (
-      filteringOption.generation &&
-      filteringOption.generation !== this.generation
+      pokemonFilteringOption.generation !== undefined &&
+      pokemonFilteringOption.generation !== this.generation
     ) {
       return false;
     }
 
     // 実装状況
-    if (filteringOption.existShiny !== undefined) {
-      if (filteringOption.existShiny != this.existShiny) {
-        return false;
-      }
+    if (
+      pokemonFilteringOption.existShiny !== undefined &&
+      pokemonFilteringOption.existShiny != this.existShiny
+    ) {
+      return false;
     }
-    if (filteringOption.existShadow !== undefined) {
-      if (filteringOption.existShadow != this.existShadow) {
-        return false;
-      }
+
+    if (
+      pokemonFilteringOption.existShadow !== undefined &&
+      pokemonFilteringOption.existShadow != this.existShadow
+    ) {
+      return false;
     }
 
     return true;

@@ -2,8 +2,8 @@ import { useMemo } from "react";
 
 import {
   DisplayPokemon,
-  FilteringOption,
   Pokemon,
+  PokemonFilteringOption,
   PokemonId,
   useAllPokemonsGet,
 } from "@/features/pokemons";
@@ -58,8 +58,7 @@ const addEvolvePokemons = (
 
 export const useFilteringPokemons = (
   selectPokemonIds?: PokemonId[],
-  filteringOption?: FilteringOption,
-  showExtra = false
+  pokemonFilteringOption?: PokemonFilteringOption
 ) => {
   const { allPokemons } = useAllPokemonsGet();
 
@@ -93,18 +92,18 @@ export const useFilteringPokemons = (
       });
     }
 
-    // Filter by filteringOption
-    if (filteringOption) {
+    // Filter by pokemonFilteringOption
+    if (pokemonFilteringOption) {
       filteredPokemons = filteredPokemons.filter((v) =>
-        v.pokemon.isFilter(filteringOption)
+        v.pokemon.isFilter(pokemonFilteringOption)
       );
     }
 
     // Add extra
-    if (showExtra) {
+    if (pokemonFilteringOption?.showAfterEvolve) {
       filteredPokemons = addEvolvePokemons(allPokemons, filteredPokemons);
     }
 
     return filteredPokemons;
-  }, [allPokemons, filteringOption, showExtra, selectPokemonIds]);
+  }, [allPokemons, pokemonFilteringOption, selectPokemonIds]);
 };

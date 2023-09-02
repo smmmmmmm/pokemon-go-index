@@ -5,7 +5,7 @@ export type {
   PokemonInterface,
   DisplayPokemon,
 } from "@/features/pokemons/model/pokemon";
-export type { FilteringOption } from "@/features/pokemons/model/filtering";
+export type { PokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 // usecases
 export { useAllPokemonsGet } from "@/features/pokemons/usecase/useAllPokemonsGet";

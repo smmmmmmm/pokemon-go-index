@@ -3,29 +3,32 @@ import React, { useState } from "react";
 
 import { VStack } from "@chakra-ui/react";
 
-import { MyPokedexFiltering } from "@/components/projects/PokedexTable/MyPokedexFiltering";
 import { PokedexTable } from "@/components/projects/PokedexTable/PokedexTable";
-import { FilteringOption } from "@/features/pokemons";
+import {
+  PokemonDisplayOptionBasic,
+  PokemonDisplayOptionDetail,
+} from "@/components/projects/PokemonDisplayOption";
+import { PokemonFilteringOption } from "@/features/pokemons";
+import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
 
 export const MyPokedex: FC = () => {
-  const [filteringOption, setFilteringOption] = useState<FilteringOption>({
-    generation: 1,
-  });
-  const [showExtra, setShowExtra] = useState<boolean>(false);
-
-  const partialUpdateFilteringOption = (p: Partial<FilteringOption>) => {
-    setFilteringOption({ ...filteringOption, ...p });
-  };
+  const [pokemonFilterOption, setPokemonFilterOption] =
+    useState<PokemonFilteringOption>({
+      ...DefaultPokemonFilteringOption,
+      generation: 1,
+    });
 
   return (
     <VStack w="100%" h="100%">
-      <MyPokedexFiltering
-        filteringOption={filteringOption}
-        partialUpdateFilteringOption={partialUpdateFilteringOption}
-        showExtra={showExtra}
-        setShowExtra={setShowExtra}
+      <PokemonDisplayOptionBasic
+        pokemonFilterOption={pokemonFilterOption}
+        setPokemonFilterOption={setPokemonFilterOption}
       />
-      <PokedexTable filteringOption={filteringOption} showExtra={showExtra} />
+      <PokedexTable pokemonFilteringOption={pokemonFilterOption} />
+      <PokemonDisplayOptionDetail
+        pokemonFilterOption={pokemonFilterOption}
+        setPokemonFilterOption={setPokemonFilterOption}
+      />
     </VStack>
   );
 };

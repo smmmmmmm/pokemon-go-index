@@ -65,6 +65,11 @@ export const AddEventGroup: FC<{ e: PogoEvent }> = (props) => {
   const [selectedPids, setSelectedPids] = useState<string[]>([]);
   const { mutate } = useAddEventGroup(e);
 
+  const reset = () => {
+    setEventGroupName("");
+    setSelectedPids([]);
+  };
+
   return (
     <EditModal
       type="create"
@@ -73,6 +78,7 @@ export const AddEventGroup: FC<{ e: PogoEvent }> = (props) => {
           eventGroupName: eventGroupName,
           pokemonIds: selectedPids,
         });
+        reset();
       }}
     >
       <EventGroupInputModal
@@ -96,13 +102,12 @@ export const UpdateEventGroup: FC<{ e: PogoEvent; eg: PogoEventGroup }> = (
   const [selectedPids, setSelectedPids] = useState<string[]>(
     eg.pokemonIds ?? []
   );
+  const { mutate } = useUpdateEventGroup(e, eg);
 
   useEffect(() => {
     setEventGroupName(eg.eventGroupName);
     setSelectedPids(eg.pokemonIds ?? []);
   }, [e, eg]);
-
-  const { mutate } = useUpdateEventGroup(e, eg);
 
   return (
     <EditModal
@@ -129,6 +134,7 @@ export const DeleteEventGroup: FC<{ e: PogoEvent; eg: PogoEventGroup }> = (
 ) => {
   const { e, eg } = props;
   const { mutate } = useDeleteEventGroup(e, eg);
+
   return (
     <EditModal type="delete" submit={mutate}>
       <Center p={5}>

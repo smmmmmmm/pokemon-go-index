@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
+  Box,
   Center,
   HStack,
   UseRadioProps,
@@ -24,7 +25,7 @@ import { PokedexIconTable } from "@/components/projects/PokedexTable/PokedexIcon
 import { PokedexListTable } from "@/components/projects/PokedexTable/PokedexListTable";
 import {
   DisplayPokemon,
-  FilteringOption,
+  PokemonFilteringOption,
   useFilteringPokemons,
 } from "@/features/pokemons";
 
@@ -132,21 +133,20 @@ const PokedexTableComponent: FC<{
           pokedexType={pokedexType}
         />
       )}
+      <Box minH="50px"></Box>
     </VStack>
   );
 };
 
 const PokedexTableContainer: FC<{
   pokemonIds?: string[];
-  filteringOption?: FilteringOption;
-  showExtra?: boolean;
+  pokemonFilteringOption?: PokemonFilteringOption;
 }> = (props) => {
-  const { pokemonIds, filteringOption, showExtra } = props;
+  const { pokemonIds, pokemonFilteringOption } = props;
 
   const displayPokemons = useFilteringPokemons(
     pokemonIds,
-    filteringOption,
-    showExtra
+    pokemonFilteringOption
   );
 
   return <PokedexTableComponent displayPokemons={displayPokemons} />;
