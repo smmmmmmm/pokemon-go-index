@@ -22,7 +22,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -c .storybook",
     "ci:vrt": "reg-suit run",
-    "ci:storybook-generate": "storybook build -c .storybook -o dist-storybook -s public",
+    "ci:storybook-generate": "storybook build -c .storybook -o dist-storybook",
     "ci:storycap": "storycap --serverTimeout 30000 --captureTimeout 10000 --serverCmd 'npx http-server dist-storybook --ci -p 9009' http://127.0.0.1:9009"
   },
   "dependencies": {

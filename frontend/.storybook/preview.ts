@@ -1,4 +1,8 @@
-import type { Preview } from "@storybook/react";
+import { Preview } from "@storybook/react";
+
+import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport";
+
+import { theme } from "../src/styles/theme";
 
 const preview: Preview = {
   parameters: {
@@ -8,6 +12,14 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    viewport: {
+      viewports: {
+        ...MINIMAL_VIEWPORTS,
+      },
+    },
+    chakra: {
+      theme,
     },
   },
 };

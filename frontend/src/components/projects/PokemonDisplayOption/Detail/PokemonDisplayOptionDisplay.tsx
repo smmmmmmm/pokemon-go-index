@@ -74,7 +74,7 @@ export const PokemonDisplayOptionDetailPresenter: FC<{
         bottom="15px"
         aria-label="Search database"
         bgColor="white"
-        colorScheme="white"
+        colorScheme="black"
         icon={<SearchIcon />}
         onClick={onOpen}
         rounded="full"
