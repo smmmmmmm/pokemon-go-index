@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import io
 import os
-import subprocess
 from functools import lru_cache
 
 import firebase_admin
@@ -56,6 +55,9 @@ def _preprocess_image(pil_img: Image) -> Image:
 
 
 def generate_images(api_pokemons: dict[PokemonId, ApiPokemon]) -> None:
+    os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "normal"), exist_ok=True)
+    os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "shiny"), exist_ok=True)
+
     for pokemon_id, api_pokemon in tqdm(api_pokemons.items()):
         if api_pokemon.assets is not None:
             # 通常画像 を取得して `output/public/images/pokemons/normal/` に保存
@@ -81,18 +83,8 @@ def main() -> None:
     raw_api_pokemons = fetch_api_pokemons()
 
     # --- 画像生成 ---
-    # 1. API data の URL から画像を取得, 前処理して `frontend/public/images/pokemons/` に保存
+    # API data の URL から画像を取得, 前処理して `frontend/public/images/pokemons/` に保存
     generate_images(raw_api_pokemons)
-    # 2. tree.txt を作成して更新
-    ret = subprocess.run(
-        ["tree", "pokemons/"],
-        cwd="../frontend/public/images",
-        shell=True,
-        capture_output=True,
-        text=True,
-    )
-    with open("tree.txt", "w") as f:
-        f.write(ret.stdout)
 
     # --- API data から Pokemon クラスのインスタンスを生成 ---
     api_pokemons = {
