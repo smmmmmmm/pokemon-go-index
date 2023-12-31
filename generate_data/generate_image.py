@@ -1,11 +1,13 @@
 from __future__ import annotations
 
-from src.pogo_api import fetch_api_pokemons
-import requests
 import io
 import os
-from tqdm import tqdm
+
+import requests
+from main import fetch_api_pokemons
 from PIL import Image
+from tqdm import tqdm
+
 
 # Save png image
 def expand2square(pil_img, background_color):
@@ -21,7 +23,9 @@ def expand2square(pil_img, background_color):
         result.paste(pil_img, ((height - width) // 2, 0))
         return result
 
+
 POKEMON_IMAGES_DIR = os.path.join("..", "frontend", "public", "images", "pokemons")
+
 
 def main():
     api_pokemons_dict = fetch_api_pokemons()
@@ -30,14 +34,14 @@ def main():
     os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "shiny"), exist_ok=True)
 
     for pokemon_id, api_pokemon in tqdm(api_pokemons_dict.items()):
-        if (api_pokemon.assets is not None):
+        if api_pokemon.assets is not None:
             # 通常画像
             path = os.path.join(POKEMON_IMAGES_DIR, "normal", f"{pokemon_id}.png")
             if not os.path.exists(path):
                 resp = requests.get(api_pokemon.assets.image)
                 if resp.status_code == 200:
                     img = Image.open(io.BytesIO(requests.get(api_pokemon.assets.image).content))
-                    img = expand2square(img, (255,255,255, 0))
+                    img = expand2square(img, (255, 255, 255, 0))
                     img.resize((100, 100))
                     img.save(path)
 
@@ -47,9 +51,10 @@ def main():
                 resp = requests.get(api_pokemon.assets.shiny_image)
                 if resp.status_code == 200:
                     img = Image.open(io.BytesIO(resp.content))
-                    img = expand2square(img, (255,255,255, 0))
+                    img = expand2square(img, (255, 255, 255, 0))
                     img.resize((100, 100))
                     img.save(path)
+
 
 if __name__ == "__main__":
     main()
