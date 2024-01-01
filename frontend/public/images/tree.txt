@@ -1,0 +1,1688 @@
+.
+├── .gitignore
+├── pokemons
+│   ├── normal
+│   │   ├── .gitignore
+│   │   ├── ABOMASNOW.png
+│   │   ├── ABRA.png
+│   │   ├── ABSOL.png
+│   │   ├── ACCELGOR.png
+│   │   ├── AERODACTYL.png
+│   │   ├── AGGRON.png
+│   │   ├── AIPOM.png
+│   │   ├── ALAKAZAM.png
+│   │   ├── ALOMOMOLA.png
+│   │   ├── ALTARIA.png
+│   │   ├── AMAURA.png
+│   │   ├── AMBIPOM.png
+│   │   ├── AMOONGUSS.png
+│   │   ├── AMPHAROS.png
+│   │   ├── ANORITH.png
+│   │   ├── ARAQUANID.png
+│   │   ├── ARBOK.png
+│   │   ├── ARBOLIVA.png
+│   │   ├── ARCANINE.png
+│   │   ├── ARCEUS.png
+│   │   ├── ARCHEN.png
+│   │   ├── ARCHEOPS.png
+│   │   ├── ARCTIBAX.png
+│   │   ├── ARIADOS.png
+│   │   ├── ARMALDO.png
+│   │   ├── AROMATISSE.png
+│   │   ├── ARON.png
+│   │   ├── ARTICUNO.png
+│   │   ├── AUDINO.png
+│   │   ├── AURORUS.png
+│   │   ├── AVALUGG.png
+│   │   ├── AXEW.png
+│   │   ├── AZELF.png
+│   │   ├── AZUMARILL.png
+│   │   ├── AZURILL.png
+│   │   ├── BAGON.png
+│   │   ├── BALTOY.png
+│   │   ├── BANETTE.png
+│   │   ├── BARBARACLE.png
+│   │   ├── BARBOACH.png
+│   │   ├── BASCULIN.png
+│   │   ├── BASTIODON.png
+│   │   ├── BAXCALIBUR.png
+│   │   ├── BAYLEEF.png
+│   │   ├── BEARTIC.png
+│   │   ├── BEAUTIFLY.png
+│   │   ├── BEEDRILL.png
+│   │   ├── BEHEEYEM.png
+│   │   ├── BELDUM.png
+│   │   ├── BELLIBOLT.png
+│   │   ├── BELLOSSOM.png
+│   │   ├── BELLSPROUT.png
+│   │   ├── BERGMITE.png
+│   │   ├── BEWEAR.png
+│   │   ├── BIBAREL.png
+│   │   ├── BIDOOF.png
+│   │   ├── BINACLE.png
+│   │   ├── BISHARP.png
+│   │   ├── BLASTOISE.png
+│   │   ├── BLAZIKEN.png
+│   │   ├── BLISSEY.png
+│   │   ├── BLITZLE.png
+│   │   ├── BOLDORE.png
+│   │   ├── BOMBIRDIER.png
+│   │   ├── BONSLY.png
+│   │   ├── BOUFFALANT.png
+│   │   ├── BOUNSWEET.png
+│   │   ├── BRAIXEN.png
+│   │   ├── BRAVIARY.png
+│   │   ├── BRELOOM.png
+│   │   ├── BRIONNE.png
+│   │   ├── BRONZONG.png
+│   │   ├── BRONZOR.png
+│   │   ├── BRUXISH.png
+│   │   ├── BUDEW.png
+│   │   ├── BUIZEL.png
+│   │   ├── BULBASAUR.png
+│   │   ├── BUNEARY.png
+│   │   ├── BUNNELBY.png
+│   │   ├── BURMY.png
+│   │   ├── BUTTERFREE.png
+│   │   ├── BUZZWOLE.png
+│   │   ├── CACNEA.png
+│   │   ├── CACTURNE.png
+│   │   ├── CAMERUPT.png
+│   │   ├── CARBINK.png
+│   │   ├── CARNIVINE.png
+│   │   ├── CARRACOSTA.png
+│   │   ├── CARVANHA.png
+│   │   ├── CASCOON.png
+│   │   ├── CASTFORM.png
+│   │   ├── CATERPIE.png
+│   │   ├── CELEBI.png
+│   │   ├── CELESTEELA.png
+│   │   ├── CETITAN.png
+│   │   ├── CETODDLE.png
+│   │   ├── CHANDELURE.png
+│   │   ├── CHANSEY.png
+│   │   ├── CHARIZARD.png
+│   │   ├── CHARJABUG.png
+│   │   ├── CHARMANDER.png
+│   │   ├── CHARMELEON.png
+│   │   ├── CHATOT.png
+│   │   ├── CHERRIM.png
+│   │   ├── CHERUBI.png
+│   │   ├── CHESNAUGHT.png
+│   │   ├── CHESPIN.png
+│   │   ├── CHIKORITA.png
+│   │   ├── CHIMCHAR.png
+│   │   ├── CHIMECHO.png
+│   │   ├── CHINCHOU.png
+│   │   ├── CHINGLING.png
+│   │   ├── CINCCINO.png
+│   │   ├── CLAMPERL.png
+│   │   ├── CLAUNCHER.png
+│   │   ├── CLAWITZER.png
+│   │   ├── CLAYDOL.png
+│   │   ├── CLEFABLE.png
+│   │   ├── CLEFAIRY.png
+│   │   ├── CLEFFA.png
+│   │   ├── CLODSIRE.png
+│   │   ├── CLOYSTER.png
+│   │   ├── COBALION.png
+│   │   ├── COFAGRIGUS.png
+│   │   ├── COMBEE.png
+│   │   ├── COMBUSKEN.png
+│   │   ├── COMFEY.png
+│   │   ├── CONKELDURR.png
+│   │   ├── CORPHISH.png
+│   │   ├── CORSOLA.png
+│   │   ├── COSMOEM.png
+│   │   ├── COSMOG.png
+│   │   ├── COTTONEE.png
+│   │   ├── CRABOMINABLE.png
+│   │   ├── CRABRAWLER.png
+│   │   ├── CRADILY.png
+│   │   ├── CRANIDOS.png
+│   │   ├── CRAWDAUNT.png
+│   │   ├── CRESSELIA.png
+│   │   ├── CROAGUNK.png
+│   │   ├── CROBAT.png
+│   │   ├── CROCALOR.png
+│   │   ├── CROCONAW.png
+│   │   ├── CRUSTLE.png
+│   │   ├── CRYOGONAL.png
+│   │   ├── CUBCHOO.png
+│   │   ├── CUBONE.png
+│   │   ├── CUTIEFLY.png
+│   │   ├── CYNDAQUIL.png
+│   │   ├── DARKRAI.png
+│   │   ├── DARMANITAN.png
+│   │   ├── DARTRIX.png
+│   │   ├── DARUMAKA.png
+│   │   ├── DECIDUEYE.png
+│   │   ├── DEDENNE.png
+│   │   ├── DEERLING.png
+│   │   ├── DEINO.png
+│   │   ├── DELCATTY.png
+│   │   ├── DELIBIRD.png
+│   │   ├── DELPHOX.png
+│   │   ├── DEOXYS.png
+│   │   ├── DEWGONG.png
+│   │   ├── DEWOTT.png
+│   │   ├── DEWPIDER.png
+│   │   ├── DIALGA.png
+│   │   ├── DIANCIE.png
+│   │   ├── DIGGERSBY.png
+│   │   ├── DIGLETT.png
+│   │   ├── DITTO.png
+│   │   ├── DODRIO.png
+│   │   ├── DODUO.png
+│   │   ├── DOLLIV.png
+│   │   ├── DONPHAN.png
+│   │   ├── DOUBLADE.png
+│   │   ├── DRAGALGE.png
+│   │   ├── DRAGONAIR.png
+│   │   ├── DRAGONITE.png
+│   │   ├── DRAPION.png
+│   │   ├── DRATINI.png
+│   │   ├── DRIFBLIM.png
+│   │   ├── DRIFLOON.png
+│   │   ├── DRILBUR.png
+│   │   ├── DROWZEE.png
+│   │   ├── DRUDDIGON.png
+│   │   ├── DUBWOOL.png
+│   │   ├── DUCKLETT.png
+│   │   ├── DUGTRIO.png
+│   │   ├── DUNSPARCE.png
+│   │   ├── DUOSION.png
+│   │   ├── DURANT.png
+│   │   ├── DUSCLOPS.png
+│   │   ├── DUSKNOIR.png
+│   │   ├── DUSKULL.png
+│   │   ├── DUSTOX.png
+│   │   ├── DWEBBLE.png
+│   │   ├── EELEKTRIK.png
+│   │   ├── EELEKTROSS.png
+│   │   ├── EEVEE.png
+│   │   ├── EKANS.png
+│   │   ├── ELECTABUZZ.png
+│   │   ├── ELECTIVIRE.png
+│   │   ├── ELECTRIKE.png
+│   │   ├── ELECTRODE.png
+│   │   ├── ELEKID.png
+│   │   ├── ELGYEM.png
+│   │   ├── EMBOAR.png
+│   │   ├── EMOLGA.png
+│   │   ├── EMPOLEON.png
+│   │   ├── ENTEI.png
+│   │   ├── ESCAVALIER.png
+│   │   ├── ESPEON.png
+│   │   ├── ESPURR.png
+│   │   ├── EXCADRILL.png
+│   │   ├── EXEGGCUTE.png
+│   │   ├── EXEGGUTOR.png
+│   │   ├── EXPLOUD.png
+│   │   ├── FALINKS.png
+│   │   ├── FARFETCHD.png
+│   │   ├── FEAROW.png
+│   │   ├── FEEBAS.png
+│   │   ├── FENNEKIN.png
+│   │   ├── FERALIGATR.png
+│   │   ├── FERROSEED.png
+│   │   ├── FERROTHORN.png
+│   │   ├── FINNEON.png
+│   │   ├── FLAAFFY.png
+│   │   ├── FLABEBE.png
+│   │   ├── FLAREON.png
+│   │   ├── FLETCHINDER.png
+│   │   ├── FLETCHLING.png
+│   │   ├── FLOATZEL.png
+│   │   ├── FLOETTE.png
+│   │   ├── FLORAGATO.png
+│   │   ├── FLORGES.png
+│   │   ├── FLYGON.png
+│   │   ├── FOMANTIS.png
+│   │   ├── FOONGUS.png
+│   │   ├── FORRETRESS.png
+│   │   ├── FRAXURE.png
+│   │   ├── FRIGIBAX.png
+│   │   ├── FRILLISH.png
+│   │   ├── FROAKIE.png
+│   │   ├── FROGADIER.png
+│   │   ├── FROSLASS.png
+│   │   ├── FUECOCO.png
+│   │   ├── FURFROU.png
+│   │   ├── FURRET.png
+│   │   ├── GABITE.png
+│   │   ├── GALLADE.png
+│   │   ├── GALVANTULA.png
+│   │   ├── GARBODOR.png
+│   │   ├── GARCHOMP.png
+│   │   ├── GARDEVOIR.png
+│   │   ├── GASTLY.png
+│   │   ├── GASTRODON.png
+│   │   ├── GENESECT.png
+│   │   ├── GENGAR.png
+│   │   ├── GEODUDE.png
+│   │   ├── GHOLDENGO.png
+│   │   ├── GIBLE.png
+│   │   ├── GIGALITH.png
+│   │   ├── GIMMIGHOUL.png
+│   │   ├── GIRAFARIG.png
+│   │   ├── GIRATINA.png
+│   │   ├── GLACEON.png
+│   │   ├── GLALIE.png
+│   │   ├── GLAMEOW.png
+│   │   ├── GLIGAR.png
+│   │   ├── GLISCOR.png
+│   │   ├── GLOOM.png
+│   │   ├── GOGOAT.png
+│   │   ├── GOLBAT.png
+│   │   ├── GOLDEEN.png
+│   │   ├── GOLDUCK.png
+│   │   ├── GOLEM.png
+│   │   ├── GOLETT.png
+│   │   ├── GOLISOPOD.png
+│   │   ├── GOLURK.png
+│   │   ├── GOODRA.png
+│   │   ├── GOOMY.png
+│   │   ├── GOREBYSS.png
+│   │   ├── GOTHITA.png
+│   │   ├── GOTHITELLE.png
+│   │   ├── GOTHORITA.png
+│   │   ├── GOURGEIST.png
+│   │   ├── GRANBULL.png
+│   │   ├── GRAVELER.png
+│   │   ├── GREAVARD.png
+│   │   ├── GREEDENT.png
+│   │   ├── GRENINJA.png
+│   │   ├── GRIMER.png
+│   │   ├── GROTLE.png
+│   │   ├── GROUDON.png
+│   │   ├── GROVYLE.png
+│   │   ├── GROWLITHE.png
+│   │   ├── GRUBBIN.png
+│   │   ├── GRUMPIG.png
+│   │   ├── GULPIN.png
+│   │   ├── GUMSHOOS.png
+│   │   ├── GURDURR.png
+│   │   ├── GUZZLORD.png
+│   │   ├── GYARADOS.png
+│   │   ├── HAKAMO_O.png
+│   │   ├── HAPPINY.png
+│   │   ├── HARIYAMA.png
+│   │   ├── HAUNTER.png
+│   │   ├── HAWLUCHA.png
+│   │   ├── HAXORUS.png
+│   │   ├── HEATMOR.png
+│   │   ├── HEATRAN.png
+│   │   ├── HELIOLISK.png
+│   │   ├── HELIOPTILE.png
+│   │   ├── HERACROSS.png
+│   │   ├── HERDIER.png
+│   │   ├── HIPPOPOTAS.png
+│   │   ├── HIPPOWDON.png
+│   │   ├── HITMONCHAN.png
+│   │   ├── HITMONLEE.png
+│   │   ├── HITMONTOP.png
+│   │   ├── HONCHKROW.png
+│   │   ├── HONEDGE.png
+│   │   ├── HOOPA.png
+│   │   ├── HOOTHOOT.png
+│   │   ├── HOPPIP.png
+│   │   ├── HORSEA.png
+│   │   ├── HOUNDOOM.png
+│   │   ├── HOUNDOUR.png
+│   │   ├── HOUNDSTONE.png
+│   │   ├── HO_OH.png
+│   │   ├── HUNTAIL.png
+│   │   ├── HYDREIGON.png
+│   │   ├── HYPNO.png
+│   │   ├── IGGLYBUFF.png
+│   │   ├── ILLUMISE.png
+│   │   ├── INCINEROAR.png
+│   │   ├── INFERNAPE.png
+│   │   ├── INKAY.png
+│   │   ├── IVYSAUR.png
+│   │   ├── JANGMO_O.png
+│   │   ├── JELLICENT.png
+│   │   ├── JIGGLYPUFF.png
+│   │   ├── JIRACHI.png
+│   │   ├── JOLTEON.png
+│   │   ├── JOLTIK.png
+│   │   ├── JUMPLUFF.png
+│   │   ├── JYNX.png
+│   │   ├── KABUTO.png
+│   │   ├── KABUTOPS.png
+│   │   ├── KADABRA.png
+│   │   ├── KAKUNA.png
+│   │   ├── KANGASKHAN.png
+│   │   ├── KARRABLAST.png
+│   │   ├── KARTANA.png
+│   │   ├── KECLEON.png
+│   │   ├── KELDEO.png
+│   │   ├── KINGDRA.png
+│   │   ├── KINGLER.png
+│   │   ├── KIRLIA.png
+│   │   ├── KLANG.png
+│   │   ├── KLEAVOR.png
+│   │   ├── KLEFKI.png
+│   │   ├── KLINK.png
+│   │   ├── KLINKLANG.png
+│   │   ├── KOFFING.png
+│   │   ├── KOMALA.png
+│   │   ├── KOMMO_O.png
+│   │   ├── KRABBY.png
+│   │   ├── KRICKETOT.png
+│   │   ├── KRICKETUNE.png
+│   │   ├── KROKOROK.png
+│   │   ├── KROOKODILE.png
+│   │   ├── KYOGRE.png
+│   │   ├── KYUREM.png
+│   │   ├── LAIRON.png
+│   │   ├── LAMPENT.png
+│   │   ├── LANDORUS.png
+│   │   ├── LANTURN.png
+│   │   ├── LAPRAS.png
+│   │   ├── LARVESTA.png
+│   │   ├── LARVITAR.png
+│   │   ├── LATIAS.png
+│   │   ├── LATIOS.png
+│   │   ├── LEAFEON.png
+│   │   ├── LEAVANNY.png
+│   │   ├── LECHONK.png
+│   │   ├── LEDIAN.png
+│   │   ├── LEDYBA.png
+│   │   ├── LICKILICKY.png
+│   │   ├── LICKITUNG.png
+│   │   ├── LIEPARD.png
+│   │   ├── LILEEP.png
+│   │   ├── LILLIGANT.png
+│   │   ├── LILLIPUP.png
+│   │   ├── LINOONE.png
+│   │   ├── LITLEO.png
+│   │   ├── LITTEN.png
+│   │   ├── LITWICK.png
+│   │   ├── LOKIX.png
+│   │   ├── LOMBRE.png
+│   │   ├── LOPUNNY.png
+│   │   ├── LOTAD.png
+│   │   ├── LOUDRED.png
+│   │   ├── LUCARIO.png
+│   │   ├── LUDICOLO.png
+│   │   ├── LUGIA.png
+│   │   ├── LUMINEON.png
+│   │   ├── LUNALA.png
+│   │   ├── LUNATONE.png
+│   │   ├── LURANTIS.png
+│   │   ├── LUVDISC.png
+│   │   ├── LUXIO.png
+│   │   ├── LUXRAY.png
+│   │   ├── LYCANROC.png
+│   │   ├── MACHAMP.png
+│   │   ├── MACHOKE.png
+│   │   ├── MACHOP.png
+│   │   ├── MAGBY.png
+│   │   ├── MAGCARGO.png
+│   │   ├── MAGIKARP.png
+│   │   ├── MAGMAR.png
+│   │   ├── MAGMORTAR.png
+│   │   ├── MAGNEMITE.png
+│   │   ├── MAGNETON.png
+│   │   ├── MAGNEZONE.png
+│   │   ├── MAKUHITA.png
+│   │   ├── MALAMAR.png
+│   │   ├── MAMOSWINE.png
+│   │   ├── MANAPHY.png
+│   │   ├── MANDIBUZZ.png
+│   │   ├── MANECTRIC.png
+│   │   ├── MANKEY.png
+│   │   ├── MANTINE.png
+│   │   ├── MANTYKE.png
+│   │   ├── MARACTUS.png
+│   │   ├── MAREANIE.png
+│   │   ├── MAREEP.png
+│   │   ├── MARILL.png
+│   │   ├── MAROWAK.png
+│   │   ├── MARSHTOMP.png
+│   │   ├── MASQUERAIN.png
+│   │   ├── MAWILE.png
+│   │   ├── MEDICHAM.png
+│   │   ├── MEDITITE.png
+│   │   ├── MEGANIUM.png
+│   │   ├── MELMETAL.png
+│   │   ├── MELOETTA.png
+│   │   ├── MELTAN.png
+│   │   ├── MEOWSCARADA.png
+│   │   ├── MEOWSTIC.png
+│   │   ├── MEOWTH.png
+│   │   ├── MESPRIT.png
+│   │   ├── METAGROSS.png
+│   │   ├── METANG.png
+│   │   ├── METAPOD.png
+│   │   ├── MEW.png
+│   │   ├── MEWTWO.png
+│   │   ├── MIENFOO.png
+│   │   ├── MIENSHAO.png
+│   │   ├── MIGHTYENA.png
+│   │   ├── MILOTIC.png
+│   │   ├── MILTANK.png
+│   │   ├── MIME_JR.png
+│   │   ├── MINCCINO.png
+│   │   ├── MINUN.png
+│   │   ├── MISDREAVUS.png
+│   │   ├── MISMAGIUS.png
+│   │   ├── MOLTRES.png
+│   │   ├── MONFERNO.png
+│   │   ├── MORELULL.png
+│   │   ├── MOTHIM.png
+│   │   ├── MR_MIME.png
+│   │   ├── MR_RIME.png
+│   │   ├── MUDKIP.png
+│   │   ├── MUK.png
+│   │   ├── MUNCHLAX.png
+│   │   ├── MUNNA.png
+│   │   ├── MURKROW.png
+│   │   ├── MUSHARNA.png
+│   │   ├── NATU.png
+│   │   ├── NIDOKING.png
+│   │   ├── NIDOQUEEN.png
+│   │   ├── NIDORAN_FEMALE.png
+│   │   ├── NIDORAN_MALE.png
+│   │   ├── NIDORINA.png
+│   │   ├── NIDORINO.png
+│   │   ├── NIHILEGO.png
+│   │   ├── NINCADA.png
+│   │   ├── NINETALES.png
+│   │   ├── NINJASK.png
+│   │   ├── NOCTOWL.png
+│   │   ├── NOIBAT.png
+│   │   ├── NOIVERN.png
+│   │   ├── NOSEPASS.png
+│   │   ├── NUMEL.png
+│   │   ├── NUZLEAF.png
+│   │   ├── NYMBLE.png
+│   │   ├── OBSTAGOON.png
+│   │   ├── OCTILLERY.png
+│   │   ├── ODDISH.png
+│   │   ├── OINKOLOGNE.png
+│   │   ├── OMANYTE.png
+│   │   ├── OMASTAR.png
+│   │   ├── ONIX.png
+│   │   ├── ORANGURU.png
+│   │   ├── ORICORIO.png
+│   │   ├── OSHAWOTT.png
+│   │   ├── OVERQWIL.png
+│   │   ├── PACHIRISU.png
+│   │   ├── PALKIA.png
+│   │   ├── PALOSSAND.png
+│   │   ├── PALPITOAD.png
+│   │   ├── PANCHAM.png
+│   │   ├── PANGORO.png
+│   │   ├── PANPOUR.png
+│   │   ├── PANSAGE.png
+│   │   ├── PANSEAR.png
+│   │   ├── PARAS.png
+│   │   ├── PARASECT.png
+│   │   ├── PASSIMIAN.png
+│   │   ├── PATRAT.png
+│   │   ├── PAWMI.png
+│   │   ├── PAWMO.png
+│   │   ├── PAWMOT.png
+│   │   ├── PAWNIARD.png
+│   │   ├── PELIPPER.png
+│   │   ├── PERRSERKER.png
+│   │   ├── PERSIAN.png
+│   │   ├── PETILIL.png
+│   │   ├── PHANPY.png
+│   │   ├── PHANTUMP.png
+│   │   ├── PHEROMOSA.png
+│   │   ├── PHIONE.png
+│   │   ├── PICHU.png
+│   │   ├── PIDGEOT.png
+│   │   ├── PIDGEOTTO.png
+│   │   ├── PIDGEY.png
+│   │   ├── PIDOVE.png
+│   │   ├── PIGNITE.png
+│   │   ├── PIKACHU.png
+│   │   ├── PIKIPEK.png
+│   │   ├── PILOSWINE.png
+│   │   ├── PINECO.png
+│   │   ├── PINSIR.png
+│   │   ├── PIPLUP.png
+│   │   ├── PLUSLE.png
+│   │   ├── POLITOED.png
+│   │   ├── POLIWAG.png
+│   │   ├── POLIWHIRL.png
+│   │   ├── POLIWRATH.png
+│   │   ├── PONYTA.png
+│   │   ├── POOCHYENA.png
+│   │   ├── POPPLIO.png
+│   │   ├── PORYGON.png
+│   │   ├── PORYGON2.png
+│   │   ├── PORYGON_Z.png
+│   │   ├── PRIMARINA.png
+│   │   ├── PRIMEAPE.png
+│   │   ├── PRINPLUP.png
+│   │   ├── PROBOPASS.png
+│   │   ├── PSYDUCK.png
+│   │   ├── PUMPKABOO.png
+│   │   ├── PUPITAR.png
+│   │   ├── PURRLOIN.png
+│   │   ├── PURUGLY.png
+│   │   ├── PYROAR.png
+│   │   ├── QUAGSIRE.png
+│   │   ├── QUAQUAVAL.png
+│   │   ├── QUAXLY.png
+│   │   ├── QUAXWELL.png
+│   │   ├── QUILAVA.png
+│   │   ├── QUILLADIN.png
+│   │   ├── QWILFISH.png
+│   │   ├── RAICHU.png
+│   │   ├── RAIKOU.png
+│   │   ├── RALTS.png
+│   │   ├── RAMPARDOS.png
+│   │   ├── RAPIDASH.png
+│   │   ├── RATICATE.png
+│   │   ├── RATTATA.png
+│   │   ├── RAYQUAZA.png
+│   │   ├── REGICE.png
+│   │   ├── REGIDRAGO.png
+│   │   ├── REGIELEKI.png
+│   │   ├── REGIGIGAS.png
+│   │   ├── REGIROCK.png
+│   │   ├── REGISTEEL.png
+│   │   ├── RELICANTH.png
+│   │   ├── REMORAID.png
+│   │   ├── RESHIRAM.png
+│   │   ├── REUNICLUS.png
+│   │   ├── RHYDON.png
+│   │   ├── RHYHORN.png
+│   │   ├── RHYPERIOR.png
+│   │   ├── RIBOMBEE.png
+│   │   ├── RIOLU.png
+│   │   ├── ROCKRUFF.png
+│   │   ├── ROGGENROLA.png
+│   │   ├── ROSELIA.png
+│   │   ├── ROSERADE.png
+│   │   ├── ROTOM.png
+│   │   ├── ROWLET.png
+│   │   ├── RUFFLET.png
+│   │   ├── RUNERIGUS.png
+│   │   ├── SABLEYE.png
+│   │   ├── SALAMENCE.png
+│   │   ├── SALANDIT.png
+│   │   ├── SALAZZLE.png
+│   │   ├── SAMUROTT.png
+│   │   ├── SANDILE.png
+│   │   ├── SANDSHREW.png
+│   │   ├── SANDSLASH.png
+│   │   ├── SANDYGAST.png
+│   │   ├── SAWK.png
+│   │   ├── SAWSBUCK.png
+│   │   ├── SCATTERBUG.png
+│   │   ├── SCEPTILE.png
+│   │   ├── SCIZOR.png
+│   │   ├── SCOLIPEDE.png
+│   │   ├── SCRAFTY.png
+│   │   ├── SCRAGGY.png
+│   │   ├── SCYTHER.png
+│   │   ├── SEADRA.png
+│   │   ├── SEAKING.png
+│   │   ├── SEALEO.png
+│   │   ├── SEEDOT.png
+│   │   ├── SEEL.png
+│   │   ├── SEISMITOAD.png
+│   │   ├── SENTRET.png
+│   │   ├── SERPERIOR.png
+│   │   ├── SERVINE.png
+│   │   ├── SEVIPER.png
+│   │   ├── SEWADDLE.png
+│   │   ├── SHARPEDO.png
+│   │   ├── SHAYMIN.png
+│   │   ├── SHEDINJA.png
+│   │   ├── SHELGON.png
+│   │   ├── SHELLDER.png
+│   │   ├── SHELLOS.png
+│   │   ├── SHELMET.png
+│   │   ├── SHIELDON.png
+│   │   ├── SHIFTRY.png
+│   │   ├── SHIINOTIC.png
+│   │   ├── SHINX.png
+│   │   ├── SHROOMISH.png
+│   │   ├── SHUCKLE.png
+│   │   ├── SHUPPET.png
+│   │   ├── SIGILYPH.png
+│   │   ├── SILCOON.png
+│   │   ├── SIMIPOUR.png
+│   │   ├── SIMISAGE.png
+│   │   ├── SIMISEAR.png
+│   │   ├── SIRFETCHD.png
+│   │   ├── SKARMORY.png
+│   │   ├── SKELEDIRGE.png
+│   │   ├── SKIDDO.png
+│   │   ├── SKIPLOOM.png
+│   │   ├── SKITTY.png
+│   │   ├── SKORUPI.png
+│   │   ├── SKRELP.png
+│   │   ├── SKUNTANK.png
+│   │   ├── SKWOVET.png
+│   │   ├── SLAKING.png
+│   │   ├── SLAKOTH.png
+│   │   ├── SLIGGOO.png
+│   │   ├── SLOWBRO.png
+│   │   ├── SLOWKING.png
+│   │   ├── SLOWPOKE.png
+│   │   ├── SLUGMA.png
+│   │   ├── SLURPUFF.png
+│   │   ├── SMEARGLE.png
+│   │   ├── SMOLIV.png
+│   │   ├── SMOOCHUM.png
+│   │   ├── SNEASEL.png
+│   │   ├── SNEASLER.png
+│   │   ├── SNIVY.png
+│   │   ├── SNORLAX.png
+│   │   ├── SNORUNT.png
+│   │   ├── SNOVER.png
+│   │   ├── SNUBBULL.png
+│   │   ├── SOLGALEO.png
+│   │   ├── SOLOSIS.png
+│   │   ├── SOLROCK.png
+│   │   ├── SPEAROW.png
+│   │   ├── SPEWPA.png
+│   │   ├── SPHEAL.png
+│   │   ├── SPINARAK.png
+│   │   ├── SPINDA.png
+│   │   ├── SPIRITOMB.png
+│   │   ├── SPOINK.png
+│   │   ├── SPRIGATITO.png
+│   │   ├── SPRITZEE.png
+│   │   ├── SQUIRTLE.png
+│   │   ├── STANTLER.png
+│   │   ├── STARAPTOR.png
+│   │   ├── STARAVIA.png
+│   │   ├── STARLY.png
+│   │   ├── STARMIE.png
+│   │   ├── STARYU.png
+│   │   ├── STEELIX.png
+│   │   ├── STEENEE.png
+│   │   ├── STOUTLAND.png
+│   │   ├── STUFFUL.png
+│   │   ├── STUNFISK.png
+│   │   ├── STUNKY.png
+│   │   ├── SUDOWOODO.png
+│   │   ├── SUICUNE.png
+│   │   ├── SUNFLORA.png
+│   │   ├── SUNKERN.png
+│   │   ├── SURSKIT.png
+│   │   ├── SWABLU.png
+│   │   ├── SWADLOON.png
+│   │   ├── SWALOT.png
+│   │   ├── SWAMPERT.png
+│   │   ├── SWANNA.png
+│   │   ├── SWELLOW.png
+│   │   ├── SWINUB.png
+│   │   ├── SWIRLIX.png
+│   │   ├── SWOOBAT.png
+│   │   ├── SYLVEON.png
+│   │   ├── TADBULB.png
+│   │   ├── TAILLOW.png
+│   │   ├── TALONFLAME.png
+│   │   ├── TANGELA.png
+│   │   ├── TANGROWTH.png
+│   │   ├── TAPU_BULU.png
+│   │   ├── TAPU_FINI.png
+│   │   ├── TAPU_KOKO.png
+│   │   ├── TAPU_LELE.png
+│   │   ├── TAUROS.png
+│   │   ├── TEDDIURSA.png
+│   │   ├── TENTACOOL.png
+│   │   ├── TENTACRUEL.png
+│   │   ├── TEPIG.png
+│   │   ├── TERRAKION.png
+│   │   ├── THROH.png
+│   │   ├── THUNDURUS.png
+│   │   ├── TIMBURR.png
+│   │   ├── TIRTOUGA.png
+│   │   ├── TOGEDEMARU.png
+│   │   ├── TOGEKISS.png
+│   │   ├── TOGEPI.png
+│   │   ├── TOGETIC.png
+│   │   ├── TORCHIC.png
+│   │   ├── TORKOAL.png
+│   │   ├── TORNADUS.png
+│   │   ├── TORRACAT.png
+│   │   ├── TORTERRA.png
+│   │   ├── TOTODILE.png
+│   │   ├── TOUCANNON.png
+│   │   ├── TOXAPEX.png
+│   │   ├── TOXICROAK.png
+│   │   ├── TRANQUILL.png
+│   │   ├── TRAPINCH.png
+│   │   ├── TREECKO.png
+│   │   ├── TREVENANT.png
+│   │   ├── TROPIUS.png
+│   │   ├── TRUBBISH.png
+│   │   ├── TRUMBEAK.png
+│   │   ├── TSAREENA.png
+│   │   ├── TURTONATOR.png
+│   │   ├── TURTWIG.png
+│   │   ├── TYMPOLE.png
+│   │   ├── TYNAMO.png
+│   │   ├── TYPHLOSION.png
+│   │   ├── TYRANITAR.png
+│   │   ├── TYRANTRUM.png
+│   │   ├── TYROGUE.png
+│   │   ├── TYRUNT.png
+│   │   ├── UMBREON.png
+│   │   ├── UNFEZANT.png
+│   │   ├── UNOWN.png
+│   │   ├── URSALUNA.png
+│   │   ├── URSARING.png
+│   │   ├── UXIE.png
+│   │   ├── VANILLISH.png
+│   │   ├── VANILLITE.png
+│   │   ├── VANILLUXE.png
+│   │   ├── VAPOREON.png
+│   │   ├── VENIPEDE.png
+│   │   ├── VENOMOTH.png
+│   │   ├── VENONAT.png
+│   │   ├── VENUSAUR.png
+│   │   ├── VESPIQUEN.png
+│   │   ├── VIBRAVA.png
+│   │   ├── VICTINI.png
+│   │   ├── VICTREEBEL.png
+│   │   ├── VIGOROTH.png
+│   │   ├── VIKAVOLT.png
+│   │   ├── VILEPLUME.png
+│   │   ├── VIRIZION.png
+│   │   ├── VIVILLON.png
+│   │   ├── VOLBEAT.png
+│   │   ├── VOLCANION.png
+│   │   ├── VOLCARONA.png
+│   │   ├── VOLTORB.png
+│   │   ├── VULLABY.png
+│   │   ├── VULPIX.png
+│   │   ├── WAILMER.png
+│   │   ├── WAILORD.png
+│   │   ├── WALREIN.png
+│   │   ├── WARTORTLE.png
+│   │   ├── WATCHOG.png
+│   │   ├── WEAVILE.png
+│   │   ├── WEEDLE.png
+│   │   ├── WEEPINBELL.png
+│   │   ├── WEEZING.png
+│   │   ├── WHIMSICOTT.png
+│   │   ├── WHIRLIPEDE.png
+│   │   ├── WHISCASH.png
+│   │   ├── WHISMUR.png
+│   │   ├── WIGGLYTUFF.png
+│   │   ├── WIMPOD.png
+│   │   ├── WINGULL.png
+│   │   ├── WOBBUFFET.png
+│   │   ├── WOOBAT.png
+│   │   ├── WOOLOO.png
+│   │   ├── WOOPER.png
+│   │   ├── WORMADAM.png
+│   │   ├── WURMPLE.png
+│   │   ├── WYNAUT.png
+│   │   ├── WYRDEER.png
+│   │   ├── XATU.png
+│   │   ├── XERNEAS.png
+│   │   ├── XURKITREE.png
+│   │   ├── YAMASK.png
+│   │   ├── YANMA.png
+│   │   ├── YANMEGA.png
+│   │   ├── YUNGOOS.png
+│   │   ├── YVELTAL.png
+│   │   ├── ZACIAN.png
+│   │   ├── ZAMAZENTA.png
+│   │   ├── ZANGOOSE.png
+│   │   ├── ZAPDOS.png
+│   │   ├── ZARUDE.png
+│   │   ├── ZEBSTRIKA.png
+│   │   ├── ZEKROM.png
+│   │   ├── ZIGZAGOON.png
+│   │   ├── ZOROARK.png
+│   │   ├── ZORUA.png
+│   │   ├── ZUBAT.png
+│   │   ├── ZWEILOUS.png
+│   │   └── ZYGARDE.png
+│   └── shiny
+│       ├── .gitignore
+│       ├── ABOMASNOW.png
+│       ├── ABRA.png
+│       ├── ABSOL.png
+│       ├── ACCELGOR.png
+│       ├── AERODACTYL.png
+│       ├── AGGRON.png
+│       ├── AIPOM.png
+│       ├── ALAKAZAM.png
+│       ├── ALOMOMOLA.png
+│       ├── ALTARIA.png
+│       ├── AMAURA.png
+│       ├── AMBIPOM.png
+│       ├── AMOONGUSS.png
+│       ├── AMPHAROS.png
+│       ├── ANORITH.png
+│       ├── ARAQUANID.png
+│       ├── ARBOK.png
+│       ├── ARBOLIVA.png
+│       ├── ARCANINE.png
+│       ├── ARCEUS.png
+│       ├── ARCHEN.png
+│       ├── ARCHEOPS.png
+│       ├── ARCTIBAX.png
+│       ├── ARIADOS.png
+│       ├── ARMALDO.png
+│       ├── AROMATISSE.png
+│       ├── ARON.png
+│       ├── ARTICUNO.png
+│       ├── AUDINO.png
+│       ├── AURORUS.png
+│       ├── AVALUGG.png
+│       ├── AXEW.png
+│       ├── AZELF.png
+│       ├── AZUMARILL.png
+│       ├── AZURILL.png
+│       ├── BAGON.png
+│       ├── BALTOY.png
+│       ├── BANETTE.png
+│       ├── BARBARACLE.png
+│       ├── BARBOACH.png
+│       ├── BASCULIN.png
+│       ├── BASTIODON.png
+│       ├── BAXCALIBUR.png
+│       ├── BAYLEEF.png
+│       ├── BEARTIC.png
+│       ├── BEAUTIFLY.png
+│       ├── BEEDRILL.png
+│       ├── BEHEEYEM.png
+│       ├── BELDUM.png
+│       ├── BELLIBOLT.png
+│       ├── BELLOSSOM.png
+│       ├── BELLSPROUT.png
+│       ├── BERGMITE.png
+│       ├── BEWEAR.png
+│       ├── BIBAREL.png
+│       ├── BIDOOF.png
+│       ├── BINACLE.png
+│       ├── BISHARP.png
+│       ├── BLASTOISE.png
+│       ├── BLAZIKEN.png
+│       ├── BLISSEY.png
+│       ├── BLITZLE.png
+│       ├── BOLDORE.png
+│       ├── BOMBIRDIER.png
+│       ├── BONSLY.png
+│       ├── BOUFFALANT.png
+│       ├── BOUNSWEET.png
+│       ├── BRAIXEN.png
+│       ├── BRAVIARY.png
+│       ├── BRELOOM.png
+│       ├── BRIONNE.png
+│       ├── BRONZONG.png
+│       ├── BRONZOR.png
+│       ├── BRUXISH.png
+│       ├── BUDEW.png
+│       ├── BUIZEL.png
+│       ├── BULBASAUR.png
+│       ├── BUNEARY.png
+│       ├── BUNNELBY.png
+│       ├── BURMY.png
+│       ├── BUTTERFREE.png
+│       ├── BUZZWOLE.png
+│       ├── CACNEA.png
+│       ├── CACTURNE.png
+│       ├── CAMERUPT.png
+│       ├── CARBINK.png
+│       ├── CARNIVINE.png
+│       ├── CARRACOSTA.png
+│       ├── CARVANHA.png
+│       ├── CASCOON.png
+│       ├── CASTFORM.png
+│       ├── CATERPIE.png
+│       ├── CELEBI.png
+│       ├── CELESTEELA.png
+│       ├── CETITAN.png
+│       ├── CETODDLE.png
+│       ├── CHANDELURE.png
+│       ├── CHANSEY.png
+│       ├── CHARIZARD.png
+│       ├── CHARJABUG.png
+│       ├── CHARMANDER.png
+│       ├── CHARMELEON.png
+│       ├── CHATOT.png
+│       ├── CHERRIM.png
+│       ├── CHERUBI.png
+│       ├── CHESNAUGHT.png
+│       ├── CHESPIN.png
+│       ├── CHIKORITA.png
+│       ├── CHIMCHAR.png
+│       ├── CHIMECHO.png
+│       ├── CHINCHOU.png
+│       ├── CHINGLING.png
+│       ├── CINCCINO.png
+│       ├── CLAMPERL.png
+│       ├── CLAUNCHER.png
+│       ├── CLAWITZER.png
+│       ├── CLAYDOL.png
+│       ├── CLEFABLE.png
+│       ├── CLEFAIRY.png
+│       ├── CLEFFA.png
+│       ├── CLODSIRE.png
+│       ├── CLOYSTER.png
+│       ├── COBALION.png
+│       ├── COFAGRIGUS.png
+│       ├── COMBEE.png
+│       ├── COMBUSKEN.png
+│       ├── COMFEY.png
+│       ├── CONKELDURR.png
+│       ├── CORPHISH.png
+│       ├── CORSOLA.png
+│       ├── COSMOEM.png
+│       ├── COTTONEE.png
+│       ├── CRABOMINABLE.png
+│       ├── CRABRAWLER.png
+│       ├── CRADILY.png
+│       ├── CRANIDOS.png
+│       ├── CRAWDAUNT.png
+│       ├── CRESSELIA.png
+│       ├── CROAGUNK.png
+│       ├── CROBAT.png
+│       ├── CROCALOR.png
+│       ├── CROCONAW.png
+│       ├── CRUSTLE.png
+│       ├── CRYOGONAL.png
+│       ├── CUBCHOO.png
+│       ├── CUBONE.png
+│       ├── CUTIEFLY.png
+│       ├── CYNDAQUIL.png
+│       ├── DARKRAI.png
+│       ├── DARMANITAN.png
+│       ├── DARTRIX.png
+│       ├── DARUMAKA.png
+│       ├── DECIDUEYE.png
+│       ├── DEDENNE.png
+│       ├── DEERLING.png
+│       ├── DEINO.png
+│       ├── DELCATTY.png
+│       ├── DELIBIRD.png
+│       ├── DELPHOX.png
+│       ├── DEOXYS.png
+│       ├── DEWGONG.png
+│       ├── DEWOTT.png
+│       ├── DEWPIDER.png
+│       ├── DIALGA.png
+│       ├── DIANCIE.png
+│       ├── DIGGERSBY.png
+│       ├── DIGLETT.png
+│       ├── DITTO.png
+│       ├── DODRIO.png
+│       ├── DODUO.png
+│       ├── DOLLIV.png
+│       ├── DONPHAN.png
+│       ├── DOUBLADE.png
+│       ├── DRAGALGE.png
+│       ├── DRAGONAIR.png
+│       ├── DRAGONITE.png
+│       ├── DRAPION.png
+│       ├── DRATINI.png
+│       ├── DRIFBLIM.png
+│       ├── DRIFLOON.png
+│       ├── DRILBUR.png
+│       ├── DROWZEE.png
+│       ├── DRUDDIGON.png
+│       ├── DUBWOOL.png
+│       ├── DUCKLETT.png
+│       ├── DUGTRIO.png
+│       ├── DUNSPARCE.png
+│       ├── DUOSION.png
+│       ├── DURANT.png
+│       ├── DUSCLOPS.png
+│       ├── DUSKNOIR.png
+│       ├── DUSKULL.png
+│       ├── DUSTOX.png
+│       ├── DWEBBLE.png
+│       ├── EELEKTRIK.png
+│       ├── EELEKTROSS.png
+│       ├── EEVEE.png
+│       ├── EKANS.png
+│       ├── ELECTABUZZ.png
+│       ├── ELECTIVIRE.png
+│       ├── ELECTRIKE.png
+│       ├── ELECTRODE.png
+│       ├── ELEKID.png
+│       ├── ELGYEM.png
+│       ├── EMBOAR.png
+│       ├── EMOLGA.png
+│       ├── EMPOLEON.png
+│       ├── ENTEI.png
+│       ├── ESCAVALIER.png
+│       ├── ESPEON.png
+│       ├── ESPURR.png
+│       ├── EXCADRILL.png
+│       ├── EXEGGCUTE.png
+│       ├── EXEGGUTOR.png
+│       ├── EXPLOUD.png
+│       ├── FALINKS.png
+│       ├── FARFETCHD.png
+│       ├── FEAROW.png
+│       ├── FEEBAS.png
+│       ├── FENNEKIN.png
+│       ├── FERALIGATR.png
+│       ├── FERROSEED.png
+│       ├── FERROTHORN.png
+│       ├── FINNEON.png
+│       ├── FLAAFFY.png
+│       ├── FLABEBE.png
+│       ├── FLAREON.png
+│       ├── FLETCHINDER.png
+│       ├── FLETCHLING.png
+│       ├── FLOATZEL.png
+│       ├── FLOETTE.png
+│       ├── FLORAGATO.png
+│       ├── FLORGES.png
+│       ├── FLYGON.png
+│       ├── FOMANTIS.png
+│       ├── FOONGUS.png
+│       ├── FORRETRESS.png
+│       ├── FRAXURE.png
+│       ├── FRIGIBAX.png
+│       ├── FRILLISH.png
+│       ├── FROAKIE.png
+│       ├── FROGADIER.png
+│       ├── FROSLASS.png
+│       ├── FUECOCO.png
+│       ├── FURFROU.png
+│       ├── FURRET.png
+│       ├── GABITE.png
+│       ├── GALLADE.png
+│       ├── GALVANTULA.png
+│       ├── GARBODOR.png
+│       ├── GARCHOMP.png
+│       ├── GARDEVOIR.png
+│       ├── GASTLY.png
+│       ├── GASTRODON.png
+│       ├── GENESECT.png
+│       ├── GENGAR.png
+│       ├── GEODUDE.png
+│       ├── GHOLDENGO.png
+│       ├── GIBLE.png
+│       ├── GIGALITH.png
+│       ├── GIMMIGHOUL.png
+│       ├── GIRAFARIG.png
+│       ├── GIRATINA.png
+│       ├── GLACEON.png
+│       ├── GLALIE.png
+│       ├── GLAMEOW.png
+│       ├── GLIGAR.png
+│       ├── GLISCOR.png
+│       ├── GLOOM.png
+│       ├── GOGOAT.png
+│       ├── GOLBAT.png
+│       ├── GOLDEEN.png
+│       ├── GOLDUCK.png
+│       ├── GOLEM.png
+│       ├── GOLETT.png
+│       ├── GOLISOPOD.png
+│       ├── GOLURK.png
+│       ├── GOODRA.png
+│       ├── GOOMY.png
+│       ├── GOREBYSS.png
+│       ├── GOTHITA.png
+│       ├── GOTHITELLE.png
+│       ├── GOTHORITA.png
+│       ├── GOURGEIST.png
+│       ├── GRANBULL.png
+│       ├── GRAVELER.png
+│       ├── GREAVARD.png
+│       ├── GREEDENT.png
+│       ├── GRENINJA.png
+│       ├── GRIMER.png
+│       ├── GROTLE.png
+│       ├── GROUDON.png
+│       ├── GROVYLE.png
+│       ├── GROWLITHE.png
+│       ├── GRUBBIN.png
+│       ├── GRUMPIG.png
+│       ├── GULPIN.png
+│       ├── GUMSHOOS.png
+│       ├── GURDURR.png
+│       ├── GUZZLORD.png
+│       ├── GYARADOS.png
+│       ├── HAKAMO_O.png
+│       ├── HAPPINY.png
+│       ├── HARIYAMA.png
+│       ├── HAUNTER.png
+│       ├── HAWLUCHA.png
+│       ├── HAXORUS.png
+│       ├── HEATMOR.png
+│       ├── HEATRAN.png
+│       ├── HELIOLISK.png
+│       ├── HELIOPTILE.png
+│       ├── HERACROSS.png
+│       ├── HERDIER.png
+│       ├── HIPPOPOTAS.png
+│       ├── HIPPOWDON.png
+│       ├── HITMONCHAN.png
+│       ├── HITMONLEE.png
+│       ├── HITMONTOP.png
+│       ├── HONCHKROW.png
+│       ├── HONEDGE.png
+│       ├── HOOTHOOT.png
+│       ├── HOPPIP.png
+│       ├── HORSEA.png
+│       ├── HOUNDOOM.png
+│       ├── HOUNDOUR.png
+│       ├── HOUNDSTONE.png
+│       ├── HO_OH.png
+│       ├── HUNTAIL.png
+│       ├── HYDREIGON.png
+│       ├── HYPNO.png
+│       ├── IGGLYBUFF.png
+│       ├── ILLUMISE.png
+│       ├── INCINEROAR.png
+│       ├── INFERNAPE.png
+│       ├── INKAY.png
+│       ├── IVYSAUR.png
+│       ├── JANGMO_O.png
+│       ├── JELLICENT.png
+│       ├── JIGGLYPUFF.png
+│       ├── JIRACHI.png
+│       ├── JOLTEON.png
+│       ├── JOLTIK.png
+│       ├── JUMPLUFF.png
+│       ├── JYNX.png
+│       ├── KABUTO.png
+│       ├── KABUTOPS.png
+│       ├── KADABRA.png
+│       ├── KAKUNA.png
+│       ├── KANGASKHAN.png
+│       ├── KARRABLAST.png
+│       ├── KARTANA.png
+│       ├── KECLEON.png
+│       ├── KELDEO.png
+│       ├── KINGDRA.png
+│       ├── KINGLER.png
+│       ├── KIRLIA.png
+│       ├── KLANG.png
+│       ├── KLEAVOR.png
+│       ├── KLEFKI.png
+│       ├── KLINK.png
+│       ├── KLINKLANG.png
+│       ├── KOFFING.png
+│       ├── KOMALA.png
+│       ├── KOMMO_O.png
+│       ├── KRABBY.png
+│       ├── KRICKETOT.png
+│       ├── KRICKETUNE.png
+│       ├── KROKOROK.png
+│       ├── KROOKODILE.png
+│       ├── KYOGRE.png
+│       ├── KYUREM.png
+│       ├── LAIRON.png
+│       ├── LAMPENT.png
+│       ├── LANDORUS.png
+│       ├── LANTURN.png
+│       ├── LAPRAS.png
+│       ├── LARVESTA.png
+│       ├── LARVITAR.png
+│       ├── LATIAS.png
+│       ├── LATIOS.png
+│       ├── LEAFEON.png
+│       ├── LEAVANNY.png
+│       ├── LECHONK.png
+│       ├── LEDIAN.png
+│       ├── LEDYBA.png
+│       ├── LICKILICKY.png
+│       ├── LICKITUNG.png
+│       ├── LIEPARD.png
+│       ├── LILEEP.png
+│       ├── LILLIGANT.png
+│       ├── LILLIPUP.png
+│       ├── LINOONE.png
+│       ├── LITLEO.png
+│       ├── LITTEN.png
+│       ├── LITWICK.png
+│       ├── LOKIX.png
+│       ├── LOMBRE.png
+│       ├── LOPUNNY.png
+│       ├── LOTAD.png
+│       ├── LOUDRED.png
+│       ├── LUCARIO.png
+│       ├── LUDICOLO.png
+│       ├── LUGIA.png
+│       ├── LUMINEON.png
+│       ├── LUNALA.png
+│       ├── LUNATONE.png
+│       ├── LURANTIS.png
+│       ├── LUVDISC.png
+│       ├── LUXIO.png
+│       ├── LUXRAY.png
+│       ├── LYCANROC.png
+│       ├── MACHAMP.png
+│       ├── MACHOKE.png
+│       ├── MACHOP.png
+│       ├── MAGBY.png
+│       ├── MAGCARGO.png
+│       ├── MAGIKARP.png
+│       ├── MAGMAR.png
+│       ├── MAGMORTAR.png
+│       ├── MAGNEMITE.png
+│       ├── MAGNETON.png
+│       ├── MAGNEZONE.png
+│       ├── MAKUHITA.png
+│       ├── MALAMAR.png
+│       ├── MAMOSWINE.png
+│       ├── MANAPHY.png
+│       ├── MANDIBUZZ.png
+│       ├── MANECTRIC.png
+│       ├── MANKEY.png
+│       ├── MANTINE.png
+│       ├── MANTYKE.png
+│       ├── MARACTUS.png
+│       ├── MAREANIE.png
+│       ├── MAREEP.png
+│       ├── MARILL.png
+│       ├── MAROWAK.png
+│       ├── MARSHTOMP.png
+│       ├── MASQUERAIN.png
+│       ├── MAWILE.png
+│       ├── MEDICHAM.png
+│       ├── MEDITITE.png
+│       ├── MEGANIUM.png
+│       ├── MELMETAL.png
+│       ├── MELOETTA.png
+│       ├── MELTAN.png
+│       ├── MEOWSCARADA.png
+│       ├── MEOWSTIC.png
+│       ├── MEOWTH.png
+│       ├── MESPRIT.png
+│       ├── METAGROSS.png
+│       ├── METANG.png
+│       ├── METAPOD.png
+│       ├── MEW.png
+│       ├── MEWTWO.png
+│       ├── MIENFOO.png
+│       ├── MIENSHAO.png
+│       ├── MIGHTYENA.png
+│       ├── MILOTIC.png
+│       ├── MILTANK.png
+│       ├── MIME_JR.png
+│       ├── MINCCINO.png
+│       ├── MINUN.png
+│       ├── MISDREAVUS.png
+│       ├── MISMAGIUS.png
+│       ├── MOLTRES.png
+│       ├── MONFERNO.png
+│       ├── MORELULL.png
+│       ├── MOTHIM.png
+│       ├── MR_MIME.png
+│       ├── MR_RIME.png
+│       ├── MUDKIP.png
+│       ├── MUK.png
+│       ├── MUNCHLAX.png
+│       ├── MUNNA.png
+│       ├── MURKROW.png
+│       ├── MUSHARNA.png
+│       ├── NATU.png
+│       ├── NIDOKING.png
+│       ├── NIDOQUEEN.png
+│       ├── NIDORAN_FEMALE.png
+│       ├── NIDORAN_MALE.png
+│       ├── NIDORINA.png
+│       ├── NIDORINO.png
+│       ├── NIHILEGO.png
+│       ├── NINCADA.png
+│       ├── NINETALES.png
+│       ├── NINJASK.png
+│       ├── NOCTOWL.png
+│       ├── NOIBAT.png
+│       ├── NOIVERN.png
+│       ├── NOSEPASS.png
+│       ├── NUMEL.png
+│       ├── NUZLEAF.png
+│       ├── NYMBLE.png
+│       ├── OBSTAGOON.png
+│       ├── OCTILLERY.png
+│       ├── ODDISH.png
+│       ├── OINKOLOGNE.png
+│       ├── OMANYTE.png
+│       ├── OMASTAR.png
+│       ├── ONIX.png
+│       ├── ORANGURU.png
+│       ├── ORICORIO.png
+│       ├── OSHAWOTT.png
+│       ├── OVERQWIL.png
+│       ├── PACHIRISU.png
+│       ├── PALKIA.png
+│       ├── PALOSSAND.png
+│       ├── PALPITOAD.png
+│       ├── PANCHAM.png
+│       ├── PANGORO.png
+│       ├── PANPOUR.png
+│       ├── PANSAGE.png
+│       ├── PANSEAR.png
+│       ├── PARAS.png
+│       ├── PARASECT.png
+│       ├── PASSIMIAN.png
+│       ├── PATRAT.png
+│       ├── PAWMI.png
+│       ├── PAWMO.png
+│       ├── PAWMOT.png
+│       ├── PAWNIARD.png
+│       ├── PELIPPER.png
+│       ├── PERRSERKER.png
+│       ├── PERSIAN.png
+│       ├── PETILIL.png
+│       ├── PHANPY.png
+│       ├── PHANTUMP.png
+│       ├── PHEROMOSA.png
+│       ├── PHIONE.png
+│       ├── PICHU.png
+│       ├── PIDGEOT.png
+│       ├── PIDGEOTTO.png
+│       ├── PIDGEY.png
+│       ├── PIDOVE.png
+│       ├── PIGNITE.png
+│       ├── PIKACHU.png
+│       ├── PIKIPEK.png
+│       ├── PILOSWINE.png
+│       ├── PINECO.png
+│       ├── PINSIR.png
+│       ├── PIPLUP.png
+│       ├── PLUSLE.png
+│       ├── POLITOED.png
+│       ├── POLIWAG.png
+│       ├── POLIWHIRL.png
+│       ├── POLIWRATH.png
+│       ├── PONYTA.png
+│       ├── POOCHYENA.png
+│       ├── POPPLIO.png
+│       ├── PORYGON.png
+│       ├── PORYGON2.png
+│       ├── PORYGON_Z.png
+│       ├── PRIMARINA.png
+│       ├── PRIMEAPE.png
+│       ├── PRINPLUP.png
+│       ├── PROBOPASS.png
+│       ├── PSYDUCK.png
+│       ├── PUMPKABOO.png
+│       ├── PUPITAR.png
+│       ├── PURRLOIN.png
+│       ├── PURUGLY.png
+│       ├── PYROAR.png
+│       ├── QUAGSIRE.png
+│       ├── QUAQUAVAL.png
+│       ├── QUAXLY.png
+│       ├── QUAXWELL.png
+│       ├── QUILAVA.png
+│       ├── QUILLADIN.png
+│       ├── QWILFISH.png
+│       ├── RAICHU.png
+│       ├── RAIKOU.png
+│       ├── RALTS.png
+│       ├── RAMPARDOS.png
+│       ├── RAPIDASH.png
+│       ├── RATICATE.png
+│       ├── RATTATA.png
+│       ├── RAYQUAZA.png
+│       ├── REGICE.png
+│       ├── REGIDRAGO.png
+│       ├── REGIELEKI.png
+│       ├── REGIGIGAS.png
+│       ├── REGIROCK.png
+│       ├── REGISTEEL.png
+│       ├── RELICANTH.png
+│       ├── REMORAID.png
+│       ├── RESHIRAM.png
+│       ├── REUNICLUS.png
+│       ├── RHYDON.png
+│       ├── RHYHORN.png
+│       ├── RHYPERIOR.png
+│       ├── RIBOMBEE.png
+│       ├── RIOLU.png
+│       ├── ROCKRUFF.png
+│       ├── ROGGENROLA.png
+│       ├── ROSELIA.png
+│       ├── ROSERADE.png
+│       ├── ROTOM.png
+│       ├── ROWLET.png
+│       ├── RUFFLET.png
+│       ├── RUNERIGUS.png
+│       ├── SABLEYE.png
+│       ├── SALAMENCE.png
+│       ├── SALANDIT.png
+│       ├── SALAZZLE.png
+│       ├── SAMUROTT.png
+│       ├── SANDILE.png
+│       ├── SANDSHREW.png
+│       ├── SANDSLASH.png
+│       ├── SANDYGAST.png
+│       ├── SAWK.png
+│       ├── SAWSBUCK.png
+│       ├── SCATTERBUG.png
+│       ├── SCEPTILE.png
+│       ├── SCIZOR.png
+│       ├── SCOLIPEDE.png
+│       ├── SCRAFTY.png
+│       ├── SCRAGGY.png
+│       ├── SCYTHER.png
+│       ├── SEADRA.png
+│       ├── SEAKING.png
+│       ├── SEALEO.png
+│       ├── SEEDOT.png
+│       ├── SEEL.png
+│       ├── SEISMITOAD.png
+│       ├── SENTRET.png
+│       ├── SERPERIOR.png
+│       ├── SERVINE.png
+│       ├── SEVIPER.png
+│       ├── SEWADDLE.png
+│       ├── SHARPEDO.png
+│       ├── SHAYMIN.png
+│       ├── SHEDINJA.png
+│       ├── SHELGON.png
+│       ├── SHELLDER.png
+│       ├── SHELLOS.png
+│       ├── SHELMET.png
+│       ├── SHIELDON.png
+│       ├── SHIFTRY.png
+│       ├── SHIINOTIC.png
+│       ├── SHINX.png
+│       ├── SHROOMISH.png
+│       ├── SHUCKLE.png
+│       ├── SHUPPET.png
+│       ├── SIGILYPH.png
+│       ├── SILCOON.png
+│       ├── SIMIPOUR.png
+│       ├── SIMISAGE.png
+│       ├── SIMISEAR.png
+│       ├── SIRFETCHD.png
+│       ├── SKARMORY.png
+│       ├── SKELEDIRGE.png
+│       ├── SKIDDO.png
+│       ├── SKIPLOOM.png
+│       ├── SKITTY.png
+│       ├── SKORUPI.png
+│       ├── SKRELP.png
+│       ├── SKUNTANK.png
+│       ├── SKWOVET.png
+│       ├── SLAKING.png
+│       ├── SLAKOTH.png
+│       ├── SLIGGOO.png
+│       ├── SLOWBRO.png
+│       ├── SLOWKING.png
+│       ├── SLOWPOKE.png
+│       ├── SLUGMA.png
+│       ├── SLURPUFF.png
+│       ├── SMEARGLE.png
+│       ├── SMOLIV.png
+│       ├── SMOOCHUM.png
+│       ├── SNEASEL.png
+│       ├── SNEASLER.png
+│       ├── SNIVY.png
+│       ├── SNORLAX.png
+│       ├── SNORUNT.png
+│       ├── SNOVER.png
+│       ├── SNUBBULL.png
+│       ├── SOLGALEO.png
+│       ├── SOLOSIS.png
+│       ├── SOLROCK.png
+│       ├── SPEAROW.png
+│       ├── SPEWPA.png
+│       ├── SPHEAL.png
+│       ├── SPINARAK.png
+│       ├── SPINDA.png
+│       ├── SPIRITOMB.png
+│       ├── SPOINK.png
+│       ├── SPRIGATITO.png
+│       ├── SPRITZEE.png
+│       ├── SQUIRTLE.png
+│       ├── STANTLER.png
+│       ├── STARAPTOR.png
+│       ├── STARAVIA.png
+│       ├── STARLY.png
+│       ├── STARMIE.png
+│       ├── STARYU.png
+│       ├── STEELIX.png
+│       ├── STEENEE.png
+│       ├── STOUTLAND.png
+│       ├── STUFFUL.png
+│       ├── STUNFISK.png
+│       ├── STUNKY.png
+│       ├── SUDOWOODO.png
+│       ├── SUICUNE.png
+│       ├── SUNFLORA.png
+│       ├── SUNKERN.png
+│       ├── SURSKIT.png
+│       ├── SWABLU.png
+│       ├── SWADLOON.png
+│       ├── SWALOT.png
+│       ├── SWAMPERT.png
+│       ├── SWANNA.png
+│       ├── SWELLOW.png
+│       ├── SWINUB.png
+│       ├── SWIRLIX.png
+│       ├── SWOOBAT.png
+│       ├── SYLVEON.png
+│       ├── TADBULB.png
+│       ├── TAILLOW.png
+│       ├── TALONFLAME.png
+│       ├── TANGELA.png
+│       ├── TANGROWTH.png
+│       ├── TAPU_BULU.png
+│       ├── TAPU_FINI.png
+│       ├── TAPU_KOKO.png
+│       ├── TAPU_LELE.png
+│       ├── TAUROS.png
+│       ├── TEDDIURSA.png
+│       ├── TENTACOOL.png
+│       ├── TENTACRUEL.png
+│       ├── TEPIG.png
+│       ├── TERRAKION.png
+│       ├── THROH.png
+│       ├── THUNDURUS.png
+│       ├── TIMBURR.png
+│       ├── TIRTOUGA.png
+│       ├── TOGEDEMARU.png
+│       ├── TOGEKISS.png
+│       ├── TOGEPI.png
+│       ├── TOGETIC.png
+│       ├── TORCHIC.png
+│       ├── TORKOAL.png
+│       ├── TORNADUS.png
+│       ├── TORRACAT.png
+│       ├── TORTERRA.png
+│       ├── TOTODILE.png
+│       ├── TOUCANNON.png
+│       ├── TOXAPEX.png
+│       ├── TOXICROAK.png
+│       ├── TRANQUILL.png
+│       ├── TRAPINCH.png
+│       ├── TREECKO.png
+│       ├── TREVENANT.png
+│       ├── TROPIUS.png
+│       ├── TRUBBISH.png
+│       ├── TRUMBEAK.png
+│       ├── TSAREENA.png
+│       ├── TURTONATOR.png
+│       ├── TURTWIG.png
+│       ├── TYMPOLE.png
+│       ├── TYNAMO.png
+│       ├── TYPHLOSION.png
+│       ├── TYRANITAR.png
+│       ├── TYRANTRUM.png
+│       ├── TYROGUE.png
+│       ├── TYRUNT.png
+│       ├── UMBREON.png
+│       ├── UNFEZANT.png
+│       ├── UNOWN.png
+│       ├── URSALUNA.png
+│       ├── URSARING.png
+│       ├── UXIE.png
+│       ├── VANILLISH.png
+│       ├── VANILLITE.png
+│       ├── VANILLUXE.png
+│       ├── VAPOREON.png
+│       ├── VENIPEDE.png
+│       ├── VENOMOTH.png
+│       ├── VENONAT.png
+│       ├── VENUSAUR.png
+│       ├── VESPIQUEN.png
+│       ├── VIBRAVA.png
+│       ├── VICTINI.png
+│       ├── VICTREEBEL.png
+│       ├── VIGOROTH.png
+│       ├── VIKAVOLT.png
+│       ├── VILEPLUME.png
+│       ├── VIRIZION.png
+│       ├── VIVILLON.png
+│       ├── VOLBEAT.png
+│       ├── VOLCARONA.png
+│       ├── VOLTORB.png
+│       ├── VULLABY.png
+│       ├── VULPIX.png
+│       ├── WAILMER.png
+│       ├── WAILORD.png
+│       ├── WALREIN.png
+│       ├── WARTORTLE.png
+│       ├── WATCHOG.png
+│       ├── WEAVILE.png
+│       ├── WEEDLE.png
+│       ├── WEEPINBELL.png
+│       ├── WEEZING.png
+│       ├── WHIMSICOTT.png
+│       ├── WHIRLIPEDE.png
+│       ├── WHISCASH.png
+│       ├── WHISMUR.png
+│       ├── WIGGLYTUFF.png
+│       ├── WIMPOD.png
+│       ├── WINGULL.png
+│       ├── WOBBUFFET.png
+│       ├── WOOBAT.png
+│       ├── WOOLOO.png
+│       ├── WOOPER.png
+│       ├── WORMADAM.png
+│       ├── WURMPLE.png
+│       ├── WYNAUT.png
+│       ├── WYRDEER.png
+│       ├── XATU.png
+│       ├── XERNEAS.png
+│       ├── XURKITREE.png
+│       ├── YAMASK.png
+│       ├── YANMA.png
+│       ├── YANMEGA.png
+│       ├── YUNGOOS.png
+│       ├── YVELTAL.png
+│       ├── ZANGOOSE.png
+│       ├── ZAPDOS.png
+│       ├── ZEBSTRIKA.png
+│       ├── ZEKROM.png
+│       ├── ZIGZAGOON.png
+│       ├── ZOROARK.png
+│       ├── ZORUA.png
+│       ├── ZUBAT.png
+│       ├── ZWEILOUS.png
+│       └── ZYGARDE.png
+└── tree.txt
+
+3 directories, 1682 files

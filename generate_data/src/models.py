@@ -43,8 +43,8 @@ class ApiEvolution(MyBaseModel):
     id: str
     form_id: str
     candies: int
-    item: dict | None
-    quests: list[dict]
+    item: dict[str, Any] | None
+    quests: list[dict[str, Any]]
 
 
 class ApiForm(MyBaseModel):
@@ -66,9 +66,21 @@ class ApiPokemon(MyBaseModel):
     secondary_type: ApiType | None
     pokemon_class: str | None
     assets: ApiAssets | None
-    asset_forms: list[ApiForm]
-    region_forms: dict[str, Any] | list[None]
+    asset_forms: list[ApiForm] = []
+    region_forms: dict[str, ApiPokemon] | list[None]
     evolutions: list[ApiEvolution]
+
+    def get_all_evolutions(self) -> list[PokemonId]:
+        """リージョンフォームも含め, 全ての可能な進化先のポケモンの id のリスト取得する
+        example:
+            - ウパー -> [ヌオー, ドオー]
+            - ナゾノクサ -> [クサイハナ, ラフレシア, キレイハナ]
+        """
+        evolutions = [e.id for e in self.evolutions]
+        if isinstance(self.region_forms, dict):
+            for region_pokemon in self.region_forms.values():
+                evolutions += [e.id for e in region_pokemon.evolutions]
+        return list(dict.fromkeys(evolutions))
 
 
 class Pokemon(MyBaseModel):
@@ -87,21 +99,18 @@ class Pokemon(MyBaseModel):
     pokemon_class: str | None
     status: ApiStats | None = None
 
-    # images
-    image_url: HttpUrl | None = None
-    shiny_image_url: HttpUrl | None = None
-
     # 進化
     prev_evolve_api_ids: list[str]
     next_evolve_api_ids: list[str]
 
     @classmethod
     def from_api_pokemon(cls, api_pokemon: ApiPokemon) -> Pokemon:
+        # 進化先
         data = dict(
             pokemonId=api_pokemon.id,
             name=api_pokemon.names.Japanese,
             dexNo=api_pokemon.dex_nr,
-            form=api_pokemon.form_id,
+            form="NORMAL",
             generation=api_pokemon.generation,
             # //
             exist=False,
@@ -115,11 +124,23 @@ class Pokemon(MyBaseModel):
             pokemonClass=api_pokemon.pokemon_class,
             status=api_pokemon.stats,
             # //
-            imageUrl=None if api_pokemon.assets is None else api_pokemon.assets.image,
-            shinyImageUrl=None if api_pokemon.assets is None else api_pokemon.assets.shiny_image,
-            # //
-            prevEvolveApIds=[],
-            nextEvolveApIds=[e.id for e in api_pokemon.evolutions],
+            prevEvolveApiIds=[],
+            nextEvolveApiIds=api_pokemon.get_all_evolutions(),
         )
         ta = TypeAdapter(Pokemon)
         return ta.validate_python(data)
+
+    def add_prev_evolve_ids(self, pokemon_id: str) -> None:
+        if pokemon_id not in self.prev_evolve_api_ids:
+            self.prev_evolve_api_ids.append(pokemon_id)
+
+    def is_updated(self, other: Pokemon) -> bool:
+        """self と other の値を比較して, API 情報に更新があるかどうかを判定する
+        exist に関しては API から取れない情報なので比較しない
+        """
+        self_dict = self.model_dump()
+        other_dict = other.model_dump()
+        for d in [self_dict, other_dict]:
+            for key in ["exist", "exist_shiny", "exist_shadow"]:
+                d.pop(key)
+        return self_dict != other_dict

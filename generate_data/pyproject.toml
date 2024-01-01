@@ -3,6 +3,9 @@ name = "my-pokedex"
 version = "0.1.0"
 description = ""
 authors = ["simamumu"]
+packages = [
+    { include = "src" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -16,6 +19,7 @@ tqdm = "^4.65.0"
 pydantic = "^2.5.3"
 inflection = "^0.5.1"
 firebase-admin = "^6.3.0"
+types-requests = "^2.31.0.20231231"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.8.0"
