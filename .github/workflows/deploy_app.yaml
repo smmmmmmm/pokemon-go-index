@@ -76,7 +76,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: frontend/public/images/**/*.png
-          key: ${{ runner.os }}-public-images-${{ hashFiles('frontend/public/images/hash.txt') }}
+          key: ${{ runner.os }}-public-images-${{ hashFiles('frontend/public/images/tree.txt') }}
           restore-keys: ${{ runner.os }}-public-images-
 
       - name: Download public images, from GCS to local
