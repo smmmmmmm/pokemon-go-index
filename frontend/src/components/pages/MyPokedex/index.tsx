@@ -12,6 +12,7 @@ import {
 import { SimpleToggleIconButton } from "@/components/uiParts/ToggleIconButton";
 import { PokemonFilteringOption } from "@/features/pokemons";
 import { DefaultPokemonFilteringOption } from "@/features/pokemons/model/filtering";
+import { useUser } from "@/features/users";
 
 export const MyPokedex: FC = () => {
   const [pokemonFilterOption, setPokemonFilterOption] =
@@ -20,6 +21,7 @@ export const MyPokedex: FC = () => {
       generation: 1,
     });
 
+  const { isAdmin } = useUser();
   const [isEdit, setIsEdit] = useBoolean(false);
 
   return (
@@ -31,12 +33,14 @@ export const MyPokedex: FC = () => {
             setPokemonFilterOption={setPokemonFilterOption}
           />
         </Box>
-        <SimpleToggleIconButton
-          toggle={setIsEdit.toggle}
-          isOn={isEdit}
-          onIcon={<CheckIcon />}
-          offIcon={<EditIcon />}
-        />
+        {isAdmin && (
+          <SimpleToggleIconButton
+            toggle={setIsEdit.toggle}
+            isOn={isEdit}
+            onIcon={<CheckIcon />}
+            offIcon={<EditIcon />}
+          />
+        )}
       </HStack>
       <Box flex={1} overflow={"hidden"} w="100%">
         {isEdit ? (
