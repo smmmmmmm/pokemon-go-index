@@ -9,7 +9,7 @@ export type { PokemonFilteringOption } from "@/features/pokemons/model/filtering
 
 // usecases
 export { useAllPokemonsGet } from "@/features/pokemons/usecase/useAllPokemonsGet";
-export { useUpdatePokemons } from "@/features/pokemons/usecase/useUpdatePokemons";
+export { useUpdatePokemonExist } from "@/features/pokemons/usecase/useUpdatePokemonExist";
 
 // custom hooks
 export { useFilteringPokemons } from "@/features/pokemons/hooks/useFilterPokemon";
