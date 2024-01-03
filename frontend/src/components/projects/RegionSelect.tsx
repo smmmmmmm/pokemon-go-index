@@ -22,7 +22,7 @@ export const RegionSelect: React.FC<{
       <option value={6}> カロス </option>
       <option value={7}> アローラ </option>
       <option value={8}> ガラル </option>
-      <option value={9}> ヒスイ </option>
+      <option value={9}> ヒスイ&パルデア </option>
     </Select>
   );
 };
