@@ -1,5 +1,4 @@
 import { FC, useMemo, useState } from "react";
-import React from "react";
 
 import {
   Box,
@@ -64,13 +63,11 @@ export const PokedexProgress: FC = () => {
         },
         shiny: {
           myCount: userPokedexProgress.shiny,
-          allCount: filteredPokemons.filter((pokemon) => pokemon.existShiny)
-            .length,
+          allCount: filteredPokemons.length,
         },
         shinyStar3: {
           myCount: userPokedexProgress.shinyStar3,
-          allCount: filteredPokemons.filter((pokemon) => pokemon.existShiny)
-            .length,
+          allCount: filteredPokemons.length,
         },
         max: {
           myCount: userPokedexProgress.max + 3,
@@ -78,13 +75,11 @@ export const PokedexProgress: FC = () => {
         },
         shadow: {
           myCount: userPokedexProgress.shadow,
-          allCount: filteredPokemons.filter((pokemon) => pokemon.existShiny)
-            .length,
+          allCount: filteredPokemons.length,
         },
         purify: {
           myCount: userPokedexProgress.purify,
-          allCount: filteredPokemons.filter((pokemon) => pokemon.existShiny)
-            .length,
+          allCount: filteredPokemons.length,
         },
         lucky: {
           myCount: userPokedexProgress.lucky,
