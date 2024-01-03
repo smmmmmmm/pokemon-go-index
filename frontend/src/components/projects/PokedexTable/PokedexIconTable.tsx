@@ -1,9 +1,9 @@
 import React from "react";
 
-import { SimpleGrid } from "@chakra-ui/react";
-import { Box, Center, Image, Text } from "@chakra-ui/react";
+import { Box, Center, Image, SimpleGrid, Text } from "@chakra-ui/react";
 
 import { DisplayPokemon, Pokemon } from "@/features/pokemons";
+import { useGetPokemonExist } from "@/features/pokemons/usecase/useGetPokemonExist";
 import {
   PokedexType,
   usePokedexPageGet,
@@ -20,6 +20,7 @@ export const PokedexIcon: React.FC<{
   const { pokemon, isExtra, pokedexType, userId } = props;
 
   const { userPokedex } = usePokedexPageGet(userId, pokemon);
+  const { pokemonExist } = useGetPokemonExist(pokemon.pokemonId);
   const { mutatePageUpdate, isPageUpdateLoading } = usePokedexPageUpdate(
     userId,
     pokemon.pokemonId
@@ -29,7 +30,7 @@ export const PokedexIcon: React.FC<{
     if (
       isPageUpdateLoading ||
       !userPokedex ||
-      !pokemon.isImplemented(pokedexType)
+      !pokemon.isImplemented(pokedexType, pokemonExist)
     ) {
       return;
     }
@@ -44,7 +45,7 @@ export const PokedexIcon: React.FC<{
           borderWidth="1px"
           borderColor="gray.500"
           bgColor={
-            pokemon.isImplemented(pokedexType)
+            pokemon.isImplemented(pokedexType, pokemonExist)
               ? userPokedex.isHaving[pokedexType]
                 ? "#bff5cd"
                 : "white"

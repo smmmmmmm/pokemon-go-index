@@ -3,6 +3,14 @@ import { PokedexType } from "@/features/userPokedex";
 
 export type PokemonId = string;
 
+export type ExsitType = "exist" | "existShiny" | "existShadow";
+
+export type PokemonExist = {
+  exist: boolean;
+  existShiny: boolean;
+  existShadow: boolean;
+};
+
 interface Status {
   stamina: number;
   attack: number;
@@ -25,12 +33,8 @@ export interface PokemonInterface {
   // 進化
   prevEvolveApiIds: PokemonId[];
   nextEvolveApiIds: PokemonId[];
-
-  // 実装
-  exist: boolean;
-  existShiny: boolean;
-  existShadow: boolean;
 }
+
 export class Pokemon {
   public pokemonId: PokemonId;
 
@@ -54,11 +58,6 @@ export class Pokemon {
   public prevEvolveApiIds: PokemonId[];
   public nextEvolveApiIds: PokemonId[];
 
-  // 実装
-  public exist: boolean;
-  public existShiny: boolean;
-  public existShadow: boolean;
-
   constructor(data: PokemonInterface) {
     this.pokemonId = data.pokemonId;
     this.form = data.form;
@@ -71,9 +70,6 @@ export class Pokemon {
     this.pokemonClass = data.pokemonClass;
     this.prevEvolveApiIds = data.prevEvolveApiIds;
     this.nextEvolveApiIds = data.nextEvolveApiIds;
-    this.exist = data.exist;
-    this.existShiny = data.existShiny;
-    this.existShadow = data.existShadow;
   }
 
   isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
@@ -94,21 +90,6 @@ export class Pokemon {
       return false;
     }
 
-    // 実装状況
-    if (
-      pokemonFilteringOption.existShiny !== undefined &&
-      pokemonFilteringOption.existShiny != this.existShiny
-    ) {
-      return false;
-    }
-
-    if (
-      pokemonFilteringOption.existShadow !== undefined &&
-      pokemonFilteringOption.existShadow != this.existShadow
-    ) {
-      return false;
-    }
-
     return true;
   }
 
@@ -120,15 +101,26 @@ export class Pokemon {
     return `/images/pokemons/shiny/${this.pokemonId}.png`;
   }
 
-  isImplemented(pokedexType: PokedexType): boolean {
-    if (pokedexType == "purify" || pokedexType == "shadow") {
-      if (!this.existShadow) {
+  isImplemented(
+    pokedexType: PokedexType,
+    pokemonExist: PokemonExist | undefined
+  ) {
+    if (pokemonExist === undefined) {
+      return false;
+    }
+
+    if (!pokemonExist.exist) {
+      return false;
+    }
+
+    if (pokedexType === "purify" || pokedexType === "shadow") {
+      if (!pokemonExist.existShadow) {
         // シャドウが存在しない
         return false;
       }
     }
-    if (pokedexType == "shiny" || pokedexType == "shinyStar3") {
-      if (!this.existShiny) {
+    if (pokedexType === "shiny" || pokedexType === "shinyStar3") {
+      if (!pokemonExist.existShiny) {
         // 色違いが存在しない
         return false;
       }

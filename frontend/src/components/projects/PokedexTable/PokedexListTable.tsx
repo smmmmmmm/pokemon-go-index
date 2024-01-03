@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Center, HStack, Image, Text } from "@chakra-ui/react";
 
 import { DisplayPokemon, Pokemon } from "@/features/pokemons";
+import { useGetPokemonExist } from "@/features/pokemons/usecase/useGetPokemonExist";
 import {
   PokedexType,
   PokedexTypeChoices,
@@ -19,6 +20,7 @@ const PokedexRow: React.FC<{
   const { pokemon, isExtra, userId } = props;
 
   const { userPokedex } = usePokedexPageGet(userId, pokemon);
+  const { pokemonExist } = useGetPokemonExist(pokemon.pokemonId);
   const { mutatePageUpdate, isPageUpdateLoading } = usePokedexPageUpdate(
     userId,
     pokemon.pokemonId
@@ -54,7 +56,7 @@ const PokedexRow: React.FC<{
             </Text>
           </Box>
           {PokedexTypeChoices.map((pokedexType: PokedexType) => {
-            if (!pokemon.isImplemented(pokedexType)) {
+            if (!pokemon.isImplemented(pokedexType, pokemonExist)) {
               return (
                 <Box
                   key={pokedexType}
