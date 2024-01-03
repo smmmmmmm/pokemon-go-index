@@ -1,6 +1,7 @@
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   updateDoc,
@@ -8,6 +9,7 @@ import {
 } from "firebase/firestore/lite";
 
 import { Pokemon, PokemonId, PokemonInterface } from "@/features/pokemons";
+import { ExsitType, PokemonExist } from "@/features/pokemons/model/pokemon";
 import { db } from "@/infra/firebase";
 
 /*
@@ -35,21 +37,33 @@ export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
   );
 };
 
-export const updatePokemon = async (
+export const fetchPokemonExist = async (
+  pokemonId: string
+): Promise<PokemonExist> => {
+  const pokemonQuery = await getDoc(pokemonDocument(pokemonId));
+  return pokemonQuery.data() as PokemonExist;
+};
+
+export const updatePokemonExist = async (
   pokemonId: string,
-  type: "shadow" | "shiny",
+  existType: ExsitType,
   exist: boolean
 ): Promise<void> => {
-  console.log("Update Pokemon");
-
-  if (type === "shadow") {
-    await updateDoc(pokemonDocument(pokemonId), {
-      existShadow: exist,
-    });
-  }
-  if (type === "shiny") {
-    await updateDoc(pokemonDocument(pokemonId), {
-      existShiny: exist,
-    });
+  switch (existType) {
+    case "exist":
+      await updateDoc(pokemonDocument(pokemonId), {
+        exist: exist,
+      });
+      break;
+    case "existShiny":
+      await updateDoc(pokemonDocument(pokemonId), {
+        existShiny: exist,
+      });
+      break;
+    case "existShadow":
+      await updateDoc(pokemonDocument(pokemonId), {
+        existShadow: exist,
+      });
+      break;
   }
 };
