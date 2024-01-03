@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "18.x"
+    "node": "21.x"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "emulator": "firebase emulators:start --project demo-emulator --import .data --export-on-exit --only auth,firestore",
+    "emulator": "firebase emulators:start --project demo-emulator --import ./.data --export-on-exit --only auth,firestore",
     "deploy": "firebase experiments:enable webframeworks && firebase deploy",
     "lint": "yarn lint:eslint; yarn lint:prettier",
     "lint:eslint": "next lint --dir src",
