@@ -7,5 +7,5 @@ export interface PokemonFilteringOption {
 }
 
 export const DefaultPokemonFilteringOption: PokemonFilteringOption = {
-  showAfterEvolve: false,
+  showAfterEvolve: true,
 };
