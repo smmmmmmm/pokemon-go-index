@@ -100,7 +100,7 @@ def main() -> None:
 
     # --- 画像生成 ---
     # API data の URL から画像を取得, 前処理して `frontend/public/images/pokemons/` に保存
-    # generate_images(raw_api_pokemons)
+    generate_images(raw_api_pokemons)
 
     # --- API data から Pokemon クラスのインスタンスを生成 ---
     api_pokemons = {
