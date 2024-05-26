@@ -54,6 +54,25 @@ class ApiForm(MyBaseModel):
     image: HttpUrl
     shinyImage: HttpUrl
 
+    @property
+    def form_name(self) -> str:
+        return (self.form or "DEFAULT") + "_" + (self.costume or "DEFAULT")
+
+    @property
+    def is_display(self) -> bool:
+        if self.isFemale:
+            return False
+        if self.form is None and self.costume is None:
+            return False
+        return True
+
+    def to_firestore(self) -> dict[str, Any]:
+        return {
+            "form": self.form,
+            "costume": self.costume,
+            "form_name": self.form_name,
+        }
+
 
 class ApiPokemon(MyBaseModel):
     id: PokemonId
@@ -103,6 +122,9 @@ class Pokemon(MyBaseModel):
     prev_evolve_api_ids: list[str]
     next_evolve_api_ids: list[str]
 
+    # フォルム
+    asset_forms: list[dict[str, Any]] = []
+
     @classmethod
     def from_api_pokemon(cls, api_pokemon: ApiPokemon) -> Pokemon:
         # 進化先
@@ -123,9 +145,11 @@ class Pokemon(MyBaseModel):
             else api_pokemon.secondary_type.type,
             pokemonClass=api_pokemon.pokemon_class,
             status=api_pokemon.stats,
-            # //
+            # 進化
             prevEvolveApiIds=[],
             nextEvolveApiIds=api_pokemon.get_all_evolutions(),
+            # フォルム
+            assetForms=[f.to_firestore() for f in api_pokemon.asset_forms if f.is_display],
         )
         ta = TypeAdapter(Pokemon)
         return ta.validate_python(data)

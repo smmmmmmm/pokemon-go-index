@@ -58,25 +58,41 @@ def generate_images(api_pokemons: dict[PokemonId, ApiPokemon]) -> None:
     os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "normal"), exist_ok=True)
     os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "shiny"), exist_ok=True)
 
+    def save_image(image: str, path: str) -> None:
+        if not os.path.exists(path):  # 既に存在する場合は skip
+            resp = requests.get(image)
+            if resp.status_code == 200:
+                img = Image.open(io.BytesIO(resp.content))
+                img = _preprocess_image(img)
+                img.save(path)
+
     for pokemon_id, api_pokemon in tqdm(api_pokemons.items()):
         if api_pokemon.assets is not None:
             # 通常画像 を取得して `output/public/images/pokemons/normal/` に保存
             path = os.path.join(POKEMON_IMAGES_DIR, "normal", f"{pokemon_id}.png")
-            if not os.path.exists(path):  # 既に存在する場合は skip
-                resp = requests.get(api_pokemon.assets.image)
-                if resp.status_code == 200:
-                    img = Image.open(io.BytesIO(requests.get(api_pokemon.assets.image).content))
-                    img = _preprocess_image(img)
-                    img.save(path)
+            save_image(api_pokemon.assets.image, path)
 
             # 色違い画像 を取得して `output/public/images/pokemons/shiny/` に保存
             path = os.path.join(POKEMON_IMAGES_DIR, "shiny", f"{pokemon_id}.png")
-            if not os.path.exists(path):  # 既に存在する場合は skipに存在する場合は skip
-                resp = requests.get(api_pokemon.assets.shiny_image)
-                if resp.status_code == 200:
-                    img = Image.open(io.BytesIO(resp.content))
-                    img = _preprocess_image(img)
-                    img.save(path)
+            save_image(api_pokemon.assets.shiny_image, path)
+
+        # フォルム違い
+        if api_pokemon.asset_forms:
+            for asset_form in api_pokemon.asset_forms:
+                if not asset_form.is_display:
+                    return
+
+                os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "normal", pokemon_id), exist_ok=True)
+                path = os.path.join(
+                    POKEMON_IMAGES_DIR, "normal", pokemon_id, f"{asset_form.form_name}.png"
+                )
+                save_image(asset_form.image, path)
+
+                os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "shiny", pokemon_id), exist_ok=True)
+                path = os.path.join(
+                    POKEMON_IMAGES_DIR, "shiny", pokemon_id, f"{asset_form.form_name}.png"
+                )
+                save_image(asset_form.shinyImage, path)
 
 
 def main() -> None:
@@ -84,7 +100,7 @@ def main() -> None:
 
     # --- 画像生成 ---
     # API data の URL から画像を取得, 前処理して `frontend/public/images/pokemons/` に保存
-    generate_images(raw_api_pokemons)
+    # generate_images(raw_api_pokemons)
 
     # --- API data から Pokemon クラスのインスタンスを生成 ---
     api_pokemons = {
