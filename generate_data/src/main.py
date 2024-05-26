@@ -80,7 +80,7 @@ def generate_images(api_pokemons: dict[PokemonId, ApiPokemon]) -> None:
         if api_pokemon.asset_forms:
             for asset_form in api_pokemon.asset_forms:
                 if not asset_form.is_display:
-                    return
+                    continue
 
                 os.makedirs(os.path.join(POKEMON_IMAGES_DIR, "normal", pokemon_id), exist_ok=True)
                 path = os.path.join(
