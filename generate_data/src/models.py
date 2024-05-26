@@ -70,7 +70,7 @@ class ApiForm(MyBaseModel):
         return {
             "form": self.form,
             "costume": self.costume,
-            "form_name": self.form_name,
+            "formName": self.form_name,
         }
 
 
