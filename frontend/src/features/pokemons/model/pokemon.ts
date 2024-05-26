@@ -17,6 +17,35 @@ interface Status {
   defense: number;
 }
 
+interface PokemonFormInterface {
+  costume: string | null;
+  form: string | null;
+  formName: string;
+}
+
+export class PokemonForm {
+  public pokemonId: PokemonId;
+  public costume: string | null;
+  public form: string | null
+  public formName: string
+
+  constructor(data: PokemonFormInterface, pokemonId: PokemonId) {
+    this.pokemonId = pokemonId
+    this.costume = data.costume
+    this.form = data.form
+    this.formName = data.formName
+  }
+
+  getImage() {
+    return `/images/pokemons/normal/${this.pokemonId}/${this.formName}.png`;
+  }
+
+  getShinyImage() {
+    return `/images/pokemons/shiny/${this.pokemonId}/${this.formName}.png`;
+  }
+
+}
+
 export interface PokemonInterface {
   pokemonId: PokemonId; // 內部 ID
 
@@ -33,6 +62,9 @@ export interface PokemonInterface {
   // 進化
   prevEvolveApiIds: PokemonId[];
   nextEvolveApiIds: PokemonId[];
+
+  // フォーム
+  assetForms?: PokemonFormInterface[];
 }
 
 export class Pokemon {
@@ -48,15 +80,12 @@ export class Pokemon {
   public secondaryType?: string; // 第二タイプ
   public pokemonClass?: string;
 
-  // images
-  // public imageUrl?: string;
-  // public shinyImageUrl?: string;
-  // public imagePath?: string;
-  // public shinyImagePath?: string;
-
   // 進化
   public prevEvolveApiIds: PokemonId[];
   public nextEvolveApiIds: PokemonId[];
+
+  // assets
+  public forms: PokemonForm[];
 
   constructor(data: PokemonInterface) {
     this.pokemonId = data.pokemonId;
@@ -70,6 +99,7 @@ export class Pokemon {
     this.pokemonClass = data.pokemonClass;
     this.prevEvolveApiIds = data.prevEvolveApiIds;
     this.nextEvolveApiIds = data.nextEvolveApiIds;
+    this.forms = data.assetForms?.map((form) => new PokemonForm(form, this.pokemonId)) ?? []
   }
 
   isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
