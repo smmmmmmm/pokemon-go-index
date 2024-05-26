@@ -1,6 +1,16 @@
 import React from "react";
 
-import { Box, Center, Divider, HStack, Image, Text, VStack, useBoolean } from "@chakra-ui/react";
+import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Center,
+  Divider,
+  HStack,
+  Image,
+  Text,
+  VStack,
+  useBoolean,
+} from "@chakra-ui/react";
 
 import { DisplayPokemon, Pokemon } from "@/features/pokemons";
 import { useGetPokemonExist } from "@/features/pokemons/usecase/useGetPokemonExist";
@@ -11,7 +21,6 @@ import {
   usePokedexPageUpdate,
 } from "@/features/userPokedex";
 import { useUser } from "@/features/users";
-import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const PokedexRow: React.FC<{
   pokemon: Pokemon;
@@ -27,7 +36,7 @@ const PokedexRow: React.FC<{
     pokemon.pokemonId
   );
 
-  const [isExpandForms, setIsExpandForms] = useBoolean(false)
+  const [isExpandForms, setIsExpandForms] = useBoolean(false);
 
   const handleUpdatePage = (pokedexType: PokedexType, newVal: boolean) => {
     if (!isPageUpdateLoading) {
@@ -36,10 +45,10 @@ const PokedexRow: React.FC<{
   };
 
   const handleChangeExpandForm = () => {
-    if (pokemon.forms.length > 0 ){
-      setIsExpandForms.toggle()
+    if (pokemon.forms.length > 0) {
+      setIsExpandForms.toggle();
     }
-  }
+  };
 
   return (
     <>
@@ -47,9 +56,9 @@ const PokedexRow: React.FC<{
         <VStack w="100%" spacing="0px">
           <HStack w="100%" h="62px" spacing="0px">
             <Box
+              pos="relative"
               flex={2}
               h="100%"
-              position="relative"
               color={isExtra ? "red" : "black"}
               textAlign="center"
               borderWidth="0.5px"
@@ -63,16 +72,32 @@ const PokedexRow: React.FC<{
               <Center pos="relative" top="0px">
                 <Image h="45px" alt={pokemon.name} src={pokemon.getImage()} />
               </Center>
-              <HStack h="16px" mt="-1px" w="100%">
+              <HStack w="100%" h="16px" mt="-1px">
                 <Text w="100%" fontSize="10px">
                   {pokemon.name}
                 </Text>
               </HStack>
-              {pokemon.forms.length > 0 && <>{ isExpandForms ? 
-                <ChevronDownIcon boxSize={4} position="absolute" bottom="1px" left="1px" color="blue.600"/> 
-                : 
-                <ChevronRightIcon boxSize={4} position="absolute" bottom="1px" left="1px" color="blue.600"/>
-              }</>}
+              {pokemon.forms.length > 0 && (
+                <>
+                  {isExpandForms ? (
+                    <ChevronDownIcon
+                      boxSize={4}
+                      position="absolute"
+                      bottom="1px"
+                      left="1px"
+                      color="blue.600"
+                    />
+                  ) : (
+                    <ChevronRightIcon
+                      boxSize={4}
+                      position="absolute"
+                      bottom="1px"
+                      left="1px"
+                      color="blue.600"
+                    />
+                  )}
+                </>
+              )}
             </Box>
             {PokedexTypeChoices.map((pokedexType: PokedexType) => {
               if (!pokemon.isImplemented(pokedexType, pokemonExist)) {
@@ -110,65 +135,77 @@ const PokedexRow: React.FC<{
               }
             })}
           </HStack>
-          {isExpandForms && <HStack w="100%">
-            <VStack w="100%" spacing="0px">              
-              {
-                pokemon.forms && pokemon.forms.map((pokemonForm) => 
-                  <HStack w="100%" h="50px" spacing="0px">
-                    <Divider orientation='vertical' flex={0.28}/>
-                    <Box
-                      flex={1.7}
-                      h="100%"
-                      color={isExtra ? "red" : "black"}
-                      textAlign="center"
-                      borderWidth="0.5px"
-                      borderColor="gray.500"
-                      bgColor={isExtra ? "#DDDDDD" : "#FFFFFF"}
+          {isExpandForms && (
+            <HStack w="100%">
+              <VStack w="100%" spacing="0px">
+                {pokemon.forms &&
+                  pokemon.forms.map((pokemonForm) => (
+                    <HStack
+                      key={pokemonForm.formName}
+                      w="100%"
+                      h="50px"
+                      spacing="0px"
                     >
-                      <Center pos="relative" top="0px">
-                        <Image h="45px" alt={pokemon.name} src={pokemonForm.getImage()} />
-                      </Center>
-                    </Box>
-                              {PokedexTypeChoices.map((pokedexType: PokedexType) => {
-                  if (!pokemon.isImplemented(pokedexType, pokemonExist)) {
-                    return (
+                      <Divider flex={0.28} orientation="vertical" />
                       <Box
-                        key={pokedexType}
-                        flex={1}
+                        flex={1.7}
                         h="100%"
-                        borderWidth="0.5px"
-                        borderColor="gray.500"
-                        bgColor="gray"
-                        onClick={() => undefined}
-                      />
-                    );
-                  } else {
-                    return (
-                      <Box
-                        key={pokedexType}
-                        flex={1}
-                        h="100%"
+                        color={isExtra ? "red" : "black"}
                         textAlign="center"
                         borderWidth="0.5px"
                         borderColor="gray.500"
-                        bgColor={
-                          userPokedex.isHaving[pokedexType] ? "#bff5cd" : "white"
-                        }
-                        onClick={() => {
-                          handleUpdatePage(
-                            pokedexType,
-                            !userPokedex.isHaving[pokedexType]
+                        bgColor={isExtra ? "#DDDDDD" : "#FFFFFF"}
+                      >
+                        <Center pos="relative" top="0px">
+                          <Image
+                            h="45px"
+                            alt={pokemon.name}
+                            src={pokemonForm.getImage()}
+                          />
+                        </Center>
+                      </Box>
+                      {PokedexTypeChoices.map((pokedexType: PokedexType) => {
+                        if (!pokemon.isImplemented(pokedexType, pokemonExist)) {
+                          return (
+                            <Box
+                              key={pokedexType}
+                              flex={1}
+                              h="100%"
+                              borderWidth="0.5px"
+                              borderColor="gray.500"
+                              bgColor="gray"
+                              onClick={() => undefined}
+                            />
                           );
-                        }}
-                      />
-                    );
-                  }
-                })}
-                  </HStack>
-                )
-              }
-            </VStack>
-          </HStack>}
+                        } else {
+                          return (
+                            <Box
+                              key={pokedexType}
+                              flex={1}
+                              h="100%"
+                              textAlign="center"
+                              borderWidth="0.5px"
+                              borderColor="gray.500"
+                              bgColor={
+                                userPokedex.isHaving[pokedexType]
+                                  ? "#bff5cd"
+                                  : "white"
+                              }
+                              onClick={() => {
+                                handleUpdatePage(
+                                  pokedexType,
+                                  !userPokedex.isHaving[pokedexType]
+                                );
+                              }}
+                            />
+                          );
+                        }
+                      })}
+                    </HStack>
+                  ))}
+              </VStack>
+            </HStack>
+          )}
         </VStack>
       )}
     </>

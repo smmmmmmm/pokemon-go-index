@@ -26,14 +26,14 @@ interface PokemonFormInterface {
 export class PokemonForm {
   public pokemonId: PokemonId;
   public costume: string | null;
-  public form: string | null
-  public formName: string
+  public form: string | null;
+  public formName: string;
 
   constructor(data: PokemonFormInterface, pokemonId: PokemonId) {
-    this.pokemonId = pokemonId
-    this.costume = data.costume
-    this.form = data.form
-    this.formName = data.formName
+    this.pokemonId = pokemonId;
+    this.costume = data.costume;
+    this.form = data.form;
+    this.formName = data.formName;
   }
 
   getImage() {
@@ -43,7 +43,6 @@ export class PokemonForm {
   getShinyImage() {
     return `/images/pokemons/shiny/${this.pokemonId}/${this.formName}.png`;
   }
-
 }
 
 export interface PokemonInterface {
@@ -99,12 +98,17 @@ export class Pokemon {
     this.pokemonClass = data.pokemonClass;
     this.prevEvolveApiIds = data.prevEvolveApiIds;
     this.nextEvolveApiIds = data.nextEvolveApiIds;
-    this.forms = data.assetForms?.map((form) => new PokemonForm(form, this.pokemonId)) ?? []
+    this.forms =
+      data.assetForms?.map((form) => new PokemonForm(form, this.pokemonId)) ??
+      [];
   }
 
   isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
-    // 名称検索 && ヒットする場合, 常に返す    
-    if (pokemonFilteringOption.searchNameKata && pokemonFilteringOption.searchNameKata.length >= 2) {
+    // 名称検索 && ヒットする場合, 常に返す
+    if (
+      pokemonFilteringOption.searchNameKata &&
+      pokemonFilteringOption.searchNameKata.length >= 2
+    ) {
       if (this.name.startsWith(pokemonFilteringOption.searchNameKata)) {
         return true;
       } else {
