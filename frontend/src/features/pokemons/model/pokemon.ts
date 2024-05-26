@@ -73,8 +73,8 @@ export class Pokemon {
   }
 
   isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
-    // 名称検索 && ヒットする場合, 常に返す
-    if (pokemonFilteringOption.searchNameKata) {
+    // 名称検索 && ヒットする場合, 常に返す    
+    if (pokemonFilteringOption.searchNameKata && pokemonFilteringOption.searchNameKata.length >= 2) {
       if (this.name.startsWith(pokemonFilteringOption.searchNameKata)) {
         return true;
       } else {

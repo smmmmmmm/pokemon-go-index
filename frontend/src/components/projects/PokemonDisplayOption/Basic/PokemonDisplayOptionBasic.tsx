@@ -1,8 +1,6 @@
-import { FC, useState } from "react";
-import React from "react";
+import React, { FC, useState } from "react";
 
-import { Box, Input } from "@chakra-ui/react";
-import { HStack } from "@chakra-ui/react";
+import { Box, HStack, Input } from "@chakra-ui/react";
 
 import { RegionSelect } from "@/components/projects/RegionSelect";
 import { PokemonFilteringOption } from "@/features/pokemons";
@@ -48,7 +46,7 @@ export const PokemonDisplayOptionBasicPresenter: FC<{
             searchNameKata: hiraToKata(v.target.value),
           });
         }}
-        placeholder="名前で検索"
+        placeholder="名前で検索 (2文字以上)"
         rounded="6"
         size="small"
         value={inputSearchName}
