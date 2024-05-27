@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 
-import { queryClient } from "@/Query";
 import { PokemonId } from "@/features/pokemons";
 import { PokedexType, UserPokedex } from "@/features/userPokedex";
 import { updateUserPokedex } from "@/infra/users";
+import { queryClient } from "@/Query";
 
 export const usePokedexPageUpdate = (
   userId: string,
