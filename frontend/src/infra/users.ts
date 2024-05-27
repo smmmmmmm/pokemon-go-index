@@ -9,8 +9,6 @@ import {
   where,
 } from "firebase/firestore/lite";
 
-import "firebase/compat/auth";
-import "firebase/compat/firestore";
 import { Pokemon, PokemonId } from "@/features/pokemons";
 import {
   PokedexType,
@@ -19,6 +17,8 @@ import {
   newUserPokedex,
 } from "@/features/userPokedex/model/pokedex";
 import { db } from "@/infra/firebase";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 /*
   document ref
@@ -28,8 +28,16 @@ const userPokedexCollection = (userId: string) => {
   return collection(db, "users", userId, "pokedex");
 };
 
-const userPokedexDocument = (userId: string, pokemonId: string) => {
-  return doc(db, "users", userId, "pokedex", pokemonId);
+const userPokedexDocument = (
+  userId: string,
+  pokemonId: string,
+  formName: string | null
+) => {
+  let id = pokemonId;
+  if (formName) {
+    id = id + "-" + formName;
+  }
+  return doc(db, "users", userId, "pokedex", id);
 };
 
 /*
@@ -47,25 +55,32 @@ export const upsertUser = async (userId: string): Promise<void> => {
 export const createUserPokedex = async (
   userId: string,
   pokemon: Pokemon,
-  userPokedex: UserPokedex
+  userPokedex: UserPokedex,
+  formName: string | null
 ): Promise<void> => {
-  await setDoc(userPokedexDocument(userId, pokemon.pokemonId), userPokedex);
+  await setDoc(
+    userPokedexDocument(userId, pokemon.pokemonId, formName),
+    userPokedex
+  );
 };
 
 // userId, pokemonId の isHaving を返す. 存在しない場合 default 値を create してから返す
 export const fetchUserPokedex = async (
   userId: string,
-  pokemon: Pokemon
+  pokemon: Pokemon,
+  formName: string | null
 ): Promise<UserPokedex> => {
-  const doc = await getDoc(userPokedexDocument(userId, pokemon.pokemonId));
+  const doc = await getDoc(
+    userPokedexDocument(userId, pokemon.pokemonId, formName)
+  );
   const data = doc.data();
   if (!doc.exists() || data === undefined) {
     // 存在しない場合 default 値を create してから返す
-    const d = defaultUserPokedex(pokemon);
-    createUserPokedex(userId, pokemon, d);
+    const d = defaultUserPokedex(pokemon, formName);
+    createUserPokedex(userId, pokemon, d, formName);
     return d;
   } else {
-    return newUserPokedex(data, pokemon);
+    return newUserPokedex(data, pokemon, formName);
   }
 };
 
@@ -73,11 +88,12 @@ export const fetchUserPokedex = async (
 export const updateUserPokedex = async (
   userId: string,
   pokemonId: string,
+  formName: string | null,
   pokedexType: PokedexType,
   newIsHaving: boolean
 ) => {
   await setDoc(
-    userPokedexDocument(userId, pokemonId),
+    userPokedexDocument(userId, pokemonId, formName),
     { isHaving: { [pokedexType]: newIsHaving } },
     { merge: true }
   );

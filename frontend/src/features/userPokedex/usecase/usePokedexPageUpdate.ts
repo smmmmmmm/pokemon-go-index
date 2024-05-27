@@ -1,11 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
 
+import { queryClient } from "@/Query";
+import { PokemonId } from "@/features/pokemons";
 import { PokedexType, UserPokedex } from "@/features/userPokedex";
 import { updateUserPokedex } from "@/infra/users";
-import { queryClient } from "@/Query";
 
-export const usePokedexPageUpdate = (userId: string, pokemonId: string) => {
-  const getQueryKey = ["usePokedexPageGet", userId, pokemonId];
+export const usePokedexPageUpdate = (
+  userId: string,
+  pokemonId: PokemonId,
+  formName: string | null
+) => {
+  const getQueryKey = ["usePokedexPageGet", userId, pokemonId, formName];
 
   const { mutate, reset, data, isLoading, isSuccess, isError, error } =
     useMutation<void, Error, { pokedexType: PokedexType; newVal: boolean }>({
@@ -27,7 +32,13 @@ export const usePokedexPageUpdate = (userId: string, pokemonId: string) => {
         );
 
         // Update firestore
-        await updateUserPokedex(userId, pokemonId, pokedexType, newVal);
+        await updateUserPokedex(
+          userId,
+          pokemonId,
+          formName,
+          pokedexType,
+          newVal
+        );
       },
       onSettled: () => {
         queryClient.invalidateQueries(getQueryKey);

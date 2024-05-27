@@ -19,11 +19,12 @@ export const PokedexIcon: React.FC<{
 }> = (props) => {
   const { pokemon, isExtra, pokedexType, userId } = props;
 
-  const { userPokedex } = usePokedexPageGet(userId, pokemon);
+  const { userPokedex } = usePokedexPageGet(userId, pokemon, null);
   const { pokemonExist } = useGetPokemonExist(pokemon.pokemonId);
   const { mutatePageUpdate, isPageUpdateLoading } = usePokedexPageUpdate(
     userId,
-    pokemon.pokemonId
+    pokemon.pokemonId,
+    null
   );
 
   const onClick = (newVal: boolean) => {

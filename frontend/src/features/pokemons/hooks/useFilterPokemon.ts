@@ -34,7 +34,10 @@ const addEvolvePokemons = (
       const evolvedPokemon = allPokemons.get(nextEvolveId);
       if (evolvedPokemon) {
         // 進化先が次のポケモンではない場合, dfs を続ける
-        if (evolvedPokemon.pokemonId != next?.pokemonId) {
+        if (
+          evolvedPokemon.pokemonId != next?.pokemonId &&
+          evolvedPokemon.pokemonId != origin.pokemonId
+        ) {
           dfs(origin, evolvedPokemon, true, next);
         }
       }

@@ -49,9 +49,13 @@ export type UserPokedex = {
   dexNo: number;
   generation: number;
   isHaving: IsHaving;
+  formName: string | null;
 };
 
-export const defaultUserPokedex = (pokemon: Pokemon): UserPokedex => {
+export const defaultUserPokedex = (
+  pokemon: Pokemon,
+  formName: string | null
+): UserPokedex => {
   return {
     dexNo: pokemon.dexNo,
     generation: pokemon.generation,
@@ -65,12 +69,14 @@ export const defaultUserPokedex = (pokemon: Pokemon): UserPokedex => {
       purify: false,
       lucky: false,
     },
+    formName,
   };
 };
 
 export const newUserPokedex = (
   data: DocumentData,
-  pokemon: Pokemon
+  pokemon: Pokemon,
+  formName: string | null
 ): UserPokedex => {
   return {
     dexNo: pokemon.dexNo,
@@ -85,5 +91,6 @@ export const newUserPokedex = (
       purify: data.isHaving.purify ?? false,
       lucky: data.isHaving.lucky ?? false,
     },
+    formName,
   };
 };
