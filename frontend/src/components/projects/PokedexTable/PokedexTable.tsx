@@ -28,6 +28,7 @@ import {
   PokemonFilteringOption,
   useFilteringPokemons,
 } from "@/features/pokemons";
+import { PokemonKey } from "@/features/pokemons/model/pokemon";
 
 const enum POKEDEX_TABLE_TYPE {
   LIST = "list",
@@ -138,18 +139,30 @@ const PokedexTableComponent: FC<{
   );
 };
 
-const PokedexTableContainer: FC<{
+export const PokedexTable: FC<{
   pokemonIds?: string[];
   pokemonFilteringOption?: PokemonFilteringOption;
 }> = (props) => {
   const { pokemonIds, pokemonFilteringOption } = props;
 
   const displayPokemons = useFilteringPokemons(
-    pokemonIds,
+    pokemonIds?.map((pi) => ({ pokemonId: pi, formName: null })),
     pokemonFilteringOption
   );
 
   return <PokedexTableComponent displayPokemons={displayPokemons} />;
 };
 
-export const PokedexTable = PokedexTableContainer;
+export const PokedexTableByPkey: FC<{
+  pokemonKeys?: PokemonKey[];
+  pokemonFilteringOption?: PokemonFilteringOption;
+}> = (props) => {
+  const { pokemonKeys, pokemonFilteringOption } = props;
+
+  const displayPokemons = useFilteringPokemons(
+    pokemonKeys,
+    pokemonFilteringOption
+  );
+
+  return <PokedexTableComponent displayPokemons={displayPokemons} />;
+};

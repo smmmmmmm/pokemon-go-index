@@ -1,6 +1,6 @@
 import { QueryDocumentSnapshot } from "firebase/firestore/lite";
 
-import { PokemonId } from "@/features/pokemons";
+import { PokemonKey } from "@/features/pokemons/model/pokemon";
 
 export type EventId = string;
 export type EventGroupId = string;
@@ -28,7 +28,7 @@ export const EventFromFirestore = (doc: QueryDocumentSnapshot): PogoEvent => {
 export interface PogoEventGroup {
   eventGroupId: string;
   eventGroupName: string;
-  pokemonIds: PokemonId[];
+  pokemonKeys: PokemonKey[];
 }
 
 export type PogoEventGroupAdd = Omit<PogoEventGroup, "eventGroupId">;
@@ -38,9 +38,19 @@ export const EventGroupFromFirestore = (
   doc: QueryDocumentSnapshot
 ): PogoEventGroup => {
   const data = doc.data();
+
+  let pokemonKeys: PokemonKey[] = [];
+  if (data.pokemonIds) {
+    pokemonKeys = data.pokemonIds.map((id: string) => ({
+      pokemonId: id,
+      formName: null,
+    }));
+  } else if (data.pokemonKeys) {
+    pokemonKeys = data.pokemonKeys;
+  }
   return {
     eventGroupId: doc.id,
     eventGroupName: data.eventGroupName,
-    pokemonIds: data.pokemonIds,
+    pokemonKeys: pokemonKeys,
   };
 };

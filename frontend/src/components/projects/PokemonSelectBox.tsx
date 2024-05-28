@@ -9,24 +9,38 @@ import {
 
 import {
   Box,
+  Icon,
   Image,
+  Input,
+  InputGroup,
+  InputLeftElement,
   List,
   ListIcon,
   ListItem,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { Icon, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { MdCheck } from "react-icons/md";
-import { MdSearch } from "react-icons/md";
+import { MdCheck, MdSearch } from "react-icons/md";
 
-import { Pokemon, useAllPokemonsGet } from "@/features/pokemons";
+import { useAllPokemonsGet } from "@/features/pokemons";
+import {
+  Pokemon,
+  PokemonForm,
+  PokemonKey,
+} from "@/features/pokemons/model/pokemon";
 import { hiraToKata } from "@/utils/hiraToKata";
 
 type SearchBarProps = {
   value?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+};
+
+const findPkeyIndex = (pkeys: PokemonKey[], pkey: PokemonKey) => {
+  const idx = pkeys.findIndex(
+    (pk) => pk.pokemonId === pkey.pokemonId && pk.formName === pkey.formName
+  );
+  return idx;
 };
 
 const SearchBar: FC<SearchBarProps> = (props) => {
@@ -51,22 +65,23 @@ const SearchBar: FC<SearchBarProps> = (props) => {
 };
 
 export const PokemonSelectBox: FC<{
-  selectedPids: string[];
-  handleChange: (newSelectPids: string[]) => void;
+  selectedPkeys: PokemonKey[];
+  handleChange: (newSelectPkeys: PokemonKey[]) => void;
   displayGrid?: boolean;
 }> = (props) => {
-  const { selectedPids, handleChange, displayGrid } = props;
+  const { selectedPkeys, handleChange, displayGrid } = props;
   const parentRef = useRef<HTMLDivElement>(null);
   const { allPokemons } = useAllPokemonsGet();
   const [searchValue, setSearchValue] = useState("");
 
   const filteredPokemons = useMemo(() => {
-    const filteredPokemons: Pokemon[] = [];
+    let filteredPokemons: (Pokemon | PokemonForm)[] = [];
     const kataSearchValue = hiraToKata(searchValue);
     if (allPokemons) {
-      allPokemons.forEach((pokemon, key) => {
+      allPokemons.forEach((pokemon) => {
         if (pokemon.name.includes(kataSearchValue)) {
           filteredPokemons.push(pokemon);
+          filteredPokemons = filteredPokemons.concat(pokemon.forms);
         }
       });
     }
@@ -85,14 +100,15 @@ export const PokemonSelectBox: FC<{
     setSearchValue(event.target.value);
   };
 
-  const handleSelectValuesChange = (newPid: string) => {
-    const newSelectPids = [...selectedPids];
-    if (newSelectPids.includes(newPid)) {
-      newSelectPids.splice(newSelectPids.indexOf(newPid), 1);
+  const handleSelectValuesChange = (newPkey: PokemonKey) => {
+    const newSelectPkeys = [...selectedPkeys];
+    const idx = findPkeyIndex(newSelectPkeys, newPkey);
+    if (idx === -1) {
+      newSelectPkeys.push(newPkey);
     } else {
-      newSelectPids.push(newPid);
+      newSelectPkeys.splice(idx, 1);
     }
-    handleChange(newSelectPids);
+    handleChange(newSelectPkeys);
   };
 
   return (
@@ -100,17 +116,23 @@ export const PokemonSelectBox: FC<{
       {displayGrid ??
         (true && (
           <SimpleGrid flexWrap={"wrap"} display={"flex"}>
-            {selectedPids.map((pid: string) => {
-              const pokemon = allPokemons?.get(pid);
+            {selectedPkeys.map((pkey: PokemonKey) => {
+              let pokemon: Pokemon | PokemonForm | undefined;
+              pokemon = allPokemons?.get(pkey.pokemonId);
+              if (pokemon && pkey.formName) {
+                pokemon = pokemon.forms.filter(
+                  (f) => f.formName === pkey.formName
+                )[0];
+              }
               if (pokemon) {
                 return (
                   <Image
-                    key={pokemon.pokemonId}
+                    key={pkey.pokemonId + "-" + pkey.formName}
                     w="45"
                     h="45"
                     alt={pokemon.name}
                     onClick={() => {
-                      handleSelectValuesChange(pokemon.pokemonId);
+                      handleSelectValuesChange(pokemon.pkey);
                     }}
                     src={pokemon.getImage()}
                   />
@@ -150,7 +172,7 @@ export const PokemonSelectBox: FC<{
               cursor="pointer"
               onClick={() => {
                 handleSelectValuesChange(
-                  filteredPokemons[virtualRow.index].pokemonId
+                  filteredPokemons[virtualRow.index].pkey
                 );
               }}
             >
@@ -159,9 +181,10 @@ export const PokemonSelectBox: FC<{
                 boxSize={4}
                 color="primary.500"
                 visibility={
-                  selectedPids.includes(
-                    filteredPokemons[virtualRow.index].pokemonId
-                  )
+                  findPkeyIndex(
+                    selectedPkeys,
+                    filteredPokemons[virtualRow.index].pkey
+                  ) !== -1
                     ? "visible"
                     : "hidden"
                 }

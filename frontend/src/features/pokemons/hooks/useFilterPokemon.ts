@@ -7,6 +7,7 @@ import {
   PokemonId,
   useAllPokemonsGet,
 } from "@/features/pokemons";
+import { PokemonKey } from "@/features/pokemons/model/pokemon";
 
 const addEvolvePokemons = (
   allPokemons: Map<PokemonId, Pokemon>,
@@ -17,12 +18,14 @@ const addEvolvePokemons = (
   // 進化先のポケモンを dfs で再帰的にリストアップして `extendedPokemons` に追加する
   const dfs = (
     origin: Pokemon, // 大本の進化元のポケモン
+    formName: string | null,
     current: Pokemon,
     isExtra: boolean,
     next?: Pokemon
   ) => {
     extendedPokemons.push({
       pokemon: current,
+      formName: formName,
       isExtra: isExtra,
       uniqueKey: isExtra
         ? `${current.pokemonId}-evolved-from-${origin.pokemonId}`
@@ -38,29 +41,37 @@ const addEvolvePokemons = (
           evolvedPokemon.pokemonId != next?.pokemonId &&
           evolvedPokemon.pokemonId != origin.pokemonId
         ) {
-          dfs(origin, evolvedPokemon, true, next);
+          if (formName) {
+            // フォルムの進化系は、進化先に同じフォルムがある場合にのみ進化先を登録
+            if (evolvedPokemon.hasForm(formName)) {
+              dfs(origin, formName, evolvedPokemon, true, next);
+            }
+          } else {
+            dfs(origin, formName, evolvedPokemon, true, next);
+          }
         }
       }
     });
   };
 
   for (let i = 0; i < filteredPokemons.length; i++) {
-    if (i < filteredPokemons.length - 1) {
-      dfs(
-        filteredPokemons[i].pokemon,
-        filteredPokemons[i].pokemon,
-        false,
-        filteredPokemons[i + 1].pokemon
-      );
-    } else {
-      dfs(filteredPokemons[i].pokemon, filteredPokemons[i].pokemon, false);
-    }
+    const nextPokemon =
+      i < filteredPokemons.length - 1
+        ? filteredPokemons[i + 1].pokemon
+        : undefined;
+    dfs(
+      filteredPokemons[i].pokemon,
+      filteredPokemons[i].formName,
+      filteredPokemons[i].pokemon,
+      false,
+      nextPokemon
+    );
   }
   return extendedPokemons;
 };
 
 export const useFilteringPokemons = (
-  selectPokemonIds?: PokemonId[],
+  selectPokemonKeys?: PokemonKey[],
   pokemonFilteringOption?: PokemonFilteringOption
 ) => {
   const { allPokemons } = useAllPokemonsGet();
@@ -72,26 +83,26 @@ export const useFilteringPokemons = (
 
     // Filter by pokemonIds
     let filteredPokemons: DisplayPokemon[] = [];
-    if (selectPokemonIds) {
-      selectPokemonIds.forEach((pokemonId) => {
-        const pokemon = allPokemons.get(pokemonId);
+    if (selectPokemonKeys) {
+      selectPokemonKeys.forEach((pkey) => {
+        const pokemon = allPokemons.get(pkey.pokemonId);
         if (pokemon) {
           filteredPokemons.push({
             pokemon: pokemon,
+            formName: pkey.formName,
             isExtra: false,
-            uniqueKey: pokemon.pokemonId,
+            uniqueKey: pokemon.pokemonId + pkey.formName,
           });
         }
       });
     } else {
       allPokemons.forEach((pokemon: Pokemon) => {
-        if (pokemon) {
-          filteredPokemons.push({
-            pokemon: pokemon,
-            isExtra: false,
-            uniqueKey: pokemon.pokemonId,
-          });
-        }
+        filteredPokemons.push({
+          pokemon: pokemon,
+          formName: null,
+          isExtra: false,
+          uniqueKey: pokemon.pokemonId,
+        });
       });
     }
 
@@ -108,5 +119,5 @@ export const useFilteringPokemons = (
     }
 
     return filteredPokemons;
-  }, [allPokemons, pokemonFilteringOption, selectPokemonIds]);
+  }, [allPokemons, pokemonFilteringOption, selectPokemonKeys]);
 };

@@ -22,6 +22,7 @@ import {
   usePokedexPageUpdate,
 } from "@/features/userPokedex";
 import { useUser } from "@/features/users";
+import { FaRedhat } from "react-icons/fa";
 
 const FormPokedexRow: React.FC<{
   pokemon: Pokemon;
@@ -55,6 +56,7 @@ const FormPokedexRow: React.FC<{
           <Divider flex={0.28} orientation="vertical" />
           <Box
             flex={1.7}
+            pos="relative"
             h="100%"
             color={"black"}
             textAlign="center"
@@ -65,6 +67,9 @@ const FormPokedexRow: React.FC<{
             <Center pos="relative" top="0px">
               <Image h="45px" alt={pokemon.name} src={pokemonForm.getImage()} />
             </Center>
+            <Box pos="absolute" top="1px" right="1px" color="blue.600">
+              <FaRedhat size={"13px"} />
+            </Box>
           </Box>
           {PokedexTypeChoices.map((pokedexType: PokedexType) => {
             if (!pokemon.isImplemented(pokedexType, pokemonExist)) {
@@ -109,20 +114,23 @@ const FormPokedexRow: React.FC<{
 
 const PokedexRow: React.FC<{
   pokemon: Pokemon;
+  formName: string | null;
   isExtra: boolean;
   userId: string;
 }> = (props) => {
-  const { pokemon, isExtra, userId } = props;
+  const { pokemon, formName, isExtra, userId } = props;
 
-  const { userPokedex } = usePokedexPageGet(userId, pokemon, null);
+  const { userPokedex } = usePokedexPageGet(userId, pokemon, formName);
   const { pokemonExist } = useGetPokemonExist(pokemon.pokemonId);
   const { mutatePageUpdate, isPageUpdateLoading } = usePokedexPageUpdate(
     userId,
     pokemon.pokemonId,
-    null
+    formName
   );
-
   const [isExpandForms, setIsExpandForms] = useBoolean(false);
+
+  const isFormPokemon = formName !== null;
+  const enableExpandForm = pokemon.forms.length > 0 && !isFormPokemon;
 
   const handleUpdatePage = (pokedexType: PokedexType, newVal: boolean) => {
     if (!isPageUpdateLoading) {
@@ -131,7 +139,7 @@ const PokedexRow: React.FC<{
   };
 
   const handleChangeExpandForm = () => {
-    if (pokemon.forms.length > 0) {
+    if (enableExpandForm) {
       setIsExpandForms.toggle();
     }
   };
@@ -156,14 +164,23 @@ const PokedexRow: React.FC<{
                 {pokemon.dexNo}
               </Text>
               <Center pos="relative" top="0px">
-                <Image h="45px" alt={pokemon.name} src={pokemon.getImage()} />
+                <Image
+                  h="45px"
+                  alt={pokemon.name}
+                  src={pokemon.getImage(formName)}
+                />
               </Center>
               <HStack w="100%" h="16px" mt="-1px">
                 <Text w="100%" fontSize="10px">
                   {pokemon.name}
                 </Text>
-              </HStack>
-              {pokemon.forms.length > 0 && (
+              </HStack>{" "}
+              {isFormPokemon && (
+                <Box pos="absolute" top="1px" right="1px" color="blue.600">
+                  <FaRedhat size={"13px"} />
+                </Box>
+              )}
+              {enableExpandForm && (
                 <>
                   {isExpandForms ? (
                     <ChevronDownIcon
@@ -251,16 +268,19 @@ export const PokedexListTable: React.FC<{
     <>
       {user && (
         <>
-          {displayPokemons.map(({ pokemon, isExtra, uniqueKey }, idx) => {
-            return (
-              <PokedexRow
-                pokemon={pokemon}
-                isExtra={isExtra}
-                userId={user.uid}
-                key={`PokedexRow-${uniqueKey}`}
-              />
-            );
-          })}
+          {displayPokemons.map(
+            ({ pokemon, formName, isExtra, uniqueKey }, idx) => {
+              return (
+                <PokedexRow
+                  pokemon={pokemon}
+                  formName={formName}
+                  isExtra={isExtra}
+                  userId={user.uid}
+                  key={`PokedexRow-${uniqueKey}`}
+                />
+              );
+            }
+          )}
         </>
       )}
     </>

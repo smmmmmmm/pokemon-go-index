@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 
 import {
   Box,
@@ -24,7 +24,7 @@ import {
   DeleteEventGroup,
   UpdateEventGroup,
 } from "@/components/pages/Events/components/EditEventGroup";
-import { PokedexTable } from "@/components/projects/PokedexTable/PokedexTable";
+import { PokedexTableByPkey } from "@/components/projects/PokedexTable/PokedexTable";
 import { PokemonDisplayOptionDetail } from "@/components/projects/PokemonDisplayOption";
 import { GroupedSelect, Select } from "@/components/uiParts/Select";
 import { PogoEvent, PogoEventGroup } from "@/features/events";
@@ -168,8 +168,8 @@ export const Events: FC = () => {
 
       <VStack align="start" flex={1} overflow="auto" w="100%">
         {selectEventGroup && (
-          <PokedexTable
-            pokemonIds={selectEventGroup.pokemonIds}
+          <PokedexTableByPkey
+            pokemonKeys={selectEventGroup.pokemonKeys}
             pokemonFilteringOption={pokemonFilterOption}
           />
         )}

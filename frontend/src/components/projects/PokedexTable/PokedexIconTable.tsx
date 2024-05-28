@@ -10,14 +10,16 @@ import {
   usePokedexPageUpdate,
 } from "@/features/userPokedex";
 import { useUser } from "@/features/users";
+import { FaRedhat } from "react-icons/fa";
 
 export const PokedexIcon: React.FC<{
   pokemon: Pokemon;
+  formName: string | null;
   isExtra: boolean;
   pokedexType: PokedexType;
   userId: string;
 }> = (props) => {
-  const { pokemon, isExtra, pokedexType, userId } = props;
+  const { pokemon, formName, isExtra, pokedexType, userId } = props;
 
   const { userPokedex } = usePokedexPageGet(userId, pokemon, null);
   const { pokemonExist } = useGetPokemonExist(pokemon.pokemonId);
@@ -26,6 +28,8 @@ export const PokedexIcon: React.FC<{
     pokemon.pokemonId,
     null
   );
+
+  const isFormPokemon = formName !== null;
 
   const onClick = (newVal: boolean) => {
     if (
@@ -42,6 +46,7 @@ export const PokedexIcon: React.FC<{
     <>
       {userPokedex && (
         <Box
+          pos="relative"
           color={isExtra ? "red" : "black"}
           borderWidth="1px"
           borderColor="gray.500"
@@ -66,8 +71,8 @@ export const PokedexIcon: React.FC<{
               alt={pokemon.name}
               src={
                 pokedexType in ["shiny", "shinyStar3"]
-                  ? pokemon.getShinyImage()
-                  : pokemon.getImage()
+                  ? pokemon.getShinyImage(formName)
+                  : pokemon.getImage(formName)
               }
               style={{ marginTop: -7 }}
             />
@@ -75,6 +80,11 @@ export const PokedexIcon: React.FC<{
           <Text fontSize="4pt" textAlign="center">
             {pokemon.name}
           </Text>
+          {isFormPokemon && (
+            <Box pos="absolute" top="1px" right="1px" color="blue.600">
+              <FaRedhat size={"13px"} />
+            </Box>
+          )}
         </Box>
       )}
     </>
@@ -91,15 +101,18 @@ export const PokedexIconTable: React.FC<{
     <>
       {user && (
         <SimpleGrid w="100%" columns={5}>
-          {displayPokemons.map(({ pokemon, isExtra, uniqueKey }, idx) => (
-            <PokedexIcon
-              pokemon={pokemon}
-              isExtra={isExtra}
-              pokedexType={pokedexType}
-              userId={user.uid}
-              key={`PokedexIcon-${uniqueKey}`}
-            />
-          ))}
+          {displayPokemons.map(
+            ({ pokemon, formName, isExtra, uniqueKey }, idx) => (
+              <PokedexIcon
+                pokemon={pokemon}
+                formName={formName}
+                isExtra={isExtra}
+                pokedexType={pokedexType}
+                userId={user.uid}
+                key={`PokedexIcon-${uniqueKey}`}
+              />
+            )
+          )}
         </SimpleGrid>
       )}
     </>

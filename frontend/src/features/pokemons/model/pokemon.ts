@@ -25,15 +25,25 @@ interface PokemonFormInterface {
 
 export class PokemonForm {
   public pokemonId: PokemonId;
+  _name: string;
   public costume: string | null;
   public form: string | null;
   public formName: string;
 
-  constructor(data: PokemonFormInterface, pokemonId: PokemonId) {
-    this.pokemonId = pokemonId;
+  constructor(pokemon: PokemonInterface, data: PokemonFormInterface) {
+    this.pokemonId = pokemon.pokemonId;
+    this._name = pokemon.name;
     this.costume = data.costume;
     this.form = data.form;
     this.formName = data.formName;
+  }
+
+  get pkey(): PokemonKey {
+    return { pokemonId: this.pokemonId, formName: this.formName };
+  }
+
+  get name(): string {
+    return `${this._name} (${this.formName})`;
   }
 
   getImage() {
@@ -99,8 +109,11 @@ export class Pokemon {
     this.prevEvolveApiIds = data.prevEvolveApiIds;
     this.nextEvolveApiIds = data.nextEvolveApiIds;
     this.forms =
-      data.assetForms?.map((form) => new PokemonForm(form, this.pokemonId)) ??
-      [];
+      data.assetForms?.map((form) => new PokemonForm(data, form)) ?? [];
+  }
+
+  get pkey(): PokemonKey {
+    return { pokemonId: this.pokemonId, formName: null };
   }
 
   isFilter(pokemonFilteringOption: PokemonFilteringOption): boolean {
@@ -127,11 +140,17 @@ export class Pokemon {
     return true;
   }
 
-  getImage() {
+  getImage(formName?: string | null) {
+    if (formName && this.hasForm(formName)) {
+      return this.getForm(formName).getImage();
+    }
     return `/images/pokemons/normal/${this.pokemonId}.png`;
   }
 
-  getShinyImage() {
+  getShinyImage(formName?: string | null) {
+    if (formName && this.hasForm(formName)) {
+      return this.getForm(formName).getShinyImage();
+    }
     return `/images/pokemons/shiny/${this.pokemonId}.png`;
   }
 
@@ -161,10 +180,24 @@ export class Pokemon {
     }
     return true;
   }
+
+  hasForm(formName: string) {
+    return this.forms.some((f) => f.formName === formName);
+  }
+
+  getForm(formName: string) {
+    return this.forms.filter((f) => f.formName === formName)[0];
+  }
 }
 
 export interface DisplayPokemon {
   pokemon: Pokemon;
+  formName: string | null;
   isExtra: boolean;
   uniqueKey: string;
+}
+
+export interface PokemonKey {
+  pokemonId: string;
+  formName: string | null;
 }

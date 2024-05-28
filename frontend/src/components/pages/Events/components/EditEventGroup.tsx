@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import {
   Center,
@@ -19,14 +19,15 @@ import {
   useDeleteEventGroup,
   useUpdateEventGroup,
 } from "@/features/events";
+import { PokemonKey } from "@/features/pokemons/model/pokemon";
 
 const EventGroupInputModal: FC<{
   eventGroupName: string;
   setEventGroupName: (name: string) => void;
-  selectedPids: string[];
-  setSelectedPids: (pids: string[]) => void;
+  selectedPkeys: PokemonKey[];
+  setSelectedPkeys: (pkeys: PokemonKey[]) => void;
 }> = (props) => {
-  const { eventGroupName, setEventGroupName, selectedPids, setSelectedPids } =
+  const { eventGroupName, setEventGroupName, selectedPkeys, setSelectedPkeys } =
     props;
   return (
     <VStack align={"stretch"} p="10px" spacing={3}>
@@ -49,10 +50,8 @@ const EventGroupInputModal: FC<{
         出現ポケモン
       </Heading>
       <PokemonSelectBox
-        selectedPids={selectedPids}
-        handleChange={(newPids: string[]) => {
-          setSelectedPids(newPids);
-        }}
+        selectedPkeys={selectedPkeys}
+        handleChange={setSelectedPkeys}
       />
     </VStack>
   );
@@ -62,12 +61,12 @@ export const AddEventGroup: FC<{ e: PogoEvent }> = (props) => {
   const { e } = props;
 
   const [eventGroupName, setEventGroupName] = useState<string>("");
-  const [selectedPids, setSelectedPids] = useState<string[]>([]);
+  const [selectedPkeys, setSelectedPkeys] = useState<PokemonKey[]>([]);
   const { mutate } = useAddEventGroup(e);
 
   const reset = () => {
     setEventGroupName("");
-    setSelectedPids([]);
+    setSelectedPkeys([]);
   };
 
   return (
@@ -76,7 +75,7 @@ export const AddEventGroup: FC<{ e: PogoEvent }> = (props) => {
       submit={() => {
         mutate({
           eventGroupName: eventGroupName,
-          pokemonIds: selectedPids,
+          pokemonKeys: selectedPkeys,
         });
         reset();
       }}
@@ -84,8 +83,8 @@ export const AddEventGroup: FC<{ e: PogoEvent }> = (props) => {
       <EventGroupInputModal
         eventGroupName={eventGroupName}
         setEventGroupName={setEventGroupName}
-        selectedPids={selectedPids}
-        setSelectedPids={setSelectedPids}
+        selectedPkeys={selectedPkeys}
+        setSelectedPkeys={setSelectedPkeys}
       />
     </EditModal>
   );
@@ -99,14 +98,14 @@ export const UpdateEventGroup: FC<{ e: PogoEvent; eg: PogoEventGroup }> = (
   const [eventGroupName, setEventGroupName] = useState<string>(
     eg.eventGroupName
   );
-  const [selectedPids, setSelectedPids] = useState<string[]>(
-    eg.pokemonIds ?? []
+  const [selectedPkeys, setSelectedPkeys] = useState<PokemonKey[]>(
+    eg.pokemonKeys ?? []
   );
   const { mutate } = useUpdateEventGroup(e, eg);
 
   useEffect(() => {
     setEventGroupName(eg.eventGroupName);
-    setSelectedPids(eg.pokemonIds ?? []);
+    setSelectedPkeys(eg.pokemonKeys ?? []);
   }, [e, eg]);
 
   return (
@@ -115,15 +114,15 @@ export const UpdateEventGroup: FC<{ e: PogoEvent; eg: PogoEventGroup }> = (
       submit={() => {
         mutate({
           eventGroupName: eventGroupName,
-          pokemonIds: selectedPids,
+          pokemonKeys: selectedPkeys,
         });
       }}
     >
       <EventGroupInputModal
         eventGroupName={eventGroupName}
         setEventGroupName={setEventGroupName}
-        selectedPids={selectedPids}
-        setSelectedPids={setSelectedPids}
+        selectedPkeys={selectedPkeys}
+        setSelectedPkeys={setSelectedPkeys}
       />
     </EditModal>
   );
