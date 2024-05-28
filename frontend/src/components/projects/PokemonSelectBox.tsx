@@ -117,24 +117,18 @@ export const PokemonSelectBox: FC<{
         (true && (
           <SimpleGrid flexWrap={"wrap"} display={"flex"}>
             {selectedPkeys.map((pkey: PokemonKey) => {
-              let pokemon: Pokemon | PokemonForm | undefined;
-              pokemon = allPokemons?.get(pkey.pokemonId);
-              if (pokemon && pkey.formName) {
-                pokemon = pokemon.forms.filter(
-                  (f) => f.formName === pkey.formName
-                )[0];
-              }
+              const pokemon = allPokemons?.get(pkey.pokemonId);
               if (pokemon) {
                 return (
                   <Image
                     key={pkey.pokemonId + "-" + pkey.formName}
                     w="45"
                     h="45"
-                    alt={pokemon.name}
+                    alt={pokemon.name + pkey.formName}
                     onClick={() => {
-                      handleSelectValuesChange(pokemon.pkey);
+                      handleSelectValuesChange(pkey);
                     }}
-                    src={pokemon.getImage()}
+                    src={pokemon.getImage(pkey.formName)}
                   />
                 );
               }

@@ -1,8 +1,7 @@
-import React, { Dispatch, FC, useEffect, useState } from "react";
+import { Dispatch, FC, useEffect, useState } from "react";
 
 import { Center, HStack, Heading, Input, Text, VStack } from "@chakra-ui/react";
 
-import { PokemonSelectBox } from "@/components/projects/PokemonSelectBox";
 import { EditModal } from "@/components/uiParts/EditModal";
 import { Select } from "@/components/uiParts/Select";
 import {
@@ -53,7 +52,7 @@ const FieldResearchInputModal: FC<{
       <Heading as="h3" fontWeight={600} size="md">
         獲得ポケモン
       </Heading>
-      <PokemonSelectBox
+      {/* <PokemonSelectBox
         selectedPids={fieldResearch.getablePokemonIds}
         handleChange={(newPids: string[]) => {
           setFieldResearch({
@@ -61,7 +60,7 @@ const FieldResearchInputModal: FC<{
             getablePokemonIds: newPids,
           });
         }}
-      />
+      /> */}
     </VStack>
   );
 };

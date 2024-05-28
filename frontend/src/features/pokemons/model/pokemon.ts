@@ -141,15 +141,17 @@ export class Pokemon {
   }
 
   getImage(formName?: string | null) {
-    if (formName && this.hasForm(formName)) {
-      return this.getForm(formName).getImage();
+    const form = this.getForm(formName);
+    if (form) {
+      return form.getImage();
     }
     return `/images/pokemons/normal/${this.pokemonId}.png`;
   }
 
   getShinyImage(formName?: string | null) {
-    if (formName && this.hasForm(formName)) {
-      return this.getForm(formName).getShinyImage();
+    const form = this.getForm(formName);
+    if (form) {
+      return form.getShinyImage();
     }
     return `/images/pokemons/shiny/${this.pokemonId}.png`;
   }
@@ -181,12 +183,17 @@ export class Pokemon {
     return true;
   }
 
-  hasForm(formName: string) {
+  hasForm(formName: string | null) {
     return this.forms.some((f) => f.formName === formName);
   }
 
-  getForm(formName: string) {
-    return this.forms.filter((f) => f.formName === formName)[0];
+  getForm(formName: string | null | undefined) {
+    const f = this.forms.filter((f) => f.formName === formName);
+    if (f.length > 0) {
+      return f[0];
+    } else {
+      return null;
+    }
   }
 }
 
