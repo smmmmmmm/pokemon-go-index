@@ -11,6 +11,7 @@ import {
   VStack,
   useBoolean,
 } from "@chakra-ui/react";
+import { FaRedhat } from "react-icons/fa";
 
 import { DisplayPokemon, Pokemon } from "@/features/pokemons";
 import { PokemonForm } from "@/features/pokemons/model/pokemon";
@@ -22,7 +23,6 @@ import {
   usePokedexPageUpdate,
 } from "@/features/userPokedex";
 import { useUser } from "@/features/users";
-import { FaRedhat } from "react-icons/fa";
 
 const FormPokedexRow: React.FC<{
   pokemon: Pokemon;
@@ -55,8 +55,8 @@ const FormPokedexRow: React.FC<{
         <HStack key={pokemonForm.formName} w="100%" h="50px" spacing="0px">
           <Divider flex={0.28} orientation="vertical" />
           <Box
-            flex={1.7}
             pos="relative"
+            flex={1.7}
             h="100%"
             color={"black"}
             textAlign="center"

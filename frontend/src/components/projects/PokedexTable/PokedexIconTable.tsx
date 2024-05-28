@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Box, Center, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { FaRedhat } from "react-icons/fa";
 
 import { DisplayPokemon, Pokemon } from "@/features/pokemons";
 import { useGetPokemonExist } from "@/features/pokemons/usecase/useGetPokemonExist";
@@ -10,7 +11,6 @@ import {
   usePokedexPageUpdate,
 } from "@/features/userPokedex";
 import { useUser } from "@/features/users";
-import { FaRedhat } from "react-icons/fa";
 
 export const PokedexIcon: React.FC<{
   pokemon: Pokemon;
