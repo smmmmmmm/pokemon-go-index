@@ -28,8 +28,8 @@ const addEvolvePokemons = (
       formName: formName,
       isExtra: isExtra,
       uniqueKey: isExtra
-        ? `${current.pokemonId}-evolved-from-${origin.pokemonId}`
-        : current.pokemonId,
+        ? `${current.pokemonId}-evolved-from-${origin.pokemonId}-${formName}`
+        : `${current.pokemonId}-${formName}`,
     });
 
     // 進化ポケモンのリストアップ
@@ -91,7 +91,7 @@ export const useFilteringPokemons = (
             pokemon: pokemon,
             formName: pkey.formName,
             isExtra: false,
-            uniqueKey: pokemon.pokemonId + pkey.formName,
+            uniqueKey: `${pokemon.pokemonId}-${pkey.formName}`,
           });
         }
       });
